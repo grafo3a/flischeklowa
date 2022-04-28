@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    
+<head>
+	<meta charset="UTF-8"></meta>
+	<title>[FlischeKlowa] Loading new flights</title>
+	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
+	<link rel="icon" type="image/png" href="favicon.png" />
+</head>
+
+
+<h:body>
+	
+	<!--**************************************************-->
+	<!-- Header (JSF) -->
+	
+	<div class="entete">
+		<ui:include src="/WEB-INF/fragments/entete.xhtml"></ui:include>
+	</div>
+	
+	<!-- Le menu central A gauche -->
+	
+	<div class="menu-central">
+		<ui:include src="/WEB-INF/fragments/menu-central.xhtml"></ui:include>
+	</div>
+	
+	<!-- Main -->
+	<fieldset class="contenu-principal">
+	
+		<!--==========-->
+	
+		<div>
+			<h3 class="titre-page">Loading new flights</h3>		<!-- adapter le titre ici -->
+		</div>
+		<br/>
+	<!--/**************************************************-->
+		
+		<h:form rendered="#{empty jSFOperationsSurModelesVols.tabMessageErreur or empty jSFOperationsSurModelesVols.tabMessageSucces}" >
+			
+			<h:commandButton style="width:300px"
+				value="Add a day of flights" action="#{jSFOperationsSurModelesVols.ajouterJourVols()}">
+			</h:commandButton>
+		</h:form>
+		
+		<font style="color:red">
+			<ui:repeat var="messageErreur" value="#{jSFOperationsSurModelesVols.tabMessageErreur}">
+    			#{messageErreur}<br/>
+			</ui:repeat>
+    	</font>
+    
+		<font style="color:green">
+			<ui:repeat var="messageSucces" value="#{jSFOperationsSurModelesVols.tabMessageSucces}">
+				#{messageSucces}<br/>
+			</ui:repeat>
+		</font>
+		<br/>
+		
+	<!--**************************************************-->
+	</fieldset>
+	
+	<!-- Pied de page -->
+	<!-- Footer (JSF) -->
+	
+	<div class="pied2page">
+		<ui:include src="/WEB-INF/fragments/pied_de_page.xhtml" />
+	</div>
+	
+	<!--==========-->
+	
+	<script type="text/javascript">
+		document.getElementById("menuChargement").className = "pageActuelle";		/* Adapter l'ID ici, Cf. menu-central.xhtml */
+	</script>
+	<!-- /**************************************************-->
+	
+</h:body>
+</html>

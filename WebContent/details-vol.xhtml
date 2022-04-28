@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets" >
+
+
+<head>
+	<meta charset="UTF-8"></meta>
+	<title>[FlischeKlowa] Flight Details</title>
+	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
+	<link rel="icon" type="image/png" href="favicon.png" />
+</head>
+
+
+<h:body>
+	
+	<!--**************************************************-->
+	<!-- Header (JSF) -->
+	
+	<div class="entete">
+		<ui:include src="/WEB-INF/fragments/entete.xhtml"></ui:include>
+	</div>
+	
+	<!-- Le menu central A gauche -->
+	
+	<div class="menu-central">
+		<ui:include src="/WEB-INF/fragments/menu-central.xhtml"></ui:include>
+	</div>
+	
+	<!-- Main -->
+	<fieldset class="contenu-principal">
+	
+	<!--==========-->
+	
+	<div>
+		<h3 class="titre-page">Details of a flight</h3>		<!-- adapter le titre ici -->
+	</div>
+	<br/>
+	<!--/**************************************************-->
+	
+	
+	<!--================================================== FORMULAIRE CHOIX DATE DU VOL -->
+	
+	<fieldset class="details01">
+		<legend> Search a flight </legend>
+		
+		<h:form>
+			<h:outputLabel value="Date: "/><br/>
+			<h:inputText id="dateChoisie" value="#{jSFBeanDetails1Vol.dateChoisie}" label="Date Choisie"
+			validatorMessage=" --- Type a valid date: aaaa-MM-dd from 2000 to 2999 (10 characters)"
+			class="large180" >
+			
+			<f:passThroughAttribute name="placeholder" value="e.g. 2022-01-01" />
+			<f:validateRequired />
+			<f:validateRegex pattern="#{jSFBeanDetails1Vol.regexDate}" />
+			
+			</h:inputText>
+			<br/>
+			<h:message for="dateChoisie" errorStyle="color:red"  />
+			
+			<!-- HEURE DU VOL -->
+			<br/>
+			<h:outputLabel value="Time: "/><br/>
+			<h:inputText id="heureChoisie" value="#{jSFBeanDetails1Vol.heureChoisie}" label="Heure Choisie"
+				validatorMessage=" --- Type a valid hour: hh:mm (5 characters)"
+				class="large180" >
+				
+				<f:passThroughAttribute name="placeholder" value="e.g. 00:00"/>
+				<f:validateRequired />
+				<f:validateRegex pattern="#{jSFBeanDetails1Vol.regexHeure}" />
+				
+			</h:inputText>
+				<br/>
+				<h:message for="heureChoisie" errorStyle="color:red"  />
+				
+				<br/>
+			<h:commandButton
+				value="Display" action="#{jSFBeanDetails1Vol.lireDetailsVol}"
+				class="large184" >
+			</h:commandButton>
+			
+		</h:form>
+	</fieldset>
+	
+	<font color="red"><i><h:outputText value="#{jSFBeanDetails1Vol.erreurLecture}" /></i></font>
+	<!--======================================================================-->
+	
+	
+	<!--================================================== DEBUT DETAILS DU VOL -->
+	<br/>
+	<br/>
+	<fieldset class="details02">
+		<table>
+			<tr>
+				<td>Moment</td>
+				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.momentVol}" /></td>
+			</tr>
+			<tr>
+				<td>Direction</td>
+				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.sens}" /></td>
+			</tr>
+			
+			<tr>
+				<td>City</td>
+				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.ville}" /></td>
+			</tr>
+			<tr>
+				<td>Country Code</td>
+				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.codePays}" /></td>
+			</tr>
+			<tr>
+				<td>Company</td>
+				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.compagnie}" /></td>
+			</tr>
+			<tr>
+				<td>Flight Number</td>
+				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.numeroVol}" /></td>
+			</tr>
+			<tr>
+				<td>Plane Type</td>
+				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.typeAvion}" /></td>
+			</tr>
+			<tr>
+				<td>Gate</td>
+				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.terminal}" /></td>
+			</tr>
+			<tr>
+				<td>Status</td>
+				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.statut}" /></td>
+			</tr>
+		</table>
+	</fieldset>
+	<!--===============================================-->
+	
+	
+	<!--======================================================== MISES A JOUR VOLS -->
+	<br/>
+	<fieldset class="details03">
+		
+		<legend> Update </legend>
+		
+		<font color="green"><i><h:outputText value="#{jSFBeanDetails1Vol.messageSucces}" /></i></font>
+		<font color="red"><i><h:outputText value="#{jSFBeanDetails1Vol.messageErreur}" /></i></font>
+		
+		<!-- MODIFICATION DATE DU VOL: N/A -->
+		
+		<!-- MODIFICATION HEURE DU VOL -->
+		
+		<h:form rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
+			<h:outputLabel value="Flight time : "/>
+			<h:inputText class="large180" id="heureChoisie" value="#{jSFBeanDetails1Vol.heureChoisie}" label="Heure Choisie" >
+			</h:inputText>
+			
+			<h:commandButton class="modif"
+				value="Change the time" action="#{jSFBeanDetails1Vol.modifierInfoHeure}" >
+			</h:commandButton>
+		</h:form>
+		
+		
+		<!-- MODIFICATION TYPE D'AVION -->
+		
+		<h:form rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
+		<h:outputLabel value="Plane Type : "/>
+			<h:inputText class="large180" id="typeAvionChoisi" value="#{jSFBeanDetails1Vol.typeAvion}" label="Type d'avion Choisi" >
+			</h:inputText>
+			
+		<h:commandButton class="modif"
+			value="Change the type" action="#{jSFBeanDetails1Vol.modifierInfoTypeAvion}">
+		</h:commandButton>
+		</h:form>
+		
+		
+		<!-- MODIFICATION TERMINAL -->
+		
+		<h:form rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
+		<h:outputLabel value="Gate : "/>
+			<h:inputText class="large180" id="terminalChoisi" value="#{jSFBeanDetails1Vol.terminal}" label="Terminal Choisi" >
+			</h:inputText>
+			
+		<h:commandButton class="modif"
+			value="Change the gate" action="#{jSFBeanDetails1Vol.modifierInfoTerminal}">
+		</h:commandButton>
+		</h:form>
+		
+		
+		<!-- MODIFICATION DU STATUT -->
+		
+		<h:form rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
+			<h:outputLabel value="Status : "/>
+			<h:selectOneMenu class="large184" id="statutChoisi" value="#{jSFBeanDetails1Vol.statut}" >
+				<f:selectItem itemValue="Cancelled" itemLabel="Cancelled" />
+				<f:selectItem itemValue="Confirmed" itemLabel="Confirmed" />
+		</h:selectOneMenu>
+		
+		<h:commandButton class="modif"
+			value="Change the status" action="#{jSFBeanDetails1Vol.modifierInfoStatut}">
+		</h:commandButton>
+		</h:form>
+		
+		</fieldset>
+		<!--/===============================================================-->
+		
+	<!--**************************************************-->
+	</fieldset>
+	
+	<!-- Footer (JSF) -->
+	
+	<div class="pied2page">
+		<ui:include src="/WEB-INF/fragments/pied_de_page.xhtml" />
+	</div>
+	
+	<!--==========-->
+	
+	<script type="text/javascript">
+		document.getElementById("menuDetails").className = "pageActuelle";		/* Adapter l'ID ici */
+	</script>
+	<!-- /**************************************************-->
+	
+</h:body>
+</html>

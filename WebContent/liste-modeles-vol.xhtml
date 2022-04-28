@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	
+<head>
+	<meta charset="UTF-8"></meta>
+	<title>[FlischeKlowa] Flight templates</title>
+	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
+	<link rel="icon" type="image/png" href="favicon.png" />
+</head>
+
+
+<h:body>
+	
+	<!--**************************************************-->
+	<!-- Header (JSF) -->
+	
+	<div class="entete">
+		<ui:include src="/WEB-INF/fragments/entete.xhtml"></ui:include>
+	</div>
+	
+	<!-- Le menu central A gauche -->
+	
+	<div class="menu-central">
+		<ui:include src="/WEB-INF/fragments/menu-central.xhtml"></ui:include>
+	</div>
+	
+	<!-- Main -->
+	<fieldset class="contenu-principal">
+	
+	<!--==========-->
+	
+	<div>
+		<h3 class="titre-page">List of flight templates</h3>		<!-- adapter le titre ici -->
+	</div>
+	<br/>
+	<!--/**************************************************-->
+	
+	
+	<h:form rendered="#{empty jSFOperationsSurModelesVols.tabDynamique}">
+		<h:commandButton class="large184"
+			value="Display the list" action="#{jSFOperationsSurModelesVols.afficherListeModelesVol}">
+	</h:commandButton>
+	</h:form>
+	
+	<br/>
+	<table class="table-vols">
+		<ui:repeat var="modele" value="#{jSFOperationsSurModelesVols.tabDynamique}">
+			<tr>
+				<td class="case-vol">#{modele[0]}</td>
+				<td class="case-vol">#{modele[1]}</td>
+				<td class="case-vol">#{modele[2]}</td>
+				<td class="case-vol">#{modele[3]}</td>
+				<td class="case-vol">#{modele[4]}</td>
+				<td class="case-vol">#{modele[5]}</td>
+				<td class="case-vol">#{modele[6]}</td>
+				<td class="case-vol">#{modele[7]}</td>
+			</tr>
+		</ui:repeat>
+	</table>
+	<br/>
+	
+	
+	<!--**************************************************-->
+	</fieldset>
+	
+	<!-- Footer (JSF) -->
+	<div class="pied2page">
+		<ui:include src="/WEB-INF/fragments/pied_de_page.xhtml" />
+	</div>
+	
+	<!-- ========== -->
+	
+	<script type="text/javascript">
+		document.getElementById("menuModeles").className = "pageActuelle";		/* Adapter l'ID ici */
+	</script>
+	<!--/**************************************************-->
+	
+</h:body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<head>
+	<meta charset="UTF-8"></meta>
+	<title>[FlischeKlowa] Flights of a date</title>
+	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
+	<link rel="icon" type="image/png" href="favicon.png" />
+</head>
+
+
+<h:body>
+	
+	<!--**************************************************-->
+	<!-- Header (JSF) -->
+	
+	<div class="entete">
+		<ui:include src="/WEB-INF/fragments/entete.xhtml"></ui:include>
+	</div>
+	
+	<!-- Le menu central A gauche -->
+	
+	<div class="menu-central">
+		<ui:include src="/WEB-INF/fragments/menu-central.xhtml"></ui:include>
+	</div>
+	
+	<!-- Main -->
+	<fieldset class="contenu-principal">
+	
+	<!--==========-->
+	
+	<div>
+		<h3 class="titre-page">Flights of a date</h3>		<!-- adapter le titre ici -->
+	</div>
+	<br/>
+	<!--/**************************************************-->
+	
+	
+	<!--================================================= CHOIX DATE DU VOL -->
+	
+	<fieldset class="large800">
+		<!--  <legend></legend> -->
+		
+		<h:form>
+			<h:outputLabel value="Type a date: "/>
+			<br/>
+			<h:inputText id="dateChoisie" class="large180"
+				value="#{jSFBeanListeVols1Date.dateChoisie}" label="Date Choisie"
+				validatorMessage=" --- Type a valid date: aaaa-MM-dd from 2000 to 2999 (10 characters)" >
+				
+				<f:passThroughAttribute name="placeholder" value="e.g. 2022-01-01" />
+				<f:validateRequired />
+				<f:validateRegex pattern="#{jSFBeanDetails1Vol.regexDate}" />
+			</h:inputText>
+			
+			<h:message for="dateChoisie" errorStyle="color:red"  />
+			<br/>
+			<h:commandButton class="large184"
+				value="Search" action="#{jSFBeanListeVols1Date.afficherListeVolsDateChoisie}">
+			</h:commandButton>
+		</h:form>
+	</fieldset>
+	
+	<font color="red"><i><h:outputText value="#{jSFBeanListeVols1Date.messageErreur}" /></i></font>
+	
+	<fieldset class="menu-icones">
+		
+		<!--=== ICONE DATE PRECEDENTE ===-->
+		<h:form class="icone-date" rendered="#{not empty jSFBeanListeVols1Date.colleTabVolsDate}">
+			<i>Previous</i>
+			
+			<h:commandButton class="image-icone-date" image="common/images/icone_date_precedente.png"
+				action="#{jSFBeanListeVols1Date.afficherListeVolsDatePrecedente}">
+			</h:commandButton>
+		</h:form>
+		
+		<!--=== ICONE DATE SUIVANTE ===-->
+		<h:form class="icone-date" rendered="#{not empty jSFBeanListeVols1Date.colleTabVolsDate}">
+			<i>Next</i>
+			
+			<h:commandButton class="image-icone-date" image="common/images/icone_date_suivante.png"
+				action="#{jSFBeanListeVols1Date.afficherListeVolsDateSuivante}">
+			</h:commandButton>
+		</h:form>
+		
+		<!--=== ICONE DATE FINALE ===-->
+		<h:form class="icone-date">
+			<i>Last</i>
+			
+			<h:commandButton class="image-icone-date" image="common/images/icone_date_finale.png"
+				action="#{jSFBeanListeVols1Date.afficherListeVolsDateFinale}">
+			</h:commandButton>
+		</h:form>
+		
+		<!--=== ICONE REINITIALISER ===-->
+		
+		<h:form class="icone-date">
+			<i>Reset</i>
+			
+			<h:commandButton class="image-icone-date" image="common/images/icone_recommencer.png"
+				action="#{jSFBeanListeVols1Date.recommencer}">
+			</h:commandButton>
+			
+		</h:form>
+	</fieldset>
+	
+	<!--================================================= AFFICHAGE DES VOLS -->
+	
+	<br/>
+	<table class="table-vols-1date">
+		<ui:repeat var="vol" value="#{jSFBeanListeVols1Date.colleTabVolsDate}">
+			<tr>
+				<td class="case-vol-1date">#{vol[0]}</td>
+				<td class="case-vol-1date">#{vol[1]}</td>
+				<td class="case-vol-1date">#{vol[2]}</td>
+				<td class="case-vol-1date">#{vol[3]}</td>
+				<td class="case-vol-1date">#{vol[4]}</td>
+				<td class="case-vol-1date">#{vol[5]}</td>
+				<td class="case-vol-1date">#{vol[6]}</td>
+				<td class="case-vol-1date">#{vol[7]}</td>
+			</tr>
+		</ui:repeat>
+	</table>
+	<br/>
+	
+	
+	<!--**************************************************-->
+	</fieldset>
+	
+	<!-- Footer (JSF) -->
+	
+	<div class="pied2page">
+		<ui:include src="/WEB-INF/fragments/pied_de_page.xhtml" />
+	</div>
+	
+	<!--==========-->
+	
+	<script type="text/javascript">
+		document.getElementById("menuRecherche").className = "pageActuelle";		/* Adapter l'ID ici */
+	</script>
+	<!-- /**************************************************-->
+	
+</h:body>
+</html>

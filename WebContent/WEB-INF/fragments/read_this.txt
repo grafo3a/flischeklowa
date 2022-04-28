@@ -1,0 +1,3 @@
+JSP pages accept fragments from XHTML files.
+JSF pages refuse fragments from JSP files.
+This is the reason why all fragments should be found in XHTML files with valid JSF tags.

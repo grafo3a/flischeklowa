@@ -1,0 +1,378 @@
+/* General ------------------------------------------------------------------------------------- */
+
+html, body {
+	/*on maintient le pied de page en bas*/
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	display: table;
+}
+
+
+body {
+	font: normal 10pt verdana, helvetica, sans-serif;
+	background-image: url("../images/airport_by_weston-mackinnon_1080p.jpg");
+}
+
+
+.titre-page {
+	color: #737373;		/*GreyVariant*/
+}
+
+
+#decalageHoraire {
+	opacity: 0;		/* invisible */
+}
+
+
+.menu-central {
+	float:left;
+	margin-top: 40px;
+	margin-left: 20px;
+}
+
+
+.arrondi8 {
+	border-radius: 8px;
+}
+
+
+.contenu-principal {
+	padding-left: 40px;
+	min-height: 400px;
+	border: 0px;
+	
+}
+
+
+.affichage-horaire {
+	min-height: 300px;
+	display: block;
+}
+
+
+.table-vols {
+	border: 1px solid green;
+	border-collapse: collapse;
+}
+
+
+.table-vols-1date {
+	border:1px solid green;
+	border-collapse: collapse;
+}
+
+
+.case-vol-1date {
+	border:1px solid green;
+	border-collapse: collapse;
+	padding-right: 30px;
+}
+
+
+.case-vol {
+	border:1px solid green;
+	border-collapse: collapse;
+	padding-right: 30px;
+}
+
+
+.pied2page {
+	background-color: #d9d9d9; /* GrisFaible */
+	
+	/* on maintient le pied de page en bas */ 
+	display: table-row; 
+	height: 0;
+	
+}
+
+
+.droit-auteur {
+	text-align: center;
+}
+
+
+form input, select {
+	margin-top: 5px;
+	
+	/* On egalise les tailles des widgets */
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+
+.large140 {
+	width: 140px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+
+.large180 {
+	width: 180px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+
+.large184 {
+	width: 184px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+
+.large200 {
+	width: 200px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+
+.large206 {
+	width: 206px;
+	
+	/* On egalise les tailles des widgets pour qu'elles soient egales */
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+
+.large240 {
+	width: 240px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+
+.large800 {
+	margin-right: 250px;
+	border-radius:5px;
+	border: 1px solid silver;
+}
+
+
+.marge-droite250 {
+	margin-right: 250px;
+	border-radius:5px;
+}
+
+
+.menu-icones {
+	margin-right: 250px;
+	text-align: right;
+	border: 0px;
+	border-bottom: 1px solid silver;
+}
+
+
+.modif {
+	text-align: left;
+	width: 150px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+
+.details01 {
+	width: 500px;
+	border-radius:5px;
+	border: 1px solid silver;
+}
+
+
+.details02 {
+	width: 400px;
+	float: left;
+	border: 0px;
+}
+
+
+.details03 {
+	width:500px;
+	text-align:right;
+	border-radius:5px;
+	float:right;
+	border: 1px solid silver;
+}
+
+
+.vert {
+	color: green;
+}
+
+
+.rouge {
+	color: red;
+}
+
+
+.gris {
+	color: silver;
+}
+ 
+
+.extreme-droite {
+	float: right;
+}
+
+
+.horaire {
+	border:1px solid green;
+	border-collapse:collapse
+}
+
+
+/* Barre de menu Horizontale */
+
+.entete {
+	overflow: hidden;
+	background-color: #fff4b3 /* jaune faible*/
+}
+
+
+.logo {
+	margin-left: 20px;
+}
+
+
+/* ------------------------- */
+
+.moment {
+	float: right;
+}
+
+
+.navbar {
+	overflow: hidden;
+	background-color: #d9d9d9; /* GrisFaible */
+	float:right;
+}
+
+
+.navbar a {
+	float: left;
+	color: green;
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-decoration: none;
+}
+
+
+.dropdown {
+	float: left;
+	overflow: hidden;
+	display: inline;
+}
+
+
+.dropdown .dropbutton {
+	background-color: #d9d9d9; /* GrisFaible */
+	font: normal 10pt verdana, helvetica, sans-serif;
+	border: none;
+	outline: none;
+	color: green;
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-decoration: none;
+}
+
+
+.navbar a:hover, .dropdown:hover .dropbutton {
+	background-color: #ffa500; /* orange */
+}
+
+
+.pageActuelle {
+	background-color: #ffc966; /*orange faible*/
+	border: 1px solid green;
+	border-radius: 4px;
+}
+
+
+.horizontal {
+	display: inline;
+}
+
+
+.icone-date {
+	display: inline;
+	width: 180px;
+	margin-left: 12px;
+}
+
+
+.image-icone-date {
+	width:60px;
+	height:25px;
+	border-radius: 5px;
+	margin-left: 5px;
+}
+
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #ffe6cc; /*  #f9f9f9; */
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+
+.dropdown-content a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+
+.dropdown-content a:hover {
+	background-color: #ffa500;		/* orange */
+}
+
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+
+/* Barre de menu verticale */
+
+.menu-vertical {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+	background-color: #ffe6cc;
+	border-radius: 5px;
+}
+
+
+li a {
+	display: block;
+	color: black;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+
+li a:hover {
+	background-color: #ffa500; /* #ffa500 = orange faible */
+	border-radius: 5px;
+}
+
+
+ul.tech {
+	list-style-type: circle;
+}
+/* ------------------------------------- */
