@@ -7,7 +7,7 @@
 
 <head>
 	<meta charset="ISO-8859-1"></meta>
-	<title>Welcome to FlischeKlowa!</title>
+	<title>[FlischeKlowa] Today's flights</title>
 	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
 	<link rel="icon" type="image/png" href="favicon.png" />
 	<script type="text/javascript" src="common/js/main.js"></script>

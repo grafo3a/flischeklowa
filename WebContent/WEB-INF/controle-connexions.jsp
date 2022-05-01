@@ -7,7 +7,7 @@
 
 <head>
 	<meta charset="ISO-8859-1"></meta>
-	<title>Connections control</title>
+	<title>[FlischeKlowa] Controlling connections</title>
 	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
 	<link rel="icon" type="image/png" href="favicon.png" />
 </head>
