@@ -30,7 +30,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 			
 			
 			
-			<!--=== PROPRIETES STANDARD JPA POSTGRESQL ===
+			<!--=== PROPRIETES STANDARD JPA POSTGRESQL (Pour GIT) ===
 			<property
 				name="javax.persistence.jdbc.driver"
 				value="org.postgresql.Driver"/>
@@ -46,8 +46,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 			-->
 			
 			
-			<!-- QLQ PROPRIETES SPECIFIQUES HIBERNATE -->
-			
+			<!--=== QLQ PROPRIETES SPECIFIQUES HIBERNATE ===-->
 			<property
 				name="hibernate.show_sql"
 				value="true" />
