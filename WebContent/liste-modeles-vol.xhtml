@@ -9,76 +9,106 @@
 <head>
 	<meta charset="UTF-8"></meta>
 	<title>[FlischeKlowa] Flight templates</title>
-	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
+	
+	<link rel="stylesheet" href="common/css/bootstrap.css" />
+	<link rel="stylesheet" href="common/css/bootstrap-icons.css" />
+	<link rel="stylesheet" href="common/css/bela.css" />
 	<link rel="icon" type="image/png" href="favicon.png" />
+	<script type="text/javascript" src="common/js/main.js"></script>
 </head>
 
 
 <h:body>
 	
-	<!--**************************************************-->
-	<!-- Header (JSF) -->
+	<!--=== HEADER (JSF) ===-->
+	<ui:include src="/WEB-INF/fragments/entete.xhtml"></ui:include>
+	<ui:include src="/WEB-INF/fragments/menu-central.xhtml"></ui:include>
 	
-	<div class="entete">
-		<ui:include src="/WEB-INF/fragments/entete.xhtml"></ui:include>
+	
+	<!--=== MAIN ===-->
+	<div class="container-fluid">
+		
+		<!--=== ROW A ===-->
+		<div class="row border bg-light">
+			
+			<!--=== COLUMN A1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<div class="card border-warning mt-4 mb-2">
+					<div class="card-header text-center bg-orange-faible">LIST OF FLIGHT TEMPLATES</div>
+					
+					<div class="card-body p-2">
+						<h:form rendered="#{empty jSFOperationsSurModelesVols.tabDynamique}">
+							<h:commandButton
+								class="btn btn-warning btn-sm bouton-orangeatre mt-1"
+								value="Display the list of templates"
+								action="#{jSFOperationsSurModelesVols.afficherListeModelesVol}">
+							</h:commandButton>
+						</h:form>
+						
+					</div>
+				</div>
+			</div>
+			
+			
+			<!--=== COLUMN A2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Affichage date et heure (JSF) ===-->
+				<ui:include src="/WEB-INF/fragments/jour-date-heure.xhtml"></ui:include>
+			</div>
+		</div>
+		
+		
+		<!--=== ROW B ===-->
+		<div class="row">
+			
+			<!--=== COLUMN B1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<table class="table table-striped table-sm mt-4">
+					<ui:repeat var="modele" value="#{jSFOperationsSurModelesVols.tabDynamique}">
+						<tr>
+							<td class="case-vol">#{modele[0]}</td>
+							<td class="case-vol">#{modele[1]}</td>
+							<td class="case-vol">#{modele[2]}</td>
+							<td class="case-vol">#{modele[3]}</td>
+							<td class="case-vol">#{modele[4]}</td>
+							<td class="case-vol">#{modele[5]}</td>
+							<td class="case-vol">#{modele[6]}</td>
+							<td class="case-vol">#{modele[7]}</td>
+						</tr>
+					</ui:repeat>
+				</table>
+				
+				<p><br/></p> <!--=== Useful code line for correct display of components above ===-->
+			</div>
+			
+			
+			<!--=== COLUMN B2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Le caroussel ===-->
+				
+				<div class="container border rounded caroussel shadow-sm m-4 p-2">
+					<img src="common/images/airport_by_weston-mackinnon_1080p.jpg"
+						alt="airport-image" width="500px" height="300px" />
+				</div>
+				
+			</div>
+			
+			<p><br/></p> <!--=== Useful code line for correct display of components above ===-->
+		</div>
 	</div>
 	
-	<!-- Le menu central A gauche -->
-	
-	<div class="menu-central">
-		<ui:include src="/WEB-INF/fragments/menu-central.xhtml"></ui:include>
-	</div>
-	
-	<!-- Main -->
-	<fieldset class="contenu-principal">
-	
-	<!--==========-->
-	
-	<div>
-		<h3 class="titre-page">List of flight templates</h3>		<!-- adapter le titre ici -->
-	</div>
-	<br/>
-	<!--/**************************************************-->
-	
-	
-	<h:form rendered="#{empty jSFOperationsSurModelesVols.tabDynamique}">
-		<h:commandButton class="large184"
-			value="Display the list" action="#{jSFOperationsSurModelesVols.afficherListeModelesVol}">
-	</h:commandButton>
-	</h:form>
-	
-	<br/>
-	<table class="table-vols">
-		<ui:repeat var="modele" value="#{jSFOperationsSurModelesVols.tabDynamique}">
-			<tr>
-				<td class="case-vol">#{modele[0]}</td>
-				<td class="case-vol">#{modele[1]}</td>
-				<td class="case-vol">#{modele[2]}</td>
-				<td class="case-vol">#{modele[3]}</td>
-				<td class="case-vol">#{modele[4]}</td>
-				<td class="case-vol">#{modele[5]}</td>
-				<td class="case-vol">#{modele[6]}</td>
-				<td class="case-vol">#{modele[7]}</td>
-			</tr>
-		</ui:repeat>
-	</table>
-	<br/>
-	
-	
-	<!--**************************************************-->
-	</fieldset>
 	
 	<!-- Footer (JSF) -->
-	<div class="pied2page">
-		<ui:include src="/WEB-INF/fragments/pied_de_page.xhtml" />
-	</div>
+	<ui:include src="/WEB-INF/fragments/pied_de_page.xhtml" />
 	
-	<!-- ========== -->
-	
+	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
 		document.getElementById("menuModeles").className = "pageActuelle";		/* Adapter l'ID ici */
 	</script>
-	<!--/**************************************************-->
 	
 </h:body>
 </html>

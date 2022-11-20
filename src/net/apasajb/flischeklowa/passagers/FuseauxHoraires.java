@@ -14,17 +14,16 @@ import net.apasajb.flischeklowa.ecouteurs.EcouteurAppli;
  */
 public class FuseauxHoraires {
 	
-	
-	public static void actualiserAffichageDate(HttpServletRequest request) {
+	public static void actualiserAffichageDate(HttpServletRequest requete) {
 		
 		String fuseauHoraire = EcouteurAppli.getFuseauhoraire();
 		ZoneId idZoneKlow = ZoneId.of(fuseauHoraire);
 		ZonedDateTime dateHeureKlow = ZonedDateTime.now(idZoneKlow);
 		ZoneOffset decalageKlow = dateHeureKlow.getOffset();
-		String texteDecalageKlow = "UTC" + decalageKlow.getId();		//--- => "UTC+02:00"
-		int heuresDecalageKlow = decalageKlow.getTotalSeconds()/3600;		//--- => (1 || 2)
+		String texteDecalageKlow = "UTC" + decalageKlow.getId();		// ex: "UTC+02:00"
+		int heuresDecalageKlow = decalageKlow.getTotalSeconds()/3600;		// ex: 2
 		
-		request.setAttribute("texteDecalageKlow", texteDecalageKlow);
-		request.setAttribute("heuresDecalageKlow", heuresDecalageKlow);
+		requete.setAttribute("texteDecalageKlow", texteDecalageKlow);
+		requete.setAttribute("heuresDecalageKlow", heuresDecalageKlow);
 	}
 }

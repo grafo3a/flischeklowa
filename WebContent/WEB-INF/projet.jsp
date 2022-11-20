@@ -10,80 +10,113 @@
 <head>
 	<meta charset="ISO-8859-1"></meta>
 	<title>[FlischeKlowa] Project</title>
-	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
+	
+	<link rel="stylesheet" href="common/css/bootstrap.css" />
+	<link rel="stylesheet" href="common/css/bootstrap-icons.css" />
+	<link rel="stylesheet" href="common/css/bela.css" />
 	<link rel="icon" type="image/png" href="favicon.png" />
+	<script type="text/javascript" src="common/js/main.js"></script>
 </head>
 
 
 <body>
-	
-	<!--**************************************************-->
-	<!-- Header (JSP) -->
-	
-	<div class="entete">
-		<jsp:include page="./fragments/entete.xhtml"></jsp:include>
-	</div>
-	
-	<!-- Le menu central A gauche -->
-	
-	<div class="menu-central">
-		<jsp:include page="./fragments/menu-central.xhtml"></jsp:include>
-	</div>
+	<!--=== HEADER (JSP) ===-->
+	<jsp:include page="./fragments/entete.xhtml"></jsp:include>
+	<jsp:include page="./fragments/menu-central.xhtml"></jsp:include>
 	
 	
-	<!-- Main -->
-	<fieldset class="contenu-principal">
-	
-	<!--==========-->
-	
-		<div>
-			<h3 class="titre-page">The FlischeKlowa project</h3>		<!-- adapter le titre ici -->
+	<!--=== MAIN ===-->
+	<div class="container-fluid">
+		
+		<!--=== ROW A ===-->
+		<div class="row border bg-light">
+			
+			<!--=== COLUMN A1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<div class="card border-warning mt-4 mb-2">
+					<div class="card-header text-center bg-orange-faible">THE FLISCHEKLOWA PROJECT</div>
+					
+					<div class="card-body p-2">
+						<p class="card-text"></p>
+					</div>
+					
+				</div>
+			</div>
+			
+			<!--=== COLUMN A2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Affichage date et heure ===-->
+				<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
+			</div>
 		</div>
-		<br/>
-	<!--/**************************************************-->
-	
-	<p>
-	As a programming project, FlischeKlowa is an application based on Java EE 8.<br/>
-	The author of the project is the programmer Joseph B. Apasa.
-	</p>
-	<p>The following technologies are used in the project:</p>
-	
-	<ul class="tech">
-		<li>Servlet 4 with Filter;</li>
-		<li>JSP with JSTL;</li>
-		<li>G11N (globalization including I18n);</li>
-		<li>JDBC via DriverManager and DataSource (connection pool);</li>
-		<li>JPA via Hibernate (for ORM data persistence);</li>
-		<li>JSF 2.3 via Mojarra;</li>
-		<li>CDI via Weld (for dependency injections);</li>
-		<li>JAX-RS via Jersey (for exposing REST web services);</li>
-		<li>JavaScript (plain aka Vanilla);</li>
-		<li>HTML with CSS;</li>
-		<li>Maven, JUnit 5, tinylog;</li>
-		<li>Databases: H2 (in-memory) and PosgreSQL (in cloud).</li>
-	</ul>
-	
-	
-	<!--**************************************************-->
-	</fieldset>
-	
-	<!-- Footer (JSP) -->
-	
-	<div class="pied2page">
-		<jsp:include page="./fragments/pied_de_page.xhtml"></jsp:include>
+		
+		
+		<!--=== ROW B ===-->
+		<div class="row">
+			
+			<!--=== COLUMN B1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			
+				<div class="container border rounded bg-light p-1 mt-4">
+					
+					<p>
+					As a programming project, FlischeKlowa is an application based on Java EE 8.<br/>
+					The author of the project is the programmer Joseph B. Apasa.
+					</p>
+					<p>The following technologies are used in the project:</p>
+						
+					<ul>
+						<li>Servlet 4 with Filter;</li>
+						<li>JSP with JSTL;</li>
+						<li>G11N (globalization including I18n);</li>
+						<li>JDBC via DriverManager and DataSource (connection pool);</li>
+						<li>JPA via Hibernate (for ORM data persistence);</li>
+						<li>JSF 2.3 via Mojarra;</li>
+						<li>CDI via Weld (for dependency injections);</li>
+						<li>JAX-RS via Jersey (for exposing REST web services);</li>
+						<li>JavaScript (plain aka Vanilla);</li>
+						<li>HTML with CSS;</li>
+						<li>Maven, JUnit 5, tinylog;</li>
+						<li>Databases: H2 (in-memory) and PosgreSQL (in cloud).</li>
+					</ul>
+					
+				</div>
+				
+				<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->
+			</div>
+			
+			
+			<!--=== COLUMN B2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Le caroussel ===-->
+				
+				<div class="container border rounded caroussel shadow-sm m-4 p-2">
+					<img src="common/images/airport_by_weston-mackinnon_1080p.jpg"
+						alt="airport-image" width="500px" height="300px" />
+				</div>
+				
+			</div>
+			
+			<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->
+		</div>
 	</div>
 	
-	<!--==========-->
 	
+	<!--=== FOOTER (JSP) ===-->
+	<jsp:include page="./fragments/pied_de_page.xhtml"></jsp:include>
+	
+	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
 		
 		var option = document.getElementById("menuAbout");
-		
-		option.style.border = "1px solid green";				/* orange faible */
-		option.style.backgroundColor = "#ffc966";
-		option.style.borderRadius = "4px";
+		option.style.border = "1px solid orange";		/* orange faible */
+		option.style.borderRadius = "20%";
+		option.style.borderBottom = "3px solid orange";
+		option.style.color = "black";
 	</script>
-	<!--/**************************************************-->
 	
 </body>
 </html>

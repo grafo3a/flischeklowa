@@ -23,7 +23,6 @@ import net.apasajb.flischeklowa.outils.BoiteConnexionJDBC;
  */
 public class AffichageHoraireVols {
 	
-	
 	public HttpServletRequest traiterRequeteUtilisateur(HttpServletRequest request) {
 		
 		ResultSet resultSet = null;
@@ -49,7 +48,7 @@ public class AffichageHoraireVols {
 				String requeteSQL;
 				int casRequete = 0;
 				
-				//--- Ici tabSens est un tableau (Array), il ne sera jamais vide.
+				// Ici tabSens est un tableau (Array), il ne sera jamais vide.
 				String[] tabSens = request.getParameterValues("sens");
 				paramSens = tabSens[0];
 				
@@ -77,12 +76,12 @@ public class AffichageHoraireVols {
 					casRequete = 4;
 				}
 				
-				//--- Preparation de la requete preparee
+				// Preparation de la requete preparee
 				PreparedStatement requetePreparee = connexion.prepareStatement(requeteSQL);
 				requetePreparee.setString(1, critereDate);
 				
 				if (casRequete == 1) {
-					//--- On ne fait rien ici: la requete garde la forme par defaut
+					// On ne fait rien ici: la requete garde la forme par defaut
 					
 				} else if (casRequete == 2) {
 					requetePreparee.setString(2, paramPays);
@@ -97,25 +96,26 @@ public class AffichageHoraireVols {
 				}
 				
 				resultSet = requetePreparee.executeQuery();
-				String style = "style=\"border:1px solid silver; border-collapse:collapse\"";
-				String styleOK = "style=\"border:1px solid silver; border-collapse:collapse; background-color: #d9d9d9\"";
-				String tableTag = "<table " + style + ">";
-				String tdDefault = "<td " + style + ">";
+				
+				String styleOK = "style=\"background-color: #d9d9d9\"";
+				String tdDefault = "<td>";
 				String tdCompleted = "<td " + styleOK + ">";		//--- Fond gris faible pour l'heure deja passee
 				
-				//--- Construction d'une table pour faciliter son exploitation par Ajax
-				tableHoraireVols = tableTag
-						+ "\n<tr>"
-						+ tdDefault + "Time -----</td>"
-						+ tdDefault + "Direction -----</td>"
-						+ tdDefault + "City ----------</td>"
-						+ tdDefault + "Country -----</td>"
-						+ tdDefault + "Flight Number ---</td>"
-						+ tdDefault + "Company -----</td>"
-						+ tdDefault + "Aircraft Type -----</td>"
-						+ tdDefault + "Gate -----</td>"
-						+ tdDefault + "Status -----</td>"
-						+ "</tr>";
+				// Construction d'une table pour faciliter son exploitation par Ajax
+				tableHoraireVols =
+						"<table class=\"table table-sm border\">"
+						+ "<thead class=\"text-secondary\">"
+						+ "<tr>"
+						+ "<th scope=\"col\">Time</th>"
+						+ "<th scope=\"col\">Direction</th>"
+						+ "<th scope=\"col\">City</th>"
+						+ "<th scope=\"col\">Country</th>"
+						+ "<th scope=\"col\">Company</th>"
+						+ "<th scope=\"col\">Gate</th>"
+						+ "<th scope=\"col\">Status</th>"
+						+ "</tr>"
+						+ "</thead>"
+						+ "<tbody>";
 				
 				int numeroLigne = 0;
 				OffsetTime heureKlow = OffsetTime.now(zoneKlow);
@@ -126,13 +126,13 @@ public class AffichageHoraireVols {
 				String nomCompagnie = null;
 				String nomVille = null;
 				String codePays = null;
-				String numVol = null;
-				String typeAvion = null;
+				//String numVol = null;
+				//String typeAvion = null;
 				String numTerminal = null;
 				String statutVol = null;
 				boolean isStatutCalculable = false;
 				
-				//--- lecture du resultSet
+				// Lecture du resultSet
 				while (resultSet.next()) {
 					
 					String tdTag = tdDefault;
@@ -144,9 +144,9 @@ public class AffichageHoraireVols {
 					sensVol = resultSet.getString(6);
 					nomVille = resultSet.getString(10);
 					codePays = resultSet.getString(2);
-					numVol = resultSet.getString(5);
 					nomCompagnie = resultSet.getString(3);
-					typeAvion = resultSet.getString(9);
+					//numVol = resultSet.getString(5);
+					//typeAvion = resultSet.getString(9);
 					numTerminal = resultSet.getString(8);
 					statutVol = resultSet.getString(7);
 					isStatutCalculable = false;		//--- on reinitialise la valeur
@@ -195,9 +195,9 @@ public class AffichageHoraireVols {
 							+ tdTag + sensVol + "</td>"
 							+ tdTag + nomVille + "</td>"
 							+ tdTag + codePays + "</td>"
-							+ tdTag + numVol + "</td>"
 							+ tdTag + nomCompagnie + "</td>"
-							+ tdTag + typeAvion + "</td>"
+							//+ tdTag + numVol + "</td>"
+							//+ tdTag + typeAvion + "</td>"
 							+ tdTag + numTerminal + "</td>"
 							+ tdTag + statutVol + "</td>"
 							+ "</tr>\n";
@@ -206,10 +206,10 @@ public class AffichageHoraireVols {
 				}
 				
 				if (numeroLigne == 0) {		//--- Si numeroLigne tjrs 0 donc resultSet est vide.
-					tableHoraireVols = "<font color=\"red\">--- Ohhh, no flight found!</font>";
+					tableHoraireVols = "<font color=\"red\">[Info] Ohhh, no flight found!</font>";
 				}
 				
-				tableHoraireVols = tableHoraireVols + "</table>";
+				tableHoraireVols = tableHoraireVols + "</tbody></table>";
 				
 			} catch (SQLException sqlex) {
 				messageErreur = "ERROR. Type: SQL. Message: " + sqlex.getMessage();

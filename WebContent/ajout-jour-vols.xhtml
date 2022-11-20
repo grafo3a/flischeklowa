@@ -9,73 +9,104 @@
 <head>
 	<meta charset="UTF-8"></meta>
 	<title>[FlischeKlowa] Loading new flights</title>
-	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
+	
+	<link rel="stylesheet" href="common/css/bootstrap.css" />
+	<link rel="stylesheet" href="common/css/bootstrap-icons.css" />
+	<link rel="stylesheet" href="common/css/bela.css" />
 	<link rel="icon" type="image/png" href="favicon.png" />
+	<script type="text/javascript" src="common/js/main.js"></script>
 </head>
 
 
 <h:body>
 	
-	<!--**************************************************-->
-	<!-- Header (JSF) -->
+	<!--=== HEADER (JSF) ===-->
+	<ui:include src="/WEB-INF/fragments/entete.xhtml"></ui:include>
+	<ui:include src="/WEB-INF/fragments/menu-central.xhtml"></ui:include>
 	
-	<div class="entete">
-		<ui:include src="/WEB-INF/fragments/entete.xhtml"></ui:include>
-	</div>
 	
-	<!-- Le menu central A gauche -->
-	
-	<div class="menu-central">
-		<ui:include src="/WEB-INF/fragments/menu-central.xhtml"></ui:include>
-	</div>
-	
-	<!-- Main -->
-	<fieldset class="contenu-principal">
-	
-		<!--==========-->
-	
-		<div>
-			<h3 class="titre-page">Loading new flights</h3>		<!-- adapter le titre ici -->
-		</div>
-		<br/>
-	<!--/**************************************************-->
+	<!--=== MAIN ===-->
+	<div class="container-fluid">
 		
-		<h:form rendered="#{empty jSFOperationsSurModelesVols.tabMessageErreur or empty jSFOperationsSurModelesVols.tabMessageSucces}" >
+		<!--=== ROW A ===-->
+		<div class="row border bg-light">
 			
-			<h:commandButton style="width:300px"
-				value="Add a day of flights" action="#{jSFOperationsSurModelesVols.ajouterJourVols()}">
-			</h:commandButton>
-		</h:form>
+			<!--=== COLUMN A1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<div class="card border-warning mt-4 mb-2">
+					<div class="card-header text-center bg-orange-faible">LOADING NEW FLIGHTS</div>
+					
+					<div class="card-body p-2">
+						<h:form rendered="#{empty jSFOperationsSurModelesVols.tabMessageErreur or empty jSFOperationsSurModelesVols.tabMessageSucces}">
+							
+							<h:commandButton class="btn btn-warning btn-sm bouton-orangeatre mt-1"
+								value="Add a day of flights" action="#{jSFOperationsSurModelesVols.ajouterJourVols()}">
+							</h:commandButton>
+						</h:form>
+						
+					</div>
+				</div>
+			</div>
+			
+			
+			<!--=== COLUMN A2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Affichage date et heure (JSF) ===-->
+				<ui:include src="/WEB-INF/fragments/jour-date-heure.xhtml"></ui:include>
+			</div>
+		</div>
 		
-		<font style="color:red">
-			<ui:repeat var="messageErreur" value="#{jSFOperationsSurModelesVols.tabMessageErreur}">
-    			#{messageErreur}<br/>
-			</ui:repeat>
-    	</font>
-    
-		<font style="color:green">
-			<ui:repeat var="messageSucces" value="#{jSFOperationsSurModelesVols.tabMessageSucces}">
-				#{messageSucces}<br/>
-			</ui:repeat>
-		</font>
-		<br/>
 		
-	<!--**************************************************-->
-	</fieldset>
-	
-	<!-- Pied de page -->
-	<!-- Footer (JSF) -->
-	
-	<div class="pied2page">
-		<ui:include src="/WEB-INF/fragments/pied_de_page.xhtml" />
+		<!--=== ROW B ===-->
+		<div class="row">
+			
+			<!--=== COLUMN B1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<div class="mt-4">
+					<h:outputLabel class="text-success">
+						<ui:repeat var="messageSucces" value="#{jSFOperationsSurModelesVols.tabMessageSucces}">
+							#{messageSucces}<br/>
+						</ui:repeat>
+					</h:outputLabel>
+					
+					<h:outputLabel class="text-danger">
+						<ui:repeat var="messageErreur" value="#{jSFOperationsSurModelesVols.tabMessageErreur}">
+							#{messageErreur}<br/>
+						</ui:repeat>
+					</h:outputLabel>
+				</div>
+				
+				<p><br/></p> <!--=== Useful code line for correct display of components above ===-->
+			</div>
+			
+			
+			<!--=== COLUMN B2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Le caroussel ===-->
+				
+				<div class="container border rounded caroussel shadow-sm m-4 p-2">
+					<img src="common/images/airport_by_weston-mackinnon_1080p.jpg"
+						alt="airport-image" width="500px" height="300px" />
+				</div>
+				
+			</div>
+			
+			<p><br/></p> <!--=== Useful code line for correct display of components above ===-->
+		</div>
 	</div>
 	
-	<!--==========-->
 	
+	<!-- Footer (JSF) -->
+	<ui:include src="/WEB-INF/fragments/pied_de_page.xhtml" />
+	
+	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
-		document.getElementById("menuChargement").className = "pageActuelle";		/* Adapter l'ID ici, Cf. menu-central.xhtml */
+		document.getElementById("menuChargement").className = "pageActuelle";		/* Adapter l'ID ici */
 	</script>
-	<!-- /**************************************************-->
 	
 </h:body>
 </html>

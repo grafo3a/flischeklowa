@@ -8,142 +8,179 @@
 <head>
 	<meta charset="ISO-8859-1"></meta>
 	<title>[FlischeKlowa] Controlling connections</title>
-	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
+	
+	<link rel="stylesheet" href="common/css/bootstrap.css" />
+	<link rel="stylesheet" href="common/css/bootstrap-icons.css" />
+	<link rel="stylesheet" href="common/css/bela.css" />
 	<link rel="icon" type="image/png" href="favicon.png" />
+	<script type="text/javascript" src="common/js/main.js"></script>
 </head>
 
 
 <body>
 	
-	<!--**************************************************-->
-	<!-- Header (JSP) -->
-	
-	<div class="entete">
-		<jsp:include page="./fragments/entete.xhtml"></jsp:include>
-	</div>
-	
-	<!-- Le menu central A gauche -->
-	
-	<div class="menu-central">
-		<jsp:include page="./fragments/menu-central.xhtml"></jsp:include>
-	</div>
+	<!--=== HEADER (JSP) ===-->
+	<jsp:include page="./fragments/entete.xhtml"></jsp:include>
+	<jsp:include page="./fragments/menu-central.xhtml"></jsp:include>
 	
 	
-	<!-- Main -->
-	<fieldset class="contenu-principal">
-	
-	<!--==========-->
-	
-		<div>
-			<h3 class="titre-page">Controlling connections</h3>		<!-- adapter le titre ici -->
-		</div>
-		<br/>
-	<!--/**************************************************-->
+	<!--=== MAIN ===-->
+	<div class="container-fluid">
 		
-		<fieldset class="large800">
-			<legend>State of the database</legend>
-			<form method="post" action="test-jdbc">
-				<br/>
-				<label><c:out value="${requestScope.messageEtatBDD}" escapeXml="false" /></label>
-				<br/>
-				<br/>
-				<button type="submit" class="large206">Test a JDBC connection</button>
-			</form>
-		</fieldset>
-		<br/>
-		<br/>
-		<fieldset class="large800">
-			<!-- === POOL DE CONNEXIONS === -->
+		<!--=== ROW A ===-->
+		<div class="row border bg-light">
 			
-			<legend>State of the connection pool (Tomcat)</legend>
-			
-			<c:choose>
-				<%-- Si poolConnexions est actif --%>
-				<c:when test="${not empty applicationScope.poolConnex}">
-					<form method="post" action="controle-pool">
-						<br/>
-						<label class="vert">The connection pool is on</label>
-						<br/>
-						<br/>
-						<input type="hidden" name="demande" value="arreterPool">
-						<button type="submit" class="large206">Stop the connection pool</button>
-						<label class="vert">${requestScope.resultatPool}</label>
-					</form>
-				</c:when>
+			<!--=== COLUMN A1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 				
-				<%-- Si poolConnexions est inactif --%>
-				<c:otherwise>
-					<form method="post" action="controle-pool">
-						<br/>
-						<label class="rouge">The connection pool is off</label>
-						<br/>
-						<br/>
-						<input type="hidden" name="demande" value="demarrerPool">
-						
-						<button type="submit" class="large206">Start the connection pool</button>
-						<label class="rouge">${requestScope.resultatPool}</label>
-					</form>
-				</c:otherwise>
-			</c:choose>
-			
-			<hr></hr>
-			<div class="extreme-droite"><a href="controle-pool"><b><i>Refresh</i></b></a></div>	
-		</fieldset>
-		<br/>
-		<br/>
-		<fieldset class="large800">
-			<!-- === FABRIQUE EMFACTORY === -->
-			
-			<legend>State of the JPA Factory (Hibernate)</legend>
-			
-			<c:choose>
-				<%-- Si emFactory est actif --%>
-				<c:when test="${not empty applicationScope.emFactory}">
-					<form method="post" action="controle-emfactory">
-						<br/>
-						<label class="vert">The EntityManager Factory is on</label>
-						<br/>
-						<br/>
-						<input type="hidden" name="demande" value="arreterEmfactory">
-						<button type="submit" class="large206">Stop the EntityManager Factory</button>
-						<label class="vert">${requestScope.resultatEmfactory}</label>
-					</form>
-				</c:when>
+				<div class="card border-warning mt-4 mb-2">
+					<div class="card-header text-center bg-orange-faible">CONNECTIONS CONTROL</div>
 					
-				<%-- Si la fabrique JPA est inactive --%>
-				<c:otherwise>
-					<form method="post" action="controle-emfactory">
-						<br/>
-						<label class="rouge">The EntityManager Factory is off</label>
-						<br/>
-						<br/>
-						<input type="hidden" name="demande" value="demarrerEmfactory">
-						
-						<button type="submit" class="large206">Start the EntityManager Factory</button>
-						<label class="rouge">${requestScope.resultatEmfactory}</label>
-					</form>
-				</c:otherwise>
-			</c:choose>
+					<div class="card-body p-2">
+					  <p class="card-text"></p>
+					</div>
+				</div>
+			</div>
 			
-			<hr></hr>
-			<div class="extreme-droite"><a href="controle-emfactory"><b><i>Refresh</i></b></a></div>	
-		</fieldset>
+			<!--=== COLUMN A2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Affichage date et heure ===-->
+				<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
+			</div>
+		</div>
 		
-	<!--**************************************************-->
-	</fieldset>
-	
-	<!-- Footer (JSP) -->
-	
-	<div class="pied2page">
-		<jsp:include page="/WEB-INF/fragments/pied_de_page.xhtml"></jsp:include>
+		
+		<!--=== ROW B ===-->
+		<div class="row">
+			
+			<!--=== COLUMN B1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-4">
+				
+				<div class="container border rounded bg-light p-1">
+					<h5>State of the database</h5>
+					
+					<form method="post" action="test-jdbc">
+						<label><c:out value="${requestScope.messageEtatBDD}" escapeXml="false" /></label>
+						<br/>
+						<br/>
+						<button type="submit" class="btn btn-warning btn-sm bouton-orangeatre large220px"
+								>Test a JDBC connection</button>
+					</form>
+				</div>
+				
+				
+				<!--=== POOL DE CONNEXIONS ===-->
+				<div class="container border rounded bg-light p-1 mt-4">
+					
+					<h5>State of the connection pool (Tomcat)</h5>
+					
+					<c:choose>
+						<%--=== Si poolConnexions est actif ===--%>
+						<c:when test="${not empty applicationScope.poolConnex}">
+							<form method="post" action="controle-pool">
+								
+								<label class="text-success">The connection pool is on</label>
+								<br/>
+								<br/>
+								<input type="hidden" name="demande" value="arreterPool">
+								<button type="submit"
+										class="btn btn-warning btn-sm bouton-orangeatre large220px"
+										>Stop the connection pool</button>
+								<label class="text-success">${requestScope.resultatPool}</label>
+							</form>
+						</c:when>
+						
+						<%--=== Si poolConnexions est inactif ===--%>
+						<c:otherwise>
+							<form method="post" action="controle-pool">
+								
+								<label class="text-danger">The connection pool is off</label>
+								<br/>
+								<br/>
+								<input type="hidden" name="demande" value="demarrerPool">
+								
+								<button type="submit"
+										class="btn btn-warning btn-sm bouton-orangeatre large220px"
+											>Start the connection pool</button>
+								<label class="text-danger">${requestScope.resultatPool}</label>
+							</form>
+						</c:otherwise>
+					</c:choose>
+					
+					<hr></hr>
+					<div class="text-end"><a href="controle-pool"><b><i>Refresh</i></b></a></div>	
+				</div>
+				
+				<!--=== FABRIQUE EMFACTORY ===-->
+				<div class="container border rounded bg-light p-1 mt-4">
+					
+					<h5>State of the JPA Factory (Hibernate)</h5>
+					
+					<c:choose>
+						<%--=== Si emFactory est actif ===--%>
+						<c:when test="${not empty applicationScope.emFactory}">
+							<form method="post" action="controle-emfactory">
+								
+								<label class="text-success">The EntityManager Factory is on</label>
+								<br/>
+								<br/>
+								<input type="hidden" name="demande" value="arreterEmfactory">
+								<button type="submit" class="btn btn-warning btn-sm bouton-orangeatre large220px"
+									>Stop the EntityManager Factory</button>
+								<label class="text-success">${requestScope.resultatEmfactory}</label>
+							</form>
+						</c:when>
+						
+						<%--=== Si la fabrique JPA est inactive ===--%>
+						<c:otherwise>
+							<form method="post" action="controle-emfactory">
+								
+								<label class="text-danger">The EntityManager Factory is off</label>
+								<br/>
+								<br/>
+								<input type="hidden" name="demande" value="demarrerEmfactory">
+								
+								<button type="submit" class="btn btn-warning btn-sm bouton-orangeatre large220px"
+									>Start the EntityManager Factory</button>
+								<label class="text-danger">${requestScope.resultatEmfactory}</label>
+							</form>
+						</c:otherwise>
+					</c:choose>
+					
+					<hr></hr>
+					<div class="text-end"><a href="controle-emfactory"><b><i>Refresh</i></b></a></div>
+				</div>
+				
+				<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->
+			</div>
+			
+			
+			<!--=== COLUMN B2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Le caroussel ===-->
+				
+				<div class="container border rounded caroussel shadow-sm m-4 p-2">
+					<img src="common/images/airport_by_weston-mackinnon_1080p.jpg"
+						alt="airport-image" width="500px" height="300px" />
+				</div>
+				
+			</div>
+			
+			<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->
+		</div>
 	</div>
 	
-	<!--==========-->
 	
+	<!--=== FOOTER (JSP) ===-->
+	<jsp:include page="./fragments/pied_de_page.xhtml"></jsp:include>
+	
+	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
-		document.getElementById("menuControle").className = "pageActuelle";		/* Adapter l'ID ici, Cf. menu-central.xhtml */
+		document.getElementById("menuControle").className = "pageActuelle";
+		/* Adapter l'ID ici, Cf. menu-central.xhtml */
 	</script>
-	<!--/**************************************************-->
 	
 </body>
 </html>

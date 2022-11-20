@@ -9,214 +9,240 @@ xmlns:ui="http://java.sun.com/jsf/facelets" >
 <head>
 	<meta charset="UTF-8"></meta>
 	<title>[FlischeKlowa] Flight Details</title>
-	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
+	
+	<link rel="stylesheet" href="common/css/bootstrap.css" />
+	<link rel="stylesheet" href="common/css/bootstrap-icons.css" />
+	<link rel="stylesheet" href="common/css/bela.css" />
 	<link rel="icon" type="image/png" href="favicon.png" />
+	<script type="text/javascript" src="common/js/main.js"></script>
 </head>
 
 
 <h:body>
 	
-	<!--**************************************************-->
-	<!-- Header (JSF) -->
+	<!--=== HEADER (JSF) ===-->
+	<ui:include src="/WEB-INF/fragments/entete.xhtml"></ui:include>
+	<ui:include src="/WEB-INF/fragments/menu-central.xhtml"></ui:include>
 	
-	<div class="entete">
-		<ui:include src="/WEB-INF/fragments/entete.xhtml"></ui:include>
+	
+	<!--=== MAIN ===-->
+	<div class="container-fluid">
+		
+		<!--=== ROW A ===-->
+		<div class="row border bg-light">
+			
+			<!--=== COLUMN A1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<div class="card border-warning mt-4 mb-2">
+					<div class="card-header text-center bg-orange-faible">DETAILS OF A FLIGHT</div>
+					
+					<div class="card-body p-1 pt-2">
+						
+						<!--=== FORMULAIRE DETAILS D'UN VOL ===-->
+						<h:form>
+							<nav class="nav justify-content-start">
+								
+								<!--=== DATE DU VOL ===-->
+								<h:outputLabel value="Date: " class="nav-item m-1"/>
+								
+								<h:inputText id="dateChoisie" value="#{jSFBeanDetails1Vol.dateChoisie}"
+									label="Date Choisie"
+									validatorMessage="[error!] Type a valid date: aaaa-MM-dd from 2000 to 2999 (10 characters)"
+									class="nav-item large120px m-1">
+									
+									<f:passThroughAttribute name="placeholder" value="2020-01-01" />
+									<f:validateRequired />
+									<f:validateRegex pattern="#{jSFBeanDetails1Vol.regexDate}" />
+								</h:inputText>
+								
+								<!--=== HEURE DU VOL ===-->
+								
+								<h:outputLabel value="Time: " class="nav-item m-1"/>
+								
+								<h:inputText id="heureChoisie" value="#{jSFBeanDetails1Vol.heureChoisie}" label="Heure Choisie"
+									validatorMessage="[error!] Type a valid hour: hh:mm (5 characters)"
+									class="nav-item large120px m-1">
+									
+									<f:passThroughAttribute name="placeholder" value="00:00"/>
+									<f:validateRequired />
+									<f:validateRegex pattern="#{jSFBeanDetails1Vol.regexHeure}" />
+								</h:inputText>
+								
+								<h:commandButton
+									value="Search" action="#{jSFBeanDetails1Vol.lireDetailsVol}"
+									class="nav-item btn btn-warning btn-sm bouton-orangeatre large100px m-1">
+								</h:commandButton>
+								
+								<h:message for="dateChoisie" errorStyle="color:red"  />
+								<h:message for="heureChoisie" errorStyle="color:red"  />
+								
+							</nav>
+						</h:form>
+						
+						<!--=== Message d'erreur si present ===-->
+						<font color="red"><i><h:outputText value="#{jSFBeanDetails1Vol.erreurLecture}" /></i></font>
+					</div>	
+				</div>
+			</div>
+			
+			
+			<!--=== COLUMN A2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Affichage date et heure (JSF) ===-->
+				<ui:include src="/WEB-INF/fragments/jour-date-heure.xhtml"></ui:include>
+			</div>
+		</div>
+		
+		
+		<!--=== ROW B ===-->
+		<div class="row">
+			
+			<!--=== COLUMN B1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== AFFICHAGE DETAILS D'UN VOL ===-->
+				<div class="container border rounded mt-4">
+					<table class="table table-striped table-sm">
+						<tr>
+							<td>Moment</td>
+							<td><h:outputLabel value="#{jSFBeanDetails1Vol.momentVol}" /></td>
+						</tr>
+						<tr>
+							<td>Direction</td>
+							<td><h:outputLabel value="#{jSFBeanDetails1Vol.sens}" /></td>
+						</tr>
+						
+						<tr>
+							<td>City</td>
+							<td><h:outputLabel value="#{jSFBeanDetails1Vol.ville}" /></td>
+						</tr>
+						<tr>
+							<td>Country Code</td>
+							<td><h:outputLabel value="#{jSFBeanDetails1Vol.codePays}" /></td>
+						</tr>
+						<tr>
+							<td>Company</td>
+							<td><h:outputLabel value="#{jSFBeanDetails1Vol.compagnie}" /></td>
+						</tr>
+						<tr>
+							<td>Flight Number</td>
+							<td><h:outputLabel value="#{jSFBeanDetails1Vol.numeroVol}" /></td>
+						</tr>
+						<tr>
+							<td>Plane Type</td>
+							<td><h:outputLabel value="#{jSFBeanDetails1Vol.typeAvion}" /></td>
+						</tr>
+						<tr>
+							<td>Gate</td>
+							<td><h:outputLabel value="#{jSFBeanDetails1Vol.terminal}" /></td>
+						</tr>
+						<tr>
+							<td>Status</td>
+							<td><h:outputLabel value="#{jSFBeanDetails1Vol.statut}" /></td>
+						</tr>
+					</table>
+				</div>
+				
+				
+				<!--=== MISES A JOUR VOL ===-->
+				<div class="container border rounded bg-light text-secondary p-2 mt-4">
+					<span class="text-dark">UPDATES</span>
+					<span>
+						<font color="green"><i><h:outputText value="#{jSFBeanDetails1Vol.messageSucces}" /></i></font>
+						<font color="red"><i><h:outputText value="#{jSFBeanDetails1Vol.messageErreur}" /></i></font>
+					</span>
+					
+					<!--=== MODIFICATION DATE DU VOL: N/A ===-->
+					
+					<!--=== MODIFICATION HEURE DU VOL ===-->
+					
+					<h:form class="row pt-1" rendered="#{jSFBeanDetails1Vol.idVol gt 0}">
+						<h:outputLabel  class="col-4 text-end" value="New Flight time"/>
+						<h:inputText class="col-5" id="heureChoisie" value="#{jSFBeanDetails1Vol.heureChoisie}"
+										label="Heure Choisie" >
+						</h:inputText>
+						
+						<h:commandButton
+							value="Update" action="#{jSFBeanDetails1Vol.modifierInfoHeure}"
+							class="col-2 btn btn-outline-warning btn-sm text-dark large100px radius40pc">
+						</h:commandButton>
+					</h:form>
+					
+					
+					<!--=== MODIFICATION TYPE D'AVION ===-->
+					
+					<h:form class="row pt-1" rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
+					<h:outputLabel class="col-4 text-end" value="New Plane Type"/>
+						<h:inputText class="col-5" id="typeAvionChoisi" value="#{jSFBeanDetails1Vol.typeAvion}" label="Type d'avion Choisi" >
+						</h:inputText>
+						
+					<h:commandButton
+						value="Update" action="#{jSFBeanDetails1Vol.modifierInfoTypeAvion}"
+						class="col-2 btn btn-outline-warning btn-sm text-dark large100px radius40pc">
+					</h:commandButton>
+					</h:form>
+					
+					
+					<!--=== MODIFICATION TERMINAL ===-->
+					
+					<h:form class="row pt-1" rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
+					<h:outputLabel class="col-4 text-end" value="New Gate"/>
+						<h:inputText class="col-5" id="terminalChoisi" value="#{jSFBeanDetails1Vol.terminal}" label="Terminal Choisi" >
+						</h:inputText>
+						
+					<h:commandButton
+						value="Update" action="#{jSFBeanDetails1Vol.modifierInfoTerminal}"
+						class="col-2 btn btn-outline-warning btn-sm text-dark large100px radius40pc">
+					</h:commandButton>
+					</h:form>
+					
+					
+					<!--=== MODIFICATION STATUT ===-->
+					
+					<h:form class="row pt-1" rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
+						<h:outputLabel class="col-4 text-end" value="New Status"/>
+						<h:selectOneMenu class="col-5" id="statutChoisi" value="#{jSFBeanDetails1Vol.statut}" >
+							<f:selectItem itemValue="Cancelled" itemLabel="Cancelled" />
+							<f:selectItem itemValue="Confirmed" itemLabel="Confirmed" />
+					</h:selectOneMenu>
+					
+					<h:commandButton
+						value="Update" action="#{jSFBeanDetails1Vol.modifierInfoStatut}"
+						class="col-2 btn btn-outline-warning btn-sm text-dark large100px radius40pc">
+					</h:commandButton>
+					</h:form>
+				</div>
+				
+				<p><br/></p> <!--=== Useful code line for correct display of components above ===-->
+			</div>
+			
+			
+			<!--=== COLUMN B2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Le caroussel ===-->
+				
+				<div class="container border rounded caroussel shadow-sm m-4 p-2">
+					<img src="common/images/airport_by_weston-mackinnon_1080p.jpg"
+						alt="airport-image" width="500px" height="300px" />
+				</div>
+				
+			</div>
+			
+			<p><br/></p> <!--=== Useful code line for correct display of components above ===-->
+		</div>
 	</div>
 	
-	<!-- Le menu central A gauche -->
-	
-	<div class="menu-central">
-		<ui:include src="/WEB-INF/fragments/menu-central.xhtml"></ui:include>
-	</div>
-	
-	<!-- Main -->
-	<fieldset class="contenu-principal">
-	
-	<!--==========-->
-	
-	<div>
-		<h3 class="titre-page">Details of a flight</h3>		<!-- adapter le titre ici -->
-	</div>
-	<br/>
-	<!--/**************************************************-->
-	
-	
-	<!--================================================== FORMULAIRE CHOIX DATE DU VOL -->
-	
-	<fieldset class="details01">
-		<legend> Search a flight </legend>
-		
-		<h:form>
-			<h:outputLabel value="Date: "/><br/>
-			<h:inputText id="dateChoisie" value="#{jSFBeanDetails1Vol.dateChoisie}" label="Date Choisie"
-			validatorMessage=" --- Type a valid date: aaaa-MM-dd from 2000 to 2999 (10 characters)"
-			class="large180" >
-			
-			<f:passThroughAttribute name="placeholder" value="e.g. 2022-01-01" />
-			<f:validateRequired />
-			<f:validateRegex pattern="#{jSFBeanDetails1Vol.regexDate}" />
-			
-			</h:inputText>
-			<br/>
-			<h:message for="dateChoisie" errorStyle="color:red"  />
-			
-			<!-- HEURE DU VOL -->
-			<br/>
-			<h:outputLabel value="Time: "/><br/>
-			<h:inputText id="heureChoisie" value="#{jSFBeanDetails1Vol.heureChoisie}" label="Heure Choisie"
-				validatorMessage=" --- Type a valid hour: hh:mm (5 characters)"
-				class="large180" >
-				
-				<f:passThroughAttribute name="placeholder" value="e.g. 00:00"/>
-				<f:validateRequired />
-				<f:validateRegex pattern="#{jSFBeanDetails1Vol.regexHeure}" />
-				
-			</h:inputText>
-				<br/>
-				<h:message for="heureChoisie" errorStyle="color:red"  />
-				
-				<br/>
-			<h:commandButton
-				value="Display" action="#{jSFBeanDetails1Vol.lireDetailsVol}"
-				class="large184" >
-			</h:commandButton>
-			
-		</h:form>
-	</fieldset>
-	
-	<font color="red"><i><h:outputText value="#{jSFBeanDetails1Vol.erreurLecture}" /></i></font>
-	<!--======================================================================-->
-	
-	
-	<!--================================================== DEBUT DETAILS DU VOL -->
-	<br/>
-	<br/>
-	<fieldset class="details02">
-		<table>
-			<tr>
-				<td>Moment</td>
-				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.momentVol}" /></td>
-			</tr>
-			<tr>
-				<td>Direction</td>
-				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.sens}" /></td>
-			</tr>
-			
-			<tr>
-				<td>City</td>
-				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.ville}" /></td>
-			</tr>
-			<tr>
-				<td>Country Code</td>
-				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.codePays}" /></td>
-			</tr>
-			<tr>
-				<td>Company</td>
-				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.compagnie}" /></td>
-			</tr>
-			<tr>
-				<td>Flight Number</td>
-				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.numeroVol}" /></td>
-			</tr>
-			<tr>
-				<td>Plane Type</td>
-				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.typeAvion}" /></td>
-			</tr>
-			<tr>
-				<td>Gate</td>
-				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.terminal}" /></td>
-			</tr>
-			<tr>
-				<td>Status</td>
-				<td> --- <h:outputLabel value="#{jSFBeanDetails1Vol.statut}" /></td>
-			</tr>
-		</table>
-	</fieldset>
-	<!--===============================================-->
-	
-	
-	<!--======================================================== MISES A JOUR VOLS -->
-	<br/>
-	<fieldset class="details03">
-		
-		<legend> Update </legend>
-		
-		<font color="green"><i><h:outputText value="#{jSFBeanDetails1Vol.messageSucces}" /></i></font>
-		<font color="red"><i><h:outputText value="#{jSFBeanDetails1Vol.messageErreur}" /></i></font>
-		
-		<!-- MODIFICATION DATE DU VOL: N/A -->
-		
-		<!-- MODIFICATION HEURE DU VOL -->
-		
-		<h:form rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
-			<h:outputLabel value="Flight time : "/>
-			<h:inputText class="large180" id="heureChoisie" value="#{jSFBeanDetails1Vol.heureChoisie}" label="Heure Choisie" >
-			</h:inputText>
-			
-			<h:commandButton class="modif"
-				value="Change the time" action="#{jSFBeanDetails1Vol.modifierInfoHeure}" >
-			</h:commandButton>
-		</h:form>
-		
-		
-		<!-- MODIFICATION TYPE D'AVION -->
-		
-		<h:form rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
-		<h:outputLabel value="Plane Type : "/>
-			<h:inputText class="large180" id="typeAvionChoisi" value="#{jSFBeanDetails1Vol.typeAvion}" label="Type d'avion Choisi" >
-			</h:inputText>
-			
-		<h:commandButton class="modif"
-			value="Change the type" action="#{jSFBeanDetails1Vol.modifierInfoTypeAvion}">
-		</h:commandButton>
-		</h:form>
-		
-		
-		<!-- MODIFICATION TERMINAL -->
-		
-		<h:form rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
-		<h:outputLabel value="Gate : "/>
-			<h:inputText class="large180" id="terminalChoisi" value="#{jSFBeanDetails1Vol.terminal}" label="Terminal Choisi" >
-			</h:inputText>
-			
-		<h:commandButton class="modif"
-			value="Change the gate" action="#{jSFBeanDetails1Vol.modifierInfoTerminal}">
-		</h:commandButton>
-		</h:form>
-		
-		
-		<!-- MODIFICATION DU STATUT -->
-		
-		<h:form rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
-			<h:outputLabel value="Status : "/>
-			<h:selectOneMenu class="large184" id="statutChoisi" value="#{jSFBeanDetails1Vol.statut}" >
-				<f:selectItem itemValue="Cancelled" itemLabel="Cancelled" />
-				<f:selectItem itemValue="Confirmed" itemLabel="Confirmed" />
-		</h:selectOneMenu>
-		
-		<h:commandButton class="modif"
-			value="Change the status" action="#{jSFBeanDetails1Vol.modifierInfoStatut}">
-		</h:commandButton>
-		</h:form>
-		
-		</fieldset>
-		<!--/===============================================================-->
-		
-	<!--**************************************************-->
-	</fieldset>
 	
 	<!-- Footer (JSF) -->
+	<ui:include src="/WEB-INF/fragments/pied_de_page.xhtml" />
 	
-	<div class="pied2page">
-		<ui:include src="/WEB-INF/fragments/pied_de_page.xhtml" />
-	</div>
-	
-	<!--==========-->
-	
+	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
 		document.getElementById("menuDetails").className = "pageActuelle";		/* Adapter l'ID ici */
 	</script>
-	<!-- /**************************************************-->
 	
 </h:body>
 </html>

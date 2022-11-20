@@ -13,101 +13,152 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>[FlischeKlowa] <fmt:message key="J01_TITRE_CONNEXION" /></title>
-	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
-	<link rel="icon" type="image/png" href="favicon.png">
+	
+	<link rel="stylesheet" href="common/css/bootstrap.css" />
+	<link rel="stylesheet" href="common/css/bootstrap-icons.css" />
+	<link rel="stylesheet" href="common/css/bela.css" />
+	<link rel="icon" type="image/png" href="favicon.png" />
+	<script type="text/javascript" src="common/js/main.js"></script>
 </head>
 
 <body>
+
+	<!--=== HEADER (JSP) ===-->
+	<jsp:include page="./fragments/entete.xhtml"></jsp:include>
+	<jsp:include page="./fragments/menu-central.xhtml"></jsp:include>
 	
-	<!--**************************************************-->
-	<!-- Header (JSP) -->
 	
-	<div class="entete">
-		<jsp:include page="./fragments/entete.xhtml"></jsp:include>
-	</div>
-	
-	<!-- Le menu central A gauche -->
-	
-	<div class="menu-central">
-		<jsp:include page="./fragments/menu-central.xhtml"></jsp:include>
-	</div>
-	
-	<!-- Main -->
-	<fieldset class="contenu-principal">
-	<!-- ********** -->
+	<!--=== MAIN ===-->
+	<div class="container-fluid">
 		
-		<div>
-			<h3 class="titre-page"><fmt:message key="J01_TITRE_CONNEXION" /></h3>		<!-- adapter le titre -->
-		</div>
-		<br/>
-	<!--/**************************************************-->
-	
-	
-	<%-- Si connexion presente --%>
-	<c:if test="${not empty sessionScope.courrielCookie}" >
-		<fieldset class="large800">
-			<div class="vert">
-				<fmt:message key="J02_CONNEXION_OK" />
-				<c:out value="${sessionScope.courrielCookie}" />
-			</div>
-			<hr class="gris"></hr>
-			<div class="extreme-droite">
-				<i><b><a href="<c:url value="deconnexion-g11n"/> "><fmt:message key="J03_DECONNEXION" /></a></b></i>
-			</div>
-		</fieldset>
-	</c:if>
-	
-	<%-- Si connexion absente --%>
-	<c:if test="${empty sessionScope.courrielCookie}" >
-		<font color="red"><fmt:message key="J04_CONNEXION_KO" /></font>
-		<br/>
-		<br/>
-		<form method="post" action="connexion-g11n">
-			<fmt:message key="J05_LABEL_COURRIEL" />
-			<br/>
-			<input type="text" name="courriel" class="large200" value="${param.courriel}" />
-			<font color="red"><i>${sessionScope.erreurCourriel}</i></font>
-			<br/>
-			<br/>
-			<fmt:message key="J06_LABEL_MOT2P" />
-			<br/>
-			<input type="password" name="mot2p" class="large200" value="${param.mot2p}" />
-			<font color="red"><i>${sessionScope.erreurMot2p}</i></font>
-			<br/>
-			<br/>
-			<input type="checkbox" id="idCheckbox09" name="contrat"
-				<c:if test="${not empty param.contrat}">checked</c:if>>
-				
-			<label for="idCheckbox09">
-				<i><fmt:message key="J07_LABEL_CONTRAT" /></i>
-			</label>
-			<br/>
-			<font color="red"><i>${sessionScope.erreurContrat}</i></font>
-			<br/>
-			<input type="submit" value=<fmt:message key="J08_VALIDER" /> class="large206" />
+		<!--=== ROW A ===-->
+		<div class="row border bg-light">
 			
-		</form>
-		<%--/---------------------------/--%>
-	</c:if>
-	
-	
-	<!--**************************************************-->
-	</fieldset>
-	
-	<!-- Pied de page -->
-	<!-- Footer (JSP) -->
-	
-	<div class="pied2page">
-		<jsp:include page="./fragments/pied_de_page.xhtml"></jsp:include>
+			<!--=== COLUMN A1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					
+				<div class="card border-warning mt-4 mb-2">
+					<div class="card-header text-center bg-orange-faible">
+						<fmt:message key="J01_TITRE_CONNEXION" />
+					</div>
+					
+					<div class="card-body p-2"></div>
+				</div>
+			</div>
+			
+			<!--=== COLUMN A2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Affichage date et heure ===-->
+				<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
+			</div>
+		</div>
+		
+		
+		<!--=== ROW B ===-->
+		<div class="row">
+			
+			<!--=== COLUMN B1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<div class="container border rounded bg-light p-2 mt-4">
+					
+					<%-- Si connexion presente --%>
+					<c:if test="${not empty sessionScope.courrielCookie}" >
+						
+						<div class="text-success">
+							<fmt:message key="J02_CONNEXION_OK" />
+							<c:out value="${sessionScope.courrielCookie}" />
+						</div>
+						
+						<div class="border-top text-end">
+							<i><b><a href="<c:url value="deconnexion-g11n"/> "><fmt:message key="J03_DECONNEXION" /></a></b></i>
+						</div>
+					</c:if>
+					
+					<%-- Si connexion absente --%>
+					<c:if test="${empty sessionScope.courrielCookie}" >
+						<div class="text-danger"><fmt:message key="J04_CONNEXION_KO" /></div>
+						
+						<form method="post" action="connexion-g11n">
+						 
+							<div class="row mt-4">
+								<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+								    <div class="input-group input-group-sm">
+								      <div class="input-group-text large100px"><fmt:message key="J05_LABEL_COURRIEL" /></div>
+								      <input type="text" class="form-control" name="courriel"
+								      			placeholder="email@company.zz"
+								      			value="${param.courriel}" />
+								    </div>
+								    
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+									<font color="red"><i>${sessionScope.erreurCourriel}</i></font>
+								</div>
+								
+								<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+									<div class="input-group input-group-sm">
+									  <div class="input-group-text large100px"><fmt:message key="J06_LABEL_MOT2P" /></div>
+									  <input type="password"
+									  			class="form-control"
+									  			name="mot2p" value="${param.mot2p}" />
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+									<font color="red"><i>${sessionScope.erreurMot2p}</i></font>
+								</div>
+							</div>
+							
+							<div class="row mt-3">
+								<div class="col-1">
+									<input type="checkbox" id="idCheckbox09" name="contrat"
+										<c:if test="${not empty param.contrat}">checked</c:if>>
+								</div>
+								<div class="col-11">
+									<label for="idCheckbox09">
+										<i><fmt:message key="J07_LABEL_CONTRAT" /></i>
+									</label>
+								</div>
+								
+								<font color="red"><i>${sessionScope.erreurContrat}</i></font>
+							</div>
+							
+							<button type="submit"
+									class="btn btn-warning btn-sm bouton-orangeatre large220px mt-3">
+									<fmt:message key="J08_VALIDER" />
+					    	</button>
+						</form>
+					</c:if>
+				</div>
+				
+				<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->
+			</div>
+			
+			
+			<!--=== COLUMN B2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Le caroussel ===-->
+				
+				<div class="container border rounded caroussel shadow-sm m-4 p-2">
+					<img src="common/images/airport_by_weston-mackinnon_1080p.jpg"
+						alt="airport-image" width="500px" height="300px" />
+				</div>
+				
+			</div>
+			
+			<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->
+		</div>
 	</div>
-	<!-- /********** -->
 	
 	
-	<!-- ********** -->
+	<!--=== FOOTER (JSP) ===-->
+	<jsp:include page="./fragments/pied_de_page.xhtml"></jsp:include>
+	
+	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
-		document.getElementById("menuConnexion").className = "pageActuelle";		/* Adapter l'ID ici */
+		document.getElementById("menuLogin").className = "pageActuelle";		/* Adapter l'ID ici */
 	</script>
-	<!--/**************************************************-->
 	
 </body>
 </html>

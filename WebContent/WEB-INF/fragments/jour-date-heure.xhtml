@@ -1,0 +1,21 @@
+
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    
+	<!--=== Affichage date et heure ===-->
+	<div class="container mt-2 text-end">
+		
+		<!-- Info invisible utile pour JavaScript -->
+		<span id="decalageHoraire">#{requestScope.heuresDecalageKlow}</span>
+		
+		<!-- Infos visibles -->
+		<span id="jour-date">Today dd Month yyyy</span><br/>
+		<b><span id="temps">hh:mm:ss</span></b>
+		<span>(#{requestScope.texteDecalageKlow})</span>
+		
+	</div>
+</ui:composition>

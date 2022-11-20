@@ -8,7 +8,11 @@
 <head>
 	<meta charset="ISO-8859-1"></meta>
 	<title>[FlischeKlowa] Today's flights</title>
-	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
+	<!-- <link type="text/css" rel="stylesheet" href="common/css/bela.css" />  -->
+	
+	<link rel="stylesheet" href="common/css/bootstrap.css" />
+	<link rel="stylesheet" href="common/css/bootstrap-icons.css" />
+	<link rel="stylesheet" href="common/css/bela.css" />
 	<link rel="icon" type="image/png" href="favicon.png" />
 	<script type="text/javascript" src="common/js/main.js"></script>
 </head>
@@ -16,98 +20,125 @@
 
 <body>
 	
-	<!--**************************************************-->
-	<!-- Header (JSP) -->
-	
-	<div class="entete">
-		<jsp:include page="./fragments/entete.xhtml"></jsp:include>
-	</div>
-	
-	<!-- Le menu central A gauche -->
-	
-	<div class="menu-central">
-		<jsp:include page="./fragments/menu-central.xhtml"></jsp:include>
-	</div>
+	<!--=== HEADER (JSP) ===-->
+	<jsp:include page="./fragments/entete.xhtml"></jsp:include>
+	<jsp:include page="./fragments/menu-central.xhtml"></jsp:include>
 	
 	
-	<!-- Main -->
-	<fieldset class="contenu-principal">
-	
-	<!--==========-->
-	
-		<div>
-			<div class="moment">
-				<span id="jour-date">Today dd Month yyyy</span>
-				<span>---</span>
-				<b><span id="temps">hh:mm:ss</span></b>
-				<span>(<c:out value="${requestScope.texteDecalageKlow}">UTC+02:00</c:out>)</span>
-				<span id="decalageHoraire"><c:out value="${requestScope.heuresDecalageKlow}">2</c:out></span>
-			</div>
-			<h3 class="titre-page">Today's flights</h3>		<!-- adapter le titre ici -->
-		</div>
-		<br/>
-	<!--/**************************************************-->
+	<!--=== MAIN ===-->
+	<div class="container-fluid">
 		
-		<div>
-			<i>
-			<span>---------- Direction:</span>
-			<span id="labelSensChoisi">
-				<b>
-				<c:out value="${param.sens}" />
-				<c:if test="${empty param.sens}">Departure</c:if>
-				</b>
-			</span>
-			<span>---------- Country Code:</span>
-			<span id="labelPaysChoisi">
-				<b>
-				<c:out value="${param.pays}" />
-				<c:if test="${empty param.pays}">All</c:if>
-				</b>
-			</span>
-			</i>
-			<br/>
-		</div>
-		
-		<br/>
-		<br/>
-		
-		<!--=== Affichage de la table-horaire de vols (avec coloration des statuts) ===-->
-		<div id="affichageHoraireVols" class="affichage-horaire">
-			${requestScope.tableHoraireVols}
-		</div>
-		<br/>
-		
-		<b><i>Filter</i></b>
-		
-		<%--=== affichage du formulaire ===--%>
-		<form method="post" action="horaire-vols">
-			Direction:
-			<select name="sens" class="large140">
-				<option value="Departure">Departure</option>
-				<option value="Arrival">Arrival</option>
-				<option value="All">All</option>
-			</select>
+		<!--=== ROW A ===-->
+		<div class="row border bg-light">
 			
-			Country Code: <input type="text" name="pays" placeholder="e.g. PL" class="large140" />
-			<button type="submit" class="large140">Display</button>
-		</form>
+			<!--=== COLUMN A1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<div class="card border-warning mt-4 mb-2">
+						<div class="card-header text-center bg-orange-faible">TODAY'S FLIGHTS</div>
+						
+						<div class="card-body p-2">
+							<table>
+								<tr>
+									<td>Direction</td>
+									<td>:&emsp;
+										<span id="labelSensChoisi"><i>
+											<c:out value="${param.sens}" />
+											<c:if test="${empty param.sens}">Departure</c:if></i>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td>Country</td>
+									<td>:&emsp;
+										<span id="labelPaysChoisi"><i>
+											<c:out value="${param.pays}" />
+											<c:if test="${empty param.pays}">All</c:if></i>
+										</span>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				
+			<!--=== COLUMN A2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--*** Affichage date et heure ***-->
+				<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
+			</div>
+		</div>
 		
-	<!--**************************************************-->
-	</fieldset>
-	
-	
-	<!-- Footer (JSP) -->
-	
-	<div class="pied2page">
-		<jsp:include page="/WEB-INF/fragments/pied_de_page.xhtml"></jsp:include>
+		
+		<!--=== ROW B ===-->
+		<div class="row">
+			
+			<!--=== COLUMN B1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			
+				<!--=== Affichage du tableau-horaire de vols ===-->
+				<div id="affichageHoraireVols" class="mt-4">
+					${requestScope.tableHoraireVols}
+				</div>
+				
+				
+				<!--=== Flights display filter ===-->
+				<div class="container border rounded bg-light p-2">
+				
+					<form class="row" method="post" action="horaire-vols">
+					  <div class="col-6">
+					    <div class="input-group input-group-sm">
+					      <div class="input-group-text">Country Code</div>
+					      <input type="text" class="form-control" name="pays" placeholder="ZZ" />
+					    </div>
+					  </div>
+					  
+					  <div class="col-4">
+					    <select class="form-select form-select-sm" name="sens">
+					      
+					      <option value="Departure">Departure</option>
+					      <option value="Arrival">Arrival</option>
+					      <option value="All">All</option>
+					    </select>
+					  </div>
+					  
+					  <div class="col-2">
+					    <button type="submit" class="btn btn-warning btn-sm bouton-orangeatre w-100">Filter</button>
+					  </div>
+					  
+					</form>
+				</div>
+				
+				<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->
+			</div>
+			
+			
+			<!--=== COLUMN B2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				
+				<!--=== Le caroussel ===-->
+			
+				<div class="container border rounded caroussel shadow-sm m-4 p-2">
+					
+					<img src="common/images/airport_by_weston-mackinnon_1080p.jpg"
+						alt="airport-image" width="500px" height="300px" />
+				</div>
+			</div>
+			
+			<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->
+		</div>
 	</div>
 	
-	<!--==========-->
 	
+<!--=== FOOTER (JSP) ===-->
+	<jsp:include page="./fragments/pied_de_page.xhtml"></jsp:include>
+	
+	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
-		document.getElementById("menuHoraire").className = "pageActuelle";		/* Adapter l'ID ici, Cf. menu-central.xhtml */
+		document.getElementById("menuHoraire").className = "pageActuelle";
+		/* Adapter l'ID ici, Cf. menu-central.xhtml */
 	</script>
-	<!--/**************************************************-->
-	
+
 </body>
 </html>

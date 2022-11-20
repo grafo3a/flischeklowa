@@ -9,141 +9,195 @@
 <head>
 	<meta charset="UTF-8"></meta>
 	<title>[FlischeKlowa] Flights of a date</title>
-	<link type="text/css" rel="stylesheet" href="common/css/bela.css" />
+	
+	<link rel="stylesheet" href="common/css/bootstrap.css" />
+	<link rel="stylesheet" href="common/css/bootstrap-icons.css" />
+	<link rel="stylesheet" href="common/css/bela.css" />
 	<link rel="icon" type="image/png" href="favicon.png" />
+	<script type="text/javascript" src="common/js/main.js"></script>
 </head>
 
 
 <h:body>
 	
-	<!--**************************************************-->
-	<!-- Header (JSF) -->
-	
-	<div class="entete">
-		<ui:include src="/WEB-INF/fragments/entete.xhtml"></ui:include>
-	</div>
-	
-	<!-- Le menu central A gauche -->
-	
-	<div class="menu-central">
-		<ui:include src="/WEB-INF/fragments/menu-central.xhtml"></ui:include>
-	</div>
-	
-	<!-- Main -->
-	<fieldset class="contenu-principal">
-	
-	<!--==========-->
-	
-	<div>
-		<h3 class="titre-page">Flights of a date</h3>		<!-- adapter le titre ici -->
-	</div>
-	<br/>
-	<!--/**************************************************-->
+	<!--=== Header (JSF) ===-->
+	<ui:include src="/WEB-INF/fragments/entete.xhtml"></ui:include>
+	<ui:include src="/WEB-INF/fragments/menu-central.xhtml"></ui:include>
 	
 	
-	<!--================================================= CHOIX DATE DU VOL -->
+	<!--=== MAIN ===-->
+	<div class="container-fluid">
 	
-	<fieldset class="large800">
-		<!--  <legend></legend> -->
-		
-		<h:form>
-			<h:outputLabel value="Type a date: "/>
-			<br/>
-			<h:inputText id="dateChoisie" class="large180"
-				value="#{jSFBeanListeVols1Date.dateChoisie}" label="Date Choisie"
-				validatorMessage=" --- Type a valid date: aaaa-MM-dd from 2000 to 2999 (10 characters)" >
+		<!--=== ROW A ===-->
+		<div class="row border bg-light">
+			
+			<!--=== COLUMN A1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 -col-lg-6">
 				
-				<f:passThroughAttribute name="placeholder" value="e.g. 2022-01-01" />
-				<f:validateRequired />
-				<f:validateRegex pattern="#{jSFBeanDetails1Vol.regexDate}" />
-			</h:inputText>
+				<div class="card border-warning mt-4 mb-2">
+					<div class="card-header text-center bg-orange-faible">FLIGHTS OF A DATE</div>
+					
+					<div class="card-body p-1 pt-2">
+						
+						<!--=== CHOIX DATE D'UN VOL ===-->
+						
+						<h:form>
+							<nav class="nav justify-content-start">
+								<div class="nav-item m-1">
+									<h:outputLabel value="Type a date:"/>
+								</div>
+							
+								<div class="nav-item m-1">
+									<h:inputText id="dateChoisie"
+										value="#{jSFBeanListeVols1Date.dateChoisie}" label="Date Choisie"
+										validatorMessage="[error!] Type a valid date: aaaa-MM-dd from 2000 to 2999 (10 characters)" >
+										
+										<f:passThroughAttribute name="placeholder" value="2020-01-01" />
+										<f:validateRequired />
+										<f:validateRegex pattern="#{jSFBeanDetails1Vol.regexDate}" />
+									</h:inputText>
+								</div>
+								
+								<div class="nav-item m-1">
+									<h:commandButton
+										class="btn btn-warning btn-sm bouton-orangeatre large100px"
+										value="Search" action="#{jSFBeanListeVols1Date.afficherListeVolsDateChoisie}">
+									</h:commandButton>
+								</div>
+								<!-- we get m-2 margin on every side -->
+							</nav>
+							
+							<h:message for="dateChoisie" errorStyle="color:red"  />
+						</h:form>
+						
+						<font color="red"><i>
+							<h:outputText value="#{jSFBeanListeVols1Date.messageErreur}" /></i>
+						</font>
+						
+					</div>
+				</div>
+			</div>
 			
-			<h:message for="dateChoisie" errorStyle="color:red"  />
-			<br/>
-			<h:commandButton class="large184"
-				value="Search" action="#{jSFBeanListeVols1Date.afficherListeVolsDateChoisie}">
-			</h:commandButton>
-		</h:form>
-	</fieldset>
-	
-	<font color="red"><i><h:outputText value="#{jSFBeanListeVols1Date.messageErreur}" /></i></font>
-	
-	<fieldset class="menu-icones">
+			
+			<!--=== COLUMN A2 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			
+				<!--=== Affichage date et heure (JSF) ===-->
+				<ui:include src="/WEB-INF/fragments/jour-date-heure.xhtml"></ui:include>
+			</div>
+		</div>
 		
-		<!--=== ICONE DATE PRECEDENTE ===-->
-		<h:form class="icone-date" rendered="#{not empty jSFBeanListeVols1Date.colleTabVolsDate}">
-			<i>Previous</i>
-			
-			<h:commandButton class="image-icone-date" image="common/images/icone_date_precedente.png"
-				action="#{jSFBeanListeVols1Date.afficherListeVolsDatePrecedente}">
-			</h:commandButton>
-		</h:form>
 		
-		<!--=== ICONE DATE SUIVANTE ===-->
-		<h:form class="icone-date" rendered="#{not empty jSFBeanListeVols1Date.colleTabVolsDate}">
-			<i>Next</i>
+		<!--=== ROW B ===-->
+		<div class="row">
 			
-			<h:commandButton class="image-icone-date" image="common/images/icone_date_suivante.png"
-				action="#{jSFBeanListeVols1Date.afficherListeVolsDateSuivante}">
-			</h:commandButton>
-		</h:form>
-		
-		<!--=== ICONE DATE FINALE ===-->
-		<h:form class="icone-date">
-			<i>Last</i>
+			<!--=== COLUMN B1 ===-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 			
-			<h:commandButton class="image-icone-date" image="common/images/icone_date_finale.png"
-				action="#{jSFBeanListeVols1Date.afficherListeVolsDateFinale}">
-			</h:commandButton>
-		</h:form>
-		
-		<!--=== ICONE REINITIALISER ===-->
-		
-		<h:form class="icone-date">
-			<i>Reset</i>
+				<nav class="nav border-bottom justify-content-end mt-4">
+					
+					<!--=== BOUTON DATE PRECEDENTE ===-->
+					<div class="nav-item m-1">
+						
+						<h:form rendered="#{not empty jSFBeanListeVols1Date.colleTabVolsDate}">
+							<i class="bi-caret-left"></i>
+							
+							<h:commandButton value="Previous"
+								class="btn btn-outline-warning btn-sm text-dark large100px"
+								action="#{jSFBeanListeVols1Date.afficherListeVolsDatePrecedente}">
+								
+							</h:commandButton>
+						</h:form>
+					</div>
+					
+					<!--=== BOUTON DATE SUIVANTE ===-->
+					<div class="nav-item m-1">
+						
+						<h:form rendered="#{not empty jSFBeanListeVols1Date.colleTabVolsDate}">
+							<i class="bi-caret-right"></i>
+							
+							<h:commandButton value="Next"
+								class="btn btn-outline-warning btn-sm text-dark large100px"
+								action="#{jSFBeanListeVols1Date.afficherListeVolsDateSuivante}">
+								
+							</h:commandButton>
+						</h:form>
+					</div>
+					
+					<!--=== BOUTON DATE FINALE ===-->
+					<div class="nav-item m-1">
+						
+						<h:form>
+							<i class="bi-skip-end"></i>
+							<h:commandButton value="Last"
+								class="btn btn-outline-warning btn-sm text-dark large100px"
+								action="#{jSFBeanListeVols1Date.afficherListeVolsDateFinale}">
+								
+							</h:commandButton>
+						</h:form>
+					</div>
+					
+					<!--=== BOUTON REINITIALISER ===-->
+					<div class="nav-item m-1">
+						
+						<h:form>
+							<i class="bi-arrow-clockwise"></i>
+							
+							<h:commandButton value="Reset"
+							class="btn btn-outline-warning btn-sm text-dark large100px"
+								action="#{jSFBeanListeVols1Date.recommencer}">
+								
+							</h:commandButton>
+							
+						</h:form>
+					</div>
+				</nav>
+				
+				
+				<!--=== AFFICHAGE DES VOLS ===-->
+				
+				<table class="table table-striped table-sm mt-4">
+					<ui:repeat var="vol" value="#{jSFBeanListeVols1Date.colleTabVolsDate}">
+						<tr>
+							<td class="case-vol-1date">#{vol[0]}</td>
+							<td class="case-vol-1date">#{vol[1]}</td>
+							<td class="case-vol-1date">#{vol[2]}</td>
+							<td class="case-vol-1date">#{vol[3]}</td>
+							<td class="case-vol-1date">#{vol[4]}</td>
+							<td class="case-vol-1date">#{vol[5]}</td>
+							<!--=== #{vol[6]} = aircraft type, ignored ===-->
+							<td class="case-vol-1date">#{vol[7]}</td>
+						</tr>
+					</ui:repeat>
+				</table>
+				
+				<p><br/></p> <!--=== Useful code line for correct display of components above ===-->
+			</div>
 			
-			<h:commandButton class="image-icone-date" image="common/images/icone_recommencer.png"
-				action="#{jSFBeanListeVols1Date.recommencer}">
-			</h:commandButton>
 			
-		</h:form>
-	</fieldset>
+			<!--*** COLUMN B2 ***-->
+			<div class="col-xs-12 col-sm-12 col-md-6 -col-lg-6">
+				
+				<!--*** Le caroussel ***-->
+				
+				<div class="container border rounded caroussel shadow-sm m-4 p-2">
+					<img src="common/images/airport_by_weston-mackinnon_1080p.jpg"
+						alt="airport-image" width="500px" height="300px" />
+				</div>
+				
+				<p><br/></p> <!--=== Useful code line for correct display of components above ===-->
+			</div>
+		</div>
+	</div>
 	
-	<!--================================================= AFFICHAGE DES VOLS -->
-	
-	<br/>
-	<table class="table-vols-1date">
-		<ui:repeat var="vol" value="#{jSFBeanListeVols1Date.colleTabVolsDate}">
-			<tr>
-				<td class="case-vol-1date">#{vol[0]}</td>
-				<td class="case-vol-1date">#{vol[1]}</td>
-				<td class="case-vol-1date">#{vol[2]}</td>
-				<td class="case-vol-1date">#{vol[3]}</td>
-				<td class="case-vol-1date">#{vol[4]}</td>
-				<td class="case-vol-1date">#{vol[5]}</td>
-				<td class="case-vol-1date">#{vol[6]}</td>
-				<td class="case-vol-1date">#{vol[7]}</td>
-			</tr>
-		</ui:repeat>
-	</table>
-	<br/>
-	
-	
-	<!--**************************************************-->
-	</fieldset>
 	
 	<!-- Footer (JSF) -->
+	<ui:include src="/WEB-INF/fragments/pied_de_page.xhtml" />
 	
-	<div class="pied2page">
-		<ui:include src="/WEB-INF/fragments/pied_de_page.xhtml" />
-	</div>
-	
-	<!--==========-->
-	
+	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
 		document.getElementById("menuRecherche").className = "pageActuelle";		/* Adapter l'ID ici */
 	</script>
-	<!-- /**************************************************-->
 	
 </h:body>
 </html>

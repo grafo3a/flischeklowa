@@ -8,7 +8,7 @@ var tour = 0;
 
 function sendInfo() {
 	
-	//--- Chargement d'un objet Ajax
+	// Chargement d'un objet Ajax
 	if (window.XMLHttpRequest) {
 		xmlHttpRequest=new XMLHttpRequest();  
 		
@@ -17,15 +17,15 @@ function sendInfo() {
 	}
 	
 	
-	//Phase Aller
+	// Phase Aller
 	try {
 	  
 		xmlHttpRequest.onreadystatechange=getInfo;  
 		xmlHttpRequest.open("GET",urlAjax,true);
 		xmlHttpRequest.send();
 		
-	} catch(e) {
-		alert("--- Not able to connect to server");
+	} catch(ex) {
+		alert("[ERROR] Not able to connect to server. " + ex.message);
 	}
 }
 
@@ -87,23 +87,12 @@ function actualiserInfosChaqueSeconde() {
 	//--- On actualise l'heure
 	document.getElementById('temps').innerHTML=heureAffichee;
 	
-	//--- Si c'est la 1ere seconde, on envoie une requete Ajax
-	//--- En suite on met a jour la longue date
+	// Chaque 1ere fois ou 1ere seconde, on met à jour la longue date
+	// Et si on est sur la JSP d'accueil, on envoie une requete Ajax qui met à jour l'horaire.
+	
 	if (tour == 0 || nombreSecondes == 1) {
 		
-		var sensAjax = document.getElementById('labelSensChoisi').innerText.trim();
-		var paysAjax = document.getElementById('labelPaysChoisi').innerText.trim();
-		
-		if (paysAjax == "All") {
-			paysAjax = "";
-		}
-		
-		urlAjax="horaire-vols-ajax?sens=" + sensAjax + "&pays=" + paysAjax;
-		
-		sendInfo();
-		
 		//On met A jour la longue date
-		
 		let jour = moment.getDay();
 		let dayName = getDayName(jour);
 		let dateNow = numeroDate.toString();
@@ -116,10 +105,23 @@ function actualiserInfosChaqueSeconde() {
 		let monthName = getMonthName(mois);
 		let annee = moment.getFullYear().toString();
 		
-		
 		let jourDate = dayName + " " + dateNow + " " + monthName + " " + annee; 
 		
-		document.getElementById('jour-date').innerHTML = jourDate;	
+		document.getElementById('jour-date').innerHTML = jourDate;
+			
+		try {
+			var sensAjax = document.getElementById('labelSensChoisi').innerText.trim();
+			var paysAjax = document.getElementById('labelPaysChoisi').innerText.trim();
+			
+			if (paysAjax == "All") {
+				paysAjax = "";
+			}
+			
+			urlAjax="horaire-vols-ajax?sens=" + sensAjax + "&pays=" + paysAjax;
+			sendInfo();
+		}
+		catch(ex) { //ignore
+		}
 	}
 	
 	tour++;

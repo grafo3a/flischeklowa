@@ -21,7 +21,11 @@ import javax.servlet.http.HttpSession;
  */
 
 @WebFilter(
-		dispatcherTypes = { DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE, DispatcherType.ERROR },
+		dispatcherTypes = {
+				DispatcherType.REQUEST,
+				DispatcherType.FORWARD,
+				DispatcherType.INCLUDE,
+				DispatcherType.ERROR },
 		urlPatterns = { "*.jsf", "/controle-emfactory" }
 		)
 public class FiltreConnexion implements Filter {
@@ -30,7 +34,8 @@ public class FiltreConnexion implements Filter {
 	public void destroy() {}
 	
 	
-	public void doFilter(ServletRequest servletReq, ServletResponse servletRes, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest servletReq, ServletResponse servletRes, FilterChain chain)
+			throws IOException, ServletException {
 		
 		HttpServletRequest request = (HttpServletRequest) servletReq;
 		HttpServletResponse response = (HttpServletResponse) servletRes;
@@ -58,16 +63,16 @@ public class FiltreConnexion implements Filter {
 			}
 		}
 		
-		//--- Si on est deconnectE, redirection vers la page de connexion
 		if (session.getAttribute("courrielCookie") == null) {
+			// Si on est deconnectE, redirection vers la page de connexion
 			response.sendRedirect(request.getContextPath() + "/connexion-g11n");
 			
-		} else {		// Si on est connectE, on passe A la prochaine etape apres ce filtre (on sort de ce filtre)
+		} else {
+			// Si on est connectE, on passe A la prochaine etape apres ce filtre (on sort de ce filtre)
 			chain.doFilter(servletReq, servletRes);
 		}
 	}
 	
 	
 	public void init(FilterConfig fConfig) throws ServletException {}
-	
 }
