@@ -117,13 +117,9 @@
 			<!--=== COLUMN B2 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 				
-				<!--=== Le caroussel ===-->
-			
-				<div class="container border rounded caroussel shadow-sm m-4 p-2">
-					
-					<img src="common/images/airport_by_weston-mackinnon_1080p.jpg"
-						alt="airport-image" width="500px" height="300px" />
-				</div>
+				<!--=== Le carrousel ===-->
+				<jsp:include page="./fragments/carrousel-centre.xhtml"></jsp:include>
+				
 			</div>
 			
 			<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->

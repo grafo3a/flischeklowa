@@ -1,0 +1,45 @@
+
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+<div class="container border rounded carrousel shadow-sm m-4 p-2">
+
+<!--=== Le carrousel du centre ===-->
+
+	<div id="carrousel-centre" class="carousel slide" data-bs-ride="carousel">
+		<!-- Carousel indicators -->
+		<ol class="carousel-indicators">
+		    <li data-bs-target="#carrousel-centre" data-bs-slide-to="0" class="active"></li>
+		    <li data-bs-target="#carrousel-centre" data-bs-slide-to="1"></li>
+		    <li data-bs-target="#carrousel-centre" data-bs-slide-to="2"></li>
+		</ol>
+		
+		<!-- Wrapper for carousel items -->
+		<div class="carousel-inner">
+		    <div class="carousel-item active">
+		        <img src="common/images/image_aeroport_01.jpg" alt="image-aeroport-01" width="500px" height="200px" />
+		    </div>
+		    <div class="carousel-item">
+		        <img src="common/images/image_aeroport_02.jpg" alt="image-aeroport-02" width="500px" height="200px" />
+		    </div>
+		    <div class="carousel-item">
+		        <img src="common/images/image_aeroport_03.jpg" alt="image-aeroport-03" width="500px" height="200px" />
+		    </div>
+		</div>
+		
+		<!-- Carousel controls -->
+		<a class="carousel-control-prev" href="#carrousel-centre" data-bs-slide="prev">
+		    <span class="carousel-control-prev-icon"></span>
+		</a>
+		<a class="carousel-control-next" href="#carrousel-centre" data-bs-slide="next">
+		    <span class="carousel-control-next-icon"></span>
+		</a>
+	</div>
+	
+</div>
+
+</ui:composition>

@@ -11,10 +11,10 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 		<class>net.apasajb.flischeklowa.dao.Vol</class>
 		
 		
-		<!-- Details de l'unitE de persistance -->
+		<!-- Details de l'unité de persistance -->
 		<properties>
 		
-			<!--=== PROPRIETES STANDARD JPA H2 ===-->
+			<!--=== PROPRIETES STANDARD JPA H2 (POUR GITHUB) ===-->
 			<property
 				name="javax.persistence.jdbc.driver"
 				value="org.h2.Driver"/>
@@ -29,8 +29,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 				value="sa"/>
 			
 			
-			
-			<!--=== PROPRIETES STANDARD JPA POSTGRESQL (Pour GIT) ===
+			<!--=== PROPRIETES STANDARD JPA POSTGRESQL (POUR HEROKU) ===
 			<property
 				name="javax.persistence.jdbc.driver"
 				value="org.postgresql.Driver"/>
@@ -44,7 +43,6 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 				name="javax.persistence.jdbc.password"
 				value="****************************************************************"/>
 			-->
-			
 			
 			<!--=== QLQ PROPRIETES SPECIFIQUES HIBERNATE ===-->
 			<property
