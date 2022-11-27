@@ -77,7 +77,7 @@
 						<li>CDI via Weld (for dependency injections);</li>
 						<li>JAX-RS via Jersey (for exposing REST web services);</li>
 						<li>JavaScript (plain aka Vanilla);</li>
-						<li>HTML with CSS;</li>
+						<li>HTML, CSS, Bootstrap;</li>
 						<li>Maven, JUnit 5, tinylog;</li>
 						<li>Databases: H2 (in-memory) and PosgreSQL (in cloud).</li>
 					</ul>

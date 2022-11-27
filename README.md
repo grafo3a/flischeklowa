@@ -28,8 +28,13 @@ The following technologies are used in the project:
 - CDI via Weld (for dependency injections);
 - JAX-RS via Jersey (for exposing REST web services);
 - JavaScript (plain aka Vanilla);
-- HTML with CSS;
+- HTML, CSS, Bootstrap;
 - Maven, JUnit 5, tinylog;
 - Databases: H2 (in-memory) and PosgreSQL (in cloud).
 
 The entry point to the application is the root URL mapping "/" in the Servlet "ServletHoraireVols".
+
+By default, the app uses the in-memory H2 database.
+To use a differente database, you'll need to update the 2 following files correctly:
+* paquetBDD.properties (in src/net.apasajb.flischeklowa.ressourcesG11n)
+* persistence.xml (in src/META-INF).
