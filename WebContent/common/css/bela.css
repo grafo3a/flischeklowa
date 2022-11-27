@@ -26,8 +26,22 @@
 
 
 .carrousel {
-	width: 510px;
+	width: 516px;
 	height: 216px;
+}
+
+
+.image-carrousel {
+	width: 500px;
+	height: 200px;
+}
+
+
+.menu-carrousel {
+	background-color: LightGray;
+	padding: 4px;
+	width: 180px;
+	margin-left: 160px;		/* Centrage: (500 - 180)/2 = 160 */
 }
 
 
