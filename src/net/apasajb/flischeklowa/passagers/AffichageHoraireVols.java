@@ -99,7 +99,7 @@ public class AffichageHoraireVols {
 				
 				String styleOK = "style=\"background-color: #d9d9d9\"";
 				String tdDefault = "<td>";
-				String tdCompleted = "<td " + styleOK + ">";		//--- Fond gris faible pour l'heure deja passee
+				String tdCompleted = "<td " + styleOK + ">";		// Fond gris faible pour l'heure deja passee
 				
 				// Construction d'une table pour faciliter son exploitation par Ajax
 				tableHoraireVols =
@@ -149,18 +149,18 @@ public class AffichageHoraireVols {
 					//typeAvion = resultSet.getString(9);
 					numTerminal = resultSet.getString(8);
 					statutVol = resultSet.getString(7);
-					isStatutCalculable = false;		//--- on reinitialise la valeur
+					isStatutCalculable = false;		// on reinitialise la valeur
 					
 					Duration duree = Duration.between(heureVol, heureKlow);
 					int dureeMinutes = (int) duree.toMinutes();
-					//--- NB: duree negative = avant le vol (temps restant),
-					//--- NB: duree positive = apres le vol (temps ecoulE).
+					// NB: duree negative = avant le vol (temps restant),
+					// NB: duree positive = apres le vol (temps ecoulE).
 					
 					if(sensVol.equals("Departure") && statutVol.equals("Confirmed")) {
 						isStatutCalculable = true;
 					}
 					
-					//--- On colore le statut selon le nombre de minutes restantes ou ecoulees
+					// On colore le statut selon le nombre de minutes restantes ou ecoulees
 					if (isStatutCalculable) {
 						
 						if (dureeMinutes >= -120 && dureeMinutes < -40) {
@@ -185,7 +185,7 @@ public class AffichageHoraireVols {
 					}
 					
 					if (statutVol.equals("Departed") || statutVol.equals("Arrived")) {
-						tdTag = tdCompleted;		//--- On colore le fond en gris
+						tdTag = tdCompleted;		// On colore le fond en gris
 					}
 					
 					numeroLigne = resultSet.getRow();
@@ -205,7 +205,7 @@ public class AffichageHoraireVols {
 					tableHoraireVols = tableHoraireVols + ligneTableHoraire;
 				}
 				
-				if (numeroLigne == 0) {		//--- Si numeroLigne tjrs 0 donc resultSet est vide.
+				if (numeroLigne == 0) {		// Si numeroLigne tjrs 0 donc resultSet est vide.
 					tableHoraireVols = "<font color=\"red\">[Info] Ohhh, no flight found!</font>";
 				}
 				

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author ApasaJB
  */
 
-@WebServlet (value={"", "/horaire-vols"})		//--- La valeur vide prend en charge correctement l'URL "/"
+@WebServlet (value={"", "/horaire-vols"})		// La valeur vide prend en charge correctement l'URL "/"
 public class ServletHoraireVols extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;

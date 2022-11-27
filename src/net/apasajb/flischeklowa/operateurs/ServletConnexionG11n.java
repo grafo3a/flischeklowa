@@ -31,7 +31,7 @@ public class ServletConnexionG11n extends HttpServlet {
 		HttpSession session = request.getSession();
 		Cookie[] listeCookies = request.getCookies();
 		
-		if (listeCookies != null) {		//--- Si des cookies sont presents
+		if (listeCookies != null) {		// Si des cookies sont presents
 			
 			String nomCookie = null;
 			String valeurCookie = null;
@@ -54,18 +54,18 @@ public class ServletConnexionG11n extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//--- SI ON RESSOIT UN FORMULAIRE ON EST FORCEMENT DECONNECTE
+		// SI ON RESSOIT UN FORMULAIRE ON EST FORCEMENT DECONNECTE
 		
 		HttpSession session = request.getSession();
 		
-		//--- Preparation de G11N: on identifie la culture de l'utilisateur
+		// Preparation de G11N: on identifie la culture de l'utilisateur
 		Locale locale = request.getLocale();
 		
-		//--- On cree un paquet de ressources (un objet ResourceBundle)
+		// On cree un paquet de ressources (un objet ResourceBundle)
 		String nomBase = "net.apasajb.flischeklowa.ressourcesG11n.paquetServlets";
 		ResourceBundle paquetServlets = ResourceBundle.getBundle(nomBase, locale);
 		
-		//--- On extrait les messages du paquet de ressources
+		// On extrait les messages du paquet de ressources
 		String S01_ERREUR_COURRIEL = paquetServlets.getString("S01_ERREUR_COURRIEL");
 		String S02_ERREUR_COURRIEL = paquetServlets.getString("S02_ERREUR_COURRIEL");
 		String S03_ERREUR_MOT2P = paquetServlets.getString("S03_ERREUR_MOT2P");
@@ -83,29 +83,29 @@ public class ServletConnexionG11n extends HttpServlet {
 		boolean contratAcceptee = true;
 		
 		
-		if (request.getParameter("courriel").isEmpty() == false) {		//--- Si le parametre courriel present
+		if (request.getParameter("courriel").isEmpty() == false) {		// Si le parametre courriel present
 			
 			paramCourriel = request.getParameter("courriel");
-			courrielValide = Validation.validerCourriel(paramCourriel);		//--- validation de l'adresse courriel
+			courrielValide = Validation.validerCourriel(paramCourriel);		// validation de l'adresse courriel
 			
-		} else {		//--- Si le parametre courriel absent
+		} else {		// Si le parametre courriel absent
 			
 			erreurCourriel = S01_ERREUR_COURRIEL;
 			courrielValide = false;
 		}
 		
 		
-		if ( courrielValide == false) {		//--- Si le courriel non valide
+		if ( courrielValide == false) {		// Si le courriel non valide
 			erreurCourriel = S02_ERREUR_COURRIEL;
 		}
 		
 		
-		if (request.getParameter("mot2p").isEmpty() == false) {		//--- Si mot de passe present
+		if (request.getParameter("mot2p").isEmpty() == false) {		// Si mot de passe present
 			
 			paramMot2p = request.getParameter("mot2p");
 			longueurMot2p = paramMot2p.length();
 			
-		} else {		//--- Si Mot de passe absent
+		} else {		// Si Mot de passe absent
 			
 			mot2pValide = false;
 			erreurMot2p = S03_ERREUR_MOT2P;
@@ -120,26 +120,26 @@ public class ServletConnexionG11n extends HttpServlet {
 			mot2pValide = false;
 		}
 		
-		if (request.getParameter("contrat") == null) {		//--- Si contrat d'utilisation acceptee ou non
+		if (request.getParameter("contrat") == null) {		// Si contrat d'utilisation acceptE ou non
 			
 			contratAcceptee = false;
 			erreurContrat = S05_ERREUR_CONTRAT;
 			
 		} else {
 			
-			//--- Si case contrat cochee, on la coche en retour
+			// Si case contrat cochee, on la coche en retour
 			session.setAttribute("checkboxContrat", "checked");
 		}
 		
-		//--- Si connexion acceptee, on est connectee.
+		// Si connexion acceptee, on est connectee.
 		if ((courrielValide == true) && (mot2pValide == true) && (contratAcceptee == true)) {
 			
-			Cookie cookie09 = new Cookie("courriel09", paramCourriel);		//--- On installe un cookie
-			cookie09.setMaxAge(60 * dureeVieCookieSecondes);		//--- La duree de vie du cookie en secondes
+			Cookie cookie09 = new Cookie("courriel09", paramCourriel);		// On installe un cookie
+			cookie09.setMaxAge(60 * dureeVieCookieSecondes);		// La duree de vie du cookie en secondes
 			response.addCookie(cookie09);
 			session.setAttribute("courrielCookie", paramCourriel);
 			
-		} else {		//--- Si connexion refusee
+		} else {		// Si connexion refusee
 			
 			session.setAttribute("erreurCourriel", erreurCourriel);
 			session.setAttribute("erreurMot2p", erreurMot2p);

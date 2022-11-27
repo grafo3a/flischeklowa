@@ -46,12 +46,12 @@ public class JSFOperationsSurModelesVols implements Serializable {
 	private OperationsORM operationsORM = new OperationsORM();
 	ArrayList<String[]> tabDynamique = new ArrayList<String[]>();
 	
-	//--- Les heures d'ouverture de l'aeroport de 09h a 23h
+	// Les heures d'ouverture de l'aeroport de 09h A 23h
 	final String[] horaire = {
 			"09", "10", "11", "12", "13", "14", "15", "16", "17", "18",
 			"19", "20", "21", "22", "23"};
 	
-	//--- On cree un paquet de ressources (un objet de type ResourceBundle)
+	// On cree un paquet de ressources (un objet de type ResourceBundle)
 	final String nomBase = "net.apasajb.flischeklowa.ressourcesG11n.modelesVol";
 	ResourceBundle paquet = ResourceBundle.getBundle(nomBase);
 	
@@ -91,7 +91,8 @@ public class JSFOperationsSurModelesVols implements Serializable {
 		String chaineDateHeureVol = dateVol + "T" + heureVol;
 		dateHeure = LocalDateTime.parse(chaineDateHeureVol);
 		
-		try {		//--- Ici les variables suivantes ont deja leurs valeurs: sens, ville, codePays, compagnie, codeCompagnie.
+		try {		// Ici les variables suivantes ont deja leurs valeurs:
+					// sens, ville, codePays, compagnie, codeCompagnie.
 			
 			operationsORM.persisterVol(sens, dateHeure, ville, codePays, compagnie, codeCompagnie, typeAvion, terminal, em);
 			messageSucces = messageSucces + "--- Flight added successfully: " +
@@ -107,10 +108,10 @@ public class JSFOperationsSurModelesVols implements Serializable {
 	
 	public String utiliserModelesVol(ModeAcces mode) {
 		
-		LocalDate nouvelleDate = this.getNouvelleDate(); //--- Calcul d'une nouvelle date
+		LocalDate nouvelleDate = this.getNouvelleDate();		// Calcul d'une nouvelle date
 		EntityManager em = EcouteurAppli.getEM();
 		
-		//--- Chargement des vols DEPART
+		// Chargement des vols DEPART
 		sens = SensVol.Departure;
 		
 		for (String heureDepart : horaire) {
@@ -135,7 +136,7 @@ public class JSFOperationsSurModelesVols implements Serializable {
 		
 		listeModelesVol = listeModelesVol + "\n";
 		
-		//--- Chargement des vols ARRIVEE
+		// Chargement des vols ARRIVEE
 		sens = SensVol.Arrival;
 		
 		for (String heureArrivee : horaire) {
@@ -162,7 +163,7 @@ public class JSFOperationsSurModelesVols implements Serializable {
 		
 		tableauModelesVol = listeModelesVol.split("\n");
 		
-		//--- On construit une collection (tableau dynamique) a partir du tableau statique
+		// On construit une collection (tableau dynamique) A partir du tableau statique
 		for (String ligneTab : tableauModelesVol) {
 			
 			String[] tabLigne = ligneTab.split("---");

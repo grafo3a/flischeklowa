@@ -32,17 +32,17 @@ public class JobChargementJourVols implements Serializable {
 			
 			Query req = em.createQuery(reqNombreVols);
 			req.setParameter("dateactuelle", dateAujourd8);
-			nombreVolsAujourd8 = (long) req.getSingleResult();		//--- Ici int ne fonctionne pas
+			nombreVolsAujourd8 = (long) req.getSingleResult();		// Ici int ne fonctionne pas
 			
 			if (nombreVolsAujourd8 == 0) {
-				operationsSurModelesVols.ajouterJourVols();		//--- On charge 1 jour de vols, aujourdhui
+				operationsSurModelesVols.ajouterJourVols();		// On charge 1 jour de vols, aujourdhui
 			}
 			
 		} catch (Exception ex) {
 			messageErreur = "--- Error: auto-loading flights failed. Message: " + ex.getMessage();
-			//System.out.println(messageErreur); //> journal_flischeklowa_20220101.log
+			// System.out.println(messageErreur); //> journal_flischeklowa_20220101.log
 		}
 		
-		//--- A faire: evaluer l'heure pour effectuer le chargement chaque jour a minuit.
+		// A FAIRE: evaluer l'heure pour effectuer le chargement chaque jour A minuit.
 	}
 }

@@ -60,7 +60,7 @@ public class Vol implements Serializable {
 	private String ville;
 	
 	
-	//--- Constructeurs par defaut et parametrique
+	// Constructeurs par defaut et parametrique
 	
 	public Vol() {
 		super();

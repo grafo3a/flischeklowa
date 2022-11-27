@@ -12,7 +12,7 @@ public class Validation {
 	static boolean isValid;
 	
 	
-	//--- Validation de l'adresse courriel
+	// Validation de l'adresse courriel
 	public static boolean validerCourriel (String courriel88) {
 		
 		if (courriel88.matches(regexCourriel)) {
@@ -26,7 +26,7 @@ public class Validation {
 	}
 	
 	
-	//--- Validation du mot de passe
+	// Validation du mot de passe
 	public static boolean validerMot2passe(String mot2passe) {
 		
 		if (mot2passe.length() >= 5) {

@@ -23,25 +23,25 @@ public class ServletDeconnexionG11n extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//--- On obtient la session pour l'annuler.
+		// On obtient la session pour l'annuler.
 		HttpSession session = request.getSession();
 		
-		//--- Le cookie associee a la session actuelle
+		// Le cookie associE A la session actuelle
 		String courrielCookie = session.getAttribute("courrielCookie").toString();
 		
-		//--- On detruit le cookie associee a la session actuelle:
-		//--- On installe un cookie avec 0 secondes de vie (technique pour detruire un cookie)
+		// On detruit le cookie associE A la session actuelle:
+		// On installe un cookie avec 0 secondes de vie (technique pour detruire un cookie)
 		Cookie cookieObsolete = new Cookie("courriel09", courrielCookie);
 		cookieObsolete.setMaxAge(0);
 		response.addCookie(cookieObsolete);
 		
-		//--- On se deconnecte de la session
+		// On se deconnecte de la session
 		session.setAttribute("courrielCookie", null);
 		session.setAttribute("erreurCourriel", null);
 		session.setAttribute("erreurMot2p", null);
 		session.setAttribute("erreurContrat", null);
 		
-		//--- On redirige le resultat A la servlet de connexion
+		// On redirige le resultat A la servlet de connexion
 		String contexte = request.getContextPath();
 		response.sendRedirect(contexte + "/connexion-g11n");
 	}

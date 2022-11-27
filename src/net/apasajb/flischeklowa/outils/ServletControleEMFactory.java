@@ -39,10 +39,10 @@ public class ServletControleEMFactory extends HttpServlet {
 		
 		if (demande.equals("demarrerEmfactory")) {
 			
-			objetFabrique.demarrerEMFactory(sletContext);		//--- On demarre emFactory
+			objetFabrique.demarrerEMFactory(sletContext);		// On demarre emFactory
 			resultatEmfactory = objetFabrique.getResultatEMFactory();
 			
-		} else {		//--- Si demande == "arreterFabrique"
+		} else {		// Si demande == "arreterFabrique"
 			
 			objetFabrique.arreterEMFactory(sletContext);	
 			resultatEmfactory = objetFabrique.getResultatEMFactory();

@@ -17,7 +17,7 @@ public class BoitePoolConnexionImple implements BoitePoolConnexion {
 	private DataSource poolConnex = new DataSource();
 	private String resultatPool = null;
 	
-	//--- On cree un paquet de ressources et on en extrait les infos pour la connexion
+	// On cree un paquet de ressources et on en extrait les infos pour la connexion
 	final String nomBase = "net.apasajb.flischeklowa.ressourcesG11n.paquetBDD";
 	final ResourceBundle paquetIdentifiants = ResourceBundle.getBundle(nomBase);
 	final String URL = paquetIdentifiants.getString("url");
@@ -31,7 +31,7 @@ public class BoitePoolConnexionImple implements BoitePoolConnexion {
 		PoolProperties pp = new PoolProperties();
 		Connection connexion = null;
 		
-		try {		//--- Configuration du pool
+		try {		// Configuration du pool
 			pp.setUrl(URL);
 			pp.setDriverClassName(DRIVER_CLASS);
 			pp.setUsername(USER);
@@ -56,10 +56,10 @@ public class BoitePoolConnexionImple implements BoitePoolConnexion {
 			//"org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer");
 			pp.setJdbcInterceptors("ConnectionState;StatementFinalizer");
 			
-			//--- On demarre le pool
+			// On demarre le pool
 			poolConnex.setPoolProperties(pp);
 			
-			//--- On recolte qlqs infos sur la BDD
+			// On recolte qlqs infos sur la BDD
 			connexion = poolConnex.getConnection();
 			DatabaseMetaData mdata = connexion.getMetaData();
 			String infosBDD = "DB Type: " + mdata.getDatabaseProductName() + " ; Version: " + mdata.getDatabaseProductVersion();
@@ -75,7 +75,7 @@ public class BoitePoolConnexionImple implements BoitePoolConnexion {
 			if (connexion != null) try { connexion.close(); } catch (Exception ignore) {}
 		}
 		
-		this.setResultatPool(resultatPool);		//--- On enregistre le resultat de l'operation pour affichage dans l'IHM
+		this.setResultatPool(resultatPool);		// On enregistre le resultat de l'operation pour affichage dans l'IHM
 		servletContext.setAttribute("poolConnex", poolConnex);
 	}
 	
@@ -88,7 +88,7 @@ public class BoitePoolConnexionImple implements BoitePoolConnexion {
 			poolConnex.close();
 			servletContext.setAttribute("poolConnex", null);
 			resultatPool = "--- The connection pool has been stopped.";
-			this.setResultatPool(resultatPool);		//--- On enregistre le resultat de l'operation
+			this.setResultatPool(resultatPool);		// On enregistre le resultat de l'operation
 			
 		} catch (Exception ignore) {}
 	}

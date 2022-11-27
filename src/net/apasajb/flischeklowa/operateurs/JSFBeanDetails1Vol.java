@@ -70,7 +70,7 @@ public class JSFBeanDetails1Vol implements Serializable {
 			
 		} finally {
 			
-			this.mettreAjourAffichageVol(vol);		//--- Preparation pour affichage de la page
+			this.mettreAjourAffichageVol(vol);		// Preparation pour affichage de la page
 			HttpSession session = this.getSession();
 			session.setAttribute("idEnSession", idVol);
 		}
@@ -84,8 +84,8 @@ public class JSFBeanDetails1Vol implements Serializable {
 	//======================================= UTILISATION DE modifierInfoVol(*) //
 	
 	public void modifierInfoDate() {
-		//--- La date d'un vol ne peut pas changer.
-		//--- En cas d'annulation, les billets sont assignees au vol d'une autre date.
+		// La date d'un vol ne peut pas changer.
+		// En cas d'annulation, les billets sont assignEs au vol d'une autre date.
 	}
 	
 		
@@ -95,17 +95,17 @@ public class JSFBeanDetails1Vol implements Serializable {
 	
 	
 	public void modifierInfoTypeAvion() {
-		this.modifierInfoVol("PlaneType", typeAvion, "^[a-zA-Z_0-9].{1,30}$");		//--- Tout mot valide de 1 a 30 caracteres
+		this.modifierInfoVol("PlaneType", typeAvion, "^[a-zA-Z_0-9].{1,30}$");		// Tout mot valide de 1 A 30 caracteres
 	}
 	
 	
 	public void modifierInfoTerminal() {
-		this.modifierInfoVol("Gate", terminal, "^[a-zA-Z_0-9].{1,30}$");		//--- Tout mot de 1 a 10 caracteres	
+		this.modifierInfoVol("Gate", terminal, "^[a-zA-Z_0-9].{1,30}$");		// Tout mot de 1 A 10 caracteres	
 	}
 	
 	
 	public void modifierInfoStatut() {
-		this.modifierInfoVol("Status", statut, "^[a-zA-Z_0-9].{1,30}$");		//--- Tout mot de 3 a 10 caracteres
+		this.modifierInfoVol("Status", statut, "^[a-zA-Z_0-9].{1,30}$");		// Tout mot de 3 A 10 caracteres
 	}
 	
 	
@@ -127,7 +127,7 @@ public class JSFBeanDetails1Vol implements Serializable {
 				setmessageErreur("--- Error. The update failed. Message: " + ex.getMessage());
 			}
 			
-		} else {		//--- Si test regex KO
+		} else {		// Si test regex KO
 			
 			setmessageErreur("--- Error: " + nomInfo + " not valid (" + infoVol + ")");
 			
@@ -166,7 +166,7 @@ public class JSFBeanDetails1Vol implements Serializable {
 		
 		if (idVol > 0) {
 			
-			//--- Enregistrement en session de idVol
+			// Enregistrement de idVol en session
 			HttpSession session = this.getSession();
 			session.setAttribute("idEnSession", idVol);
 		}

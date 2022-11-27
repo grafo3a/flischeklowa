@@ -31,7 +31,7 @@ public class CollectionVolsRest implements Serializable {
 		String chaineReq;
 		TypedQuery<Vol> reqVol;
 		
-		//--- Cette requete prend en charge les differentes possibilites de recherche des entitEs.
+		// Cette requete prend en charge les differentes possibilites de recherche des entitEs.
 		chaineReq = "SELECT v FROM Vol v WHERE TO_CHAR(v.dateHeure, 'YYYY-MM-DD') = :dv"
 				+ " AND v.codePays LIKE :cp"
 				+ " AND v.numeroVol LIKE :nv";

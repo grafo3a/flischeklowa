@@ -17,7 +17,7 @@ import net.apasajb.flischeklowa.ecouteurs.EcouteurAppli;
  */
 public class BoiteConnexionJDBC {
 	
-	//--- On cree un paquet de ressources et on en extrait les infos pour la connexion
+	// On cree un paquet de ressources et on en extrait les infos pour la connexion
 	final static String nomBase = "net.apasajb.flischeklowa.ressourcesG11n.paquetBDD";
 	final static ResourceBundle paquetIdentifiants = ResourceBundle.getBundle(nomBase);
 	final static String URL = paquetIdentifiants.getString("url");
@@ -30,7 +30,7 @@ public class BoiteConnexionJDBC {
 		
 		Connection connexion = null;
 		
-		//--- Obtention d'un pool de connexions et d'une connexion
+		// Obtention d'un pool de connexions et d'une connexion
 		try {
 			ServletContext contexte = EcouteurAppli.getServletContext();
 			DataSource poolConnexion = (DataSource)  contexte.getAttribute("poolConnex");
@@ -43,7 +43,7 @@ public class BoiteConnexionJDBC {
 			Logger.info("--- Connection not found via the connection pool. Trying with DriverManager ...");
 			
 			try {
-				//Chargement du pilote & obtention d'une connexion via DriverManager
+				// Chargement du pilote & obtention d'une connexion via DriverManager
 				Class.forName(DRIVER_CLASS);
 				connexion = DriverManager.getConnection(URL, USER, PASSWORD);
 				Logger.info("--- Connection found via DriverManager. Hcode: " + connexion.hashCode());
@@ -60,7 +60,7 @@ public class BoiteConnexionJDBC {
 	public static String testerConnexionJDBC() {
 		
 		String messageEtatBDD;
-		Connection connexion = BoiteConnexionJDBC.getConnection();		//--- Si vide on ressoit null sans erreur
+		Connection connexion = BoiteConnexionJDBC.getConnection();		// Si vide on ressoit null sans erreur
 		
 		if (connexion != null) {
 			

@@ -24,7 +24,7 @@ import net.apasajb.flischeklowa.outils.BoitePoolConnexionImple;
 @WebListener
 public class EcouteurAppli implements ServletContextListener {
 	
-	private static final String fuseauHoraire = "Europe/Warsaw";		//--- Le fuseau horaire de Klow
+	private static final String fuseauHoraire = "Europe/Warsaw";		// Le fuseau horaire de Klow
 	private static ServletContext servletContext = null;
 	private static CollectionVolsRest collectionVolsRest = new CollectionVolsRest();
 	
@@ -47,7 +47,7 @@ public class EcouteurAppli implements ServletContextListener {
 	}
 	
 	
-	//--- A L'ARRET DE L'APPLICATION
+	// A L'ARRET DE L'APPLICATION
 	@Override
 	public void contextDestroyed(ServletContextEvent sce)  {
 		
@@ -58,7 +58,7 @@ public class EcouteurAppli implements ServletContextListener {
 	}
 	
 	
-	//--- AU DEMARRAGE DE L'APPLICATION
+	// AU DEMARRAGE DE L'APPLICATION
 	@Override
 	public void contextInitialized(ServletContextEvent sce)  {
 		
@@ -68,7 +68,7 @@ public class EcouteurAppli implements ServletContextListener {
 		objetPool.demarrerPool(servletContext);
 		objetEmf.demarrerEMFactory(servletContext);
 		
-		//--- Chargement automatique d'un jour de vols si l'horaire du jour est vide
+		// Chargement automatique d'un jour de vols si l'horaire du jour est vide
 		JobChargementJourVols job = new JobChargementJourVols();
 		job.autoChargerVols();
 	}

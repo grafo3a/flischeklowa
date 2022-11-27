@@ -23,7 +23,7 @@ public class RestProducerListeVols {
 	CollectionVolsRest collectionVolsRest = EcouteurAppli.getCollectionVolsRest();
 	
 	
-	//--- Prise en charge des requetes par defaut "/"
+	// Prise en charge des requetes par defaut "/"
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getVols() {
@@ -47,7 +47,7 @@ public class RestProducerListeVols {
 	}
 	
 	
-	//--- Prise en charge des requetes Get XML pour une date
+	// Prise en charge des requetes Get XML pour une date
 	@GET
 	@Path("/xml/{dateRest: (2[0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])}")
 	@Produces(MediaType.APPLICATION_XML)
@@ -59,7 +59,7 @@ public class RestProducerListeVols {
 	}
 	
 	
-	//--- Prise en charge des requetes Get XML pour une Date et un Pays
+	// Prise en charge des requetes Get XML pour une Date et un Pays
 	@GET
 	@Path("/xml/{dateRest: (2[0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])}/{codePaysRest: [a-zA-Z]{2}}")
 	@Produces(MediaType.APPLICATION_XML)
@@ -75,7 +75,7 @@ public class RestProducerListeVols {
 	}
 	
 	
-	//--- Prise en charge des requetes Get XML pour une Date et un numero de vol
+	// Prise en charge des requetes Get XML pour une Date et un numero de vol
 	@GET
 	@Path("/xml/{dateRest: (2[0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])}/{numeroVolRest: [a-zA-Z]{3}[0-9]{2}}")
 	@Produces(MediaType.APPLICATION_XML)
@@ -104,7 +104,7 @@ public class RestProducerListeVols {
 	}
 	
 	
-	//--- Prise en charge des requetes Get JSON pour une date
+	// Prise en charge des requetes Get JSON pour une date
 	@GET
 	@Path("/json/{dateRest: (2[0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -116,7 +116,7 @@ public class RestProducerListeVols {
 	}
 	
 	
-	//--- Prise en charge des requetes Get JSON pour une Date et un Pays
+	// Prise en charge des requetes Get JSON pour une Date et un Pays
 	@GET
 	@Path("/json/{dateRest: (2[0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])}/{codePaysRest: [a-zA-Z]{2}}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -131,7 +131,7 @@ public class RestProducerListeVols {
 	}
 	
 	
-	//--- Prise en charge des requetes Get JSON pour une Date et un numero de vol
+	// Prise en charge des requetes Get JSON pour une Date et un numero de vol
 	@GET
 	@Path("/json/{dateRest: (2[0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])}/{numeroVolRest: [a-zA-Z]{3}[0-9]{2}}")
 	@Produces(MediaType.APPLICATION_JSON)

@@ -9,7 +9,7 @@ import javax.ws.rs.core.Application;
 * @author ApasaJB
 */
 
-@ApplicationPath("/vols-rest")		//--- C'est l'equivalent de webapi ailleurs
+@ApplicationPath("/vols-rest")		// C'est l'equivalent de webapi ailleurs
 public class ConfigAppliRest extends Application {
-	//--- On ne fait rien ici
+	// On ne fait rien ici
 }

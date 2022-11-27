@@ -19,7 +19,7 @@ public class BoiteEMFactoryImple implements BoiteEMFactory {
 	
 	public void demarrerEMFactory(ServletContext sletContext) {
 		
-		String persistenceUnit = "PU_Vols";		//--- L'unite de persistence est definie dans persistence.xml
+		String persistenceUnit = "PU_Vols";		// L'unitE de persistance est definie dans persistence.xml
 		
 		try {
 			
