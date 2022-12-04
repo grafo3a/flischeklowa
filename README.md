@@ -11,8 +11,6 @@ Although it exists only in the fiction world, the airport is probably located so
 Using FlischeKlowa gives you an opportunity to have the power and responsibilities of a flight scheduling administrator in an airport.
 Come on, have fun and schedule flights by exploring FlischeKlowa.
 
-The app is available online at https://flischeklowa.herokuapp.com/
-
 Technical aspects
 -----------------
 As a programming project, FlischeKlowa is an application based on Java EE 8.
@@ -35,6 +33,6 @@ The following technologies are used in the project:
 The entry point to the application is the root URL mapping "/" in the Servlet "ServletHoraireVols".
 
 By default, the app uses the in-memory H2 database.
-To use a differente database, you'll need to update the 2 following files correctly:
+To use a different database, you'll need to update the 2 following files correctly:
 * paquetBDD.properties (in src/net.apasajb.flischeklowa.ressourcesG11n)
 * persistence.xml (in src/META-INF).

@@ -61,15 +61,20 @@
 					<p>
 					<b>Question</b><br/>
 					The most frequently asked question is:<br/>
-					How can I login to FlischeKlowa?
+					How can I log in to FlischeKlowa?
 					</p>
 
 					<p>
 					<b>Answer</b><br/>
-					To login, simply type:<br/>
+					To log in, simply type:<br/>
 					- any valid email address<br/>
 					- as password, any word with 5 or more characters.<br/>
-					Only!
+					Only.
+					<br/>
+					<br/>
+					Nota bene: This is a demo app, don't worry about security.
+					In real production, you could be required to create an acount.<br/>
+					Log in and enjoy the app!
 					</p>
 					
 				</div>

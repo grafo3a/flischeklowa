@@ -72,13 +72,15 @@
 						</div>
 						
 						<div class="border-top text-end">
-							<i><b><a href="<c:url value="deconnexion-g11n"/> "><fmt:message key="J03_DECONNEXION" /></a></b></i>
+							<i><a href="<c:url value="deconnexion-g11n"/> ">[<fmt:message key="J03_DECONNEXION" />]</a></i>
 						</div>
 					</c:if>
 					
 					<%-- Si connexion absente --%>
 					<c:if test="${empty sessionScope.courrielCookie}" >
-						<div class="text-danger"><fmt:message key="J04_CONNEXION_KO" /></div>
+						<div class="text-danger"><fmt:message key="J04_CONNEXION_KO" />
+							<a href="aide"><i>[Help]</i></a>
+						</div>
 						
 						<form method="post" action="connexion-g11n">
 						 
