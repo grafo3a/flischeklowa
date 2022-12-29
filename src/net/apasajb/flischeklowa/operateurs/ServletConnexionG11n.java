@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import net.apasajb.flischeklowa.outils.Validation;
+import net.apasajb.flischeklowa.outils.ValidationImple;
 
 
 /**
@@ -86,7 +87,9 @@ public class ServletConnexionG11n extends HttpServlet {
 		if (request.getParameter("courriel").isEmpty() == false) {		// Si le parametre courriel present
 			
 			paramCourriel = request.getParameter("courriel");
-			courrielValide = Validation.validerCourriel(paramCourriel);		// validation de l'adresse courriel
+			
+			Validation validation = new ValidationImple();
+			courrielValide = validation.validerCourriel(paramCourriel);		// validation de l'adresse courriel
 			
 		} else {		// Si le parametre courriel absent
 			

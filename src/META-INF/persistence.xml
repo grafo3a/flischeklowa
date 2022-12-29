@@ -29,20 +29,9 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 				value="sa"/>
 			
 			
-			<!--=== PROPRIETES STANDARD JPA POSTGRESQL (POUR HEROKU) ===
-			<property
-				name="javax.persistence.jdbc.driver"
-				value="org.postgresql.Driver"/>
-			<property
-				name="javax.persistence.jdbc.url"
-				value="jdbc:postgresql://*************************************************:5432/**************"/>
-			<property
-				name="javax.persistence.jdbc.user"
-				value="**************"/>
-			<property
-				name="javax.persistence.jdbc.password"
-				value="****************************************************************"/>
-			-->
+			<!--=== PROPRIETES STANDARD JPA POSTGRESQL (POUR HEROKU) ===-->
+			
+			
 			
 			<!--=== QLQ PROPRIETES SPECIFIQUES HIBERNATE ===-->
 			<property
