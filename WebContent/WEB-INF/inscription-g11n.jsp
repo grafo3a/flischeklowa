@@ -68,7 +68,7 @@
 						<div class="row mt-4">
 							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 							    <div class="input-group input-group-sm">
-							      <div class="input-group-text large100px"><fmt:message key="J05_LABEL_COURRIEL" /></div>
+							      <div class="input-group-text large120px"><fmt:message key="J05_LABEL_COURRIEL" /></div>
 							      <input type="text" class="form-control" name="courriel"
 							      			placeholder="email@company.zz"
 							      			value="${param.courriel}" />
@@ -81,7 +81,7 @@
 							
 							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 								<div class="input-group input-group-sm">
-								  <div class="input-group-text large100px"><fmt:message key="J06_LABEL_MOT2P" /></div>
+								  <div class="input-group-text large120px"><fmt:message key="J06_LABEL_MOT2P" /></div>
 								  <input type="password"
 								  			class="form-control"
 								  			name="mot2p" value="${param.mot2p}" />
@@ -90,7 +90,7 @@
 							
 							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 								<div class="input-group input-group-sm">
-								  <div class="input-group-text large100px"><fmt:message key="J10_LABEL_MOT2P_ENCORE" /></div>
+								  <div class="input-group-text large120px"><fmt:message key="J10_LABEL_MOT2P_ENCORE" /></div>
 								  <input type="password"
 								  			class="form-control"
 								  			name="mot2p" value="${param.mot2p}" />
