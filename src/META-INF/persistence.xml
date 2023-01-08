@@ -6,9 +6,10 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 	<persistence-unit  name="PU_Vols">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
-		<!-- Les entités liées à cette unité de persistance -->
-		<!-- <class>net.apasajb.flischeklowa.dao.Etc</class> -->
+		<!-- Les entités liées à cette unité de persistance
+			(chaque entité represente une table en BDD) -->
 		<class>net.apasajb.flischeklowa.dao.Vol</class>
+		<class>net.apasajb.flischeklowa.dao.Compte</class>
 		
 		
 		<!-- Details de l'unité de persistance -->
