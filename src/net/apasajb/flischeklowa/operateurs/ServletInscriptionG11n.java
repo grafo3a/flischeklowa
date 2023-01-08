@@ -24,7 +24,7 @@ import net.apasajb.flischeklowa.outils.ValidationImple;
 public class ServletInscriptionG11n extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private static int dureeVieCookieSecondes = 20;
+	private static int dureeVieCookieSecondes = 30;
 	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,8 +35,6 @@ public class ServletInscriptionG11n extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// SI ON RESSOIT UN FORMULAIRE ON EST FORCEMENT DECONNECTE
 		
 		HttpSession session = request.getSession();
 		
@@ -55,14 +53,19 @@ public class ServletInscriptionG11n extends HttpServlet {
 		String S05_ERREUR_CONTRAT = paquetServlets.getString("S05_ERREUR_CONTRAT");
 		
 		String paramCourriel = null;
-		String paramMot2p = null;
+		String paramMot2p01 = null;
+		String paramMot2p02 = null;
 		String erreurCourriel = null;
-		String erreurMot2p = null;
+		String erreurMot2p01 = null;
+		String erreurMot2p02 = null;
 		String erreurContrat = null;
-		int longueurMot2p = 0;
-		boolean courrielValide = false;
-		boolean mot2pValide = false;
-		boolean contratAcceptee = true;
+		int longueurMot2p01 = 0;
+		int longueurMot2p02 = 0;
+		int nombreMinimumCaracteres = 5;
+		boolean isValidCourriel = false;
+		boolean isValidmot2p01 = false;
+		boolean isValidmot2p02 = false;
+		boolean isContractAccepted = true;
 		
 		
 		if (request.getParameter("courriel").isEmpty() == false) {		// Si le parametre courriel present
@@ -70,69 +73,99 @@ public class ServletInscriptionG11n extends HttpServlet {
 			paramCourriel = request.getParameter("courriel");
 			
 			Validation validation = new ValidationImple();
-			courrielValide = validation.validerCourriel(paramCourriel);		// validation de l'adresse courriel
+			isValidCourriel = validation.validerCourriel(paramCourriel);		// validation de l'adresse courriel
 			
 		} else {		// Si le parametre courriel absent
 			
 			erreurCourriel = S01_ERREUR_COURRIEL;
-			courrielValide = false;
+			isValidCourriel = false;
 		}
 		
 		
-		if ( courrielValide == false) {		// Si le courriel non valide
+		if ( isValidCourriel == false) {		// Si courriel non valide
 			erreurCourriel = S02_ERREUR_COURRIEL;
 		}
 		
 		
-		if (request.getParameter("mot2p").isEmpty() == false) {		// Si mot de passe present
+		// Si mot de passe 01 present
+		if (request.getParameter("mot2p01").isEmpty() == false) {
 			
-			paramMot2p = request.getParameter("mot2p");
-			longueurMot2p = paramMot2p.length();
+			paramMot2p01 = request.getParameter("mot2p01");
+			longueurMot2p01 = paramMot2p01.length();
 			
-		} else {		// Si Mot de passe absent
 			
-			mot2pValide = false;
-			erreurMot2p = S03_ERREUR_MOT2P;
-		}
-		
-		if (longueurMot2p >= 5) {
-			mot2pValide = true;
+			if (longueurMot2p01 >= nombreMinimumCaracteres) {		// une verif basique complexifiable
+				isValidmot2p01 = true;
+				
+			} else {
+				
+				isValidmot2p01 = false;
+				erreurMot2p01 = S04_ERREUR_MOT2P;
+				request.setAttribute("erreurMot2p01", erreurMot2p01);
+			}
 			
 		} else {
 			
-			erreurMot2p = S04_ERREUR_MOT2P;
-			mot2pValide = false;
+			isValidmot2p01 = false;
+			erreurMot2p01 = S03_ERREUR_MOT2P;
+			request.setAttribute("erreurMot2p01", erreurMot2p01);
 		}
+		
+		
+		// Si mot de passe 02 present
+		if (request.getParameter("mot2p02").isEmpty() == false) {
+			
+			paramMot2p02 = request.getParameter("mot2p02");
+			longueurMot2p02 = paramMot2p02.length();
+			
+			if (longueurMot2p02 >= nombreMinimumCaracteres) {		// une verif basique complexifiable
+				isValidmot2p02 = true;
+				
+			} else {
+				
+				isValidmot2p02 = false;
+				erreurMot2p02 = S04_ERREUR_MOT2P;
+				request.setAttribute("erreurMot2p02", erreurMot2p02);
+			}
+			
+		} else {
+			
+			isValidmot2p02 = false;
+			erreurMot2p02 = S03_ERREUR_MOT2P;
+			request.setAttribute("erreurMot2p02", erreurMot2p02);
+		}
+		
 		
 		if (request.getParameter("contrat") == null) {		// Si contrat d'utilisation acceptE ou non
 			
-			contratAcceptee = false;
+			isContractAccepted = false;
 			erreurContrat = S05_ERREUR_CONTRAT;
 			
-		} else {
-			
-			// Si case contrat cochee, on la coche en retour
-			session.setAttribute("checkboxContrat", "checked");
+		} else {		// Si case contrat cochee, on la coche en retour
+			request.setAttribute("checkboxContrat", "checked");
 		}
 		
 		// Si identifiants acceptEs, on est inscrit & connectE
-		if ((courrielValide == true) && (mot2pValide == true) && (contratAcceptee == true)) {
+		if (isValidCourriel && isValidmot2p01 && isValidmot2p02 && isContractAccepted) {
 			
-			// Inscription [...]
+			// Inscription: persistance du nouveau compte [...]
 			
 			Cookie cookie09 = new Cookie("courriel09", paramCourriel);		// On installe un cookie
 			cookie09.setMaxAge(60 * dureeVieCookieSecondes);		// La duree de vie du cookie en secondes
 			response.addCookie(cookie09);
 			session.setAttribute("courrielCookie", paramCourriel);
 			
-		} else {		// Si identifiants refusEs
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion-g11n.jsp");
+			rd.forward(request, response);
 			
-			session.setAttribute("erreurCourriel", erreurCourriel);
-			session.setAttribute("erreurMot2p", erreurMot2p);
-			session.setAttribute("erreurContrat", erreurContrat);
+		} else {
+			// Si identifiants refusEs
+			
+			request.setAttribute("erreurCourriel", erreurCourriel);
+			request.setAttribute("erreurContrat", erreurContrat);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/inscription-g11n.jsp");
+			rd.forward(request, response);
 		}
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/inscription-g11n.jsp");
-		rd.forward(request, response);
 	}
 }

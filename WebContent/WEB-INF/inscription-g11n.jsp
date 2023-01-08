@@ -63,9 +63,12 @@
 				
 				<div class="container border rounded bg-light p-2 mt-4">
 					
+					<!--=== Formulaire d'inscription ===-->
 					<form method="post" action="inscription-g11n">
 						
 						<div class="row mt-4">
+							
+							<!-- Courriel -->
 							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 							    <div class="input-group input-group-sm">
 							      <div class="input-group-text large120px"><fmt:message key="J05_LABEL_COURRIEL" /></div>
@@ -76,29 +79,33 @@
 							    
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-								<font color="red"><i>${sessionScope.erreurCourriel}</i></font>
+								<font color="red"><i>${requestScope.erreurCourriel}</i></font>
 							</div>
 							
+							<!-- Mot de passe 01 -->
 							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 								<div class="input-group input-group-sm">
 								  <div class="input-group-text large120px"><fmt:message key="J06_LABEL_MOT2P" /></div>
 								  <input type="password"
 								  			class="form-control"
-								  			name="mot2p" value="${param.mot2p}" />
+								  			name="mot2p01" value="${param.mot2p01}" />
 								</div>
 							</div>
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<font color="red"><i>${requestScope.erreurMot2p01}</i></font>
+							</div>
 							
+							<!-- Mot de passe 02 -->
 							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 								<div class="input-group input-group-sm">
 								  <div class="input-group-text large120px"><fmt:message key="J10_LABEL_MOT2P_ENCORE" /></div>
 								  <input type="password"
 								  			class="form-control"
-								  			name="mot2p" value="${param.mot2p}" />
+								  			name="mot2p02" value="${param.mot2p02}" />
 								</div>
 							</div>
-							
 							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-								<font color="red"><i>${sessionScope.erreurMot2p}</i></font>
+								<font color="red"><i>${requestScope.erreurMot2p02}</i></font>
 							</div>
 						</div>
 						
@@ -113,7 +120,7 @@
 								</label>
 							</div>
 							
-							<font color="red"><i>${sessionScope.erreurContrat}</i></font>
+							<font color="red"><i>${requestScope.erreurContrat}</i></font>
 						</div>
 						
 						<button type="submit"
