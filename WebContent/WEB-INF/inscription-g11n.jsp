@@ -121,6 +121,7 @@
 							</div>
 							
 							<font color="red"><i>${requestScope.erreurContrat}</i></font>
+							<font color="red"><i>${requestScope.erreurInscription}</i></font>
 						</div>
 						
 						<button type="submit"

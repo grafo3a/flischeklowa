@@ -81,7 +81,7 @@ public class OperationsORM {
 	
 	
 	/**
-	 *Lit des details d'un vol sur base d'un moment date-heure.
+	 *Lit les details d'un vol sur base d'un moment date-heure.
 	 * @return Vol
 	 */
 	public Vol lireVolViaDateHeure (String dateVol, String heureVol, EntityManager em) {
@@ -123,8 +123,7 @@ public class OperationsORM {
 			erreurAjoutVol = ex.getMessage();
 			
 		} finally {
-			
-			try { em.close();} catch (Exception ignore) {}
+			try { em.close(); } catch (Exception ignore) {}
 		}
 	}
 	

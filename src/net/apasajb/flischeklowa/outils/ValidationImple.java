@@ -1,5 +1,10 @@
 package net.apasajb.flischeklowa.outils;
 
+import javax.persistence.EntityManager;
+import org.tinylog.Logger;
+import net.apasajb.flischeklowa.dao.Compte;
+import net.apasajb.flischeklowa.operateurs.OperationsORMComptes;
+
 
 /**
  * Offre des methodes qui verifient si les identifiants fournis sont valides.
@@ -8,34 +13,80 @@ package net.apasajb.flischeklowa.outils;
 
 public class ValidationImple implements Validation {
 	
-	static final String regexCourriel = "^[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,10}$";
-	static boolean isValid;
+	final String regexCourriel = "^[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,10}$";
+	
+	private String erreurLogin;
 	
 	
 	// Validation de l'adresse courriel
-	public boolean validerCourriel (String courriel88) {
+	@Override
+	public boolean isCourrielValid(String courriel) {
 		
-		if (courriel88.matches(regexCourriel)) {
-			isValid = true;
-			
-		} else {
-			isValid = false;
+		boolean isEmailValid = false;
+		
+		if (courriel.matches(regexCourriel)) {
+			isEmailValid = true;	
 		}
 		
-		return isValid;
+		return isEmailValid;
 	}
 	
 	
 	// Validation du mot de passe
-	public boolean validerMot2passe(String mot2passe) {
+	@Override
+	public boolean isMot2passeValid(String mot2passe) {
 		
-		if (mot2passe.length() >= 5) {
-			isValid = true;
-			
-		} else {
-			isValid = false;
+		boolean isPasswordValid = false;
+		int nombreMinimumCaracteres = 5;
+		
+		if (mot2passe.length() >= nombreMinimumCaracteres) {
+			isPasswordValid = true;	
 		}
 		
-		return isValid;
+		return isPasswordValid;
 	}
+	
+	
+	// Verif si mot de passe correct en BDD
+	@Override
+	public boolean isPasswordCorrectInDB(String adresseCourriel, String mot2passe, EntityManager em) {
+		
+		boolean isPasswordCorrect = false;
+		String mot2passeEnBDD;
+		OperationsORMComptes operationsORMComptes = new OperationsORMComptes();
+		
+		try {
+			Compte compte = operationsORMComptes.trouverCompteViaCourriel(adresseCourriel, em);
+			mot2passeEnBDD = compte.getMot2Passe();
+			
+			if (mot2passe.equals(mot2passeEnBDD)) {
+				isPasswordCorrect = true;
+			}
+			
+		} catch (Exception ex) {
+			
+			if (em == null) {
+				erreurLogin = "EntityManager not found.";
+				
+			} else {
+				erreurLogin = "Wrong credentials.";
+			}
+			
+			Logger.error(erreurLogin + " (" + ex.getMessage() + ")");
+			
+		} finally {
+			try { em.close(); } catch (Exception ignore) {}
+		}
+		
+		return isPasswordCorrect;
+	}
+	
+	
+	//====================================================== GETTERS/SETTERS //
+	@Override
+	public String getErreurLogin() {
+		return erreurLogin;
+	}
+	
+	//========================================================================//
 }

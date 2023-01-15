@@ -3,6 +3,7 @@ package net.apasajb.flischeklowa.operateurs;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import net.apasajb.flischeklowa.ecouteurs.EcouteurAppli;
+import net.apasajb.flischeklowa.outils.BoiteLogin;
 import net.apasajb.flischeklowa.outils.Validation;
 import net.apasajb.flischeklowa.outils.ValidationImple;
 
@@ -19,12 +22,10 @@ import net.apasajb.flischeklowa.outils.ValidationImple;
  * Servlet qui gere la connexion au moyen d'une adresse courriel et d'un cookie avec globalisation G11N/I18N.
  * @author ApasaJB
  */
-
 @WebServlet("/connexion-g11n")
 public class ServletConnexionG11n extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private static int dureeVieCookieSecondes = 20;
 	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,7 +33,8 @@ public class ServletConnexionG11n extends HttpServlet {
 		HttpSession session = request.getSession();
 		Cookie[] listeCookies = request.getCookies();
 		
-		if (listeCookies != null) {		// Si des cookies sont presents
+		if (listeCookies != null) {
+			// Si des cookies sont presents
 			
 			String nomCookie = null;
 			String valeurCookie = null;
@@ -70,7 +72,6 @@ public class ServletConnexionG11n extends HttpServlet {
 		String S01_ERREUR_COURRIEL = paquetServlets.getString("S01_ERREUR_COURRIEL");
 		String S02_ERREUR_COURRIEL = paquetServlets.getString("S02_ERREUR_COURRIEL");
 		String S03_ERREUR_MOT2P = paquetServlets.getString("S03_ERREUR_MOT2P");
-		String S04_ERREUR_MOT2P = paquetServlets.getString("S04_ERREUR_MOT2P");
 		String S05_ERREUR_CONTRAT = paquetServlets.getString("S05_ERREUR_CONTRAT");
 		
 		String paramCourriel = null;
@@ -78,75 +79,75 @@ public class ServletConnexionG11n extends HttpServlet {
 		String erreurCourriel = null;
 		String erreurMot2p = null;
 		String erreurContrat = null;
-		int longueurMot2p = 0;
-		boolean courrielValide = false;
-		boolean mot2pValide = false;
-		boolean contratAcceptee = true;
+		boolean isCourrielValid = false;
+		boolean isMot2pCorrect = false;
+		boolean isContractAccepted = false;
+		Validation validation = new ValidationImple();
 		
-		
-		if (request.getParameter("courriel").isEmpty() == false) {		// Si le parametre courriel present
+		if (request.getParameter("courriel").isEmpty() == false) {
+			// Si le parametre courriel present
 			
 			paramCourriel = request.getParameter("courriel");
+			isCourrielValid = validation.isCourrielValid(paramCourriel);
 			
-			Validation validation = new ValidationImple();
-			courrielValide = validation.validerCourriel(paramCourriel);		// validation de l'adresse courriel
+			if ( isCourrielValid == false) {
+				// Si courriel non valide
+				erreurCourriel = S02_ERREUR_COURRIEL;
+			}
 			
-		} else {		// Si le parametre courriel absent
+		} else {
+			// Si le parametre courriel absent
 			
 			erreurCourriel = S01_ERREUR_COURRIEL;
-			courrielValide = false;
+			isCourrielValid = false;
 		}
 		
-		
-		if ( courrielValide == false) {		// Si le courriel non valide
-			erreurCourriel = S02_ERREUR_COURRIEL;
-		}
-		
-		
-		if (request.getParameter("mot2p").isEmpty() == false) {		// Si mot de passe present
+		if (request.getParameter("mot2p").isEmpty() == false) {
+			// Si mot de passe present
 			
+			EntityManager em = EcouteurAppli.getEM();
 			paramMot2p = request.getParameter("mot2p");
-			longueurMot2p = paramMot2p.length();
+			boolean isPasswordCorrectInDB = false;
 			
-		} else {		// Si Mot de passe absent
+			try {
+				isPasswordCorrectInDB = validation.isPasswordCorrectInDB(paramCourriel, paramMot2p, em);
+				
+			} catch (Exception ignore) {}
 			
-			mot2pValide = false;
+			if (isPasswordCorrectInDB) {
+				isMot2pCorrect = true;
+			
+			} else {
+				erreurMot2p = "ERROR: " + validation.getErreurLogin();
+			}
+			
+		} else {
+			// Si Mot de passe absent
 			erreurMot2p = S03_ERREUR_MOT2P;
 		}
 		
-		if (longueurMot2p >= 5) {
-			mot2pValide = true;
-			
-		} else {
-			
-			erreurMot2p = S04_ERREUR_MOT2P;
-			mot2pValide = false;
-		}
 		
-		if (request.getParameter("contrat") == null) {		// Si contrat d'utilisation acceptE ou non
-			
-			contratAcceptee = false;
-			erreurContrat = S05_ERREUR_CONTRAT;
-			
-		} else {
-			
+		if (request.getParameter("contrat") != null) {
 			// Si case contrat cochee, on la coche en retour
+			
+			isContractAccepted = true;
 			session.setAttribute("checkboxContrat", "checked");
+			
+		} else {
+			// si contrat non acceptE
+			erreurContrat = S05_ERREUR_CONTRAT;
 		}
 		
-		// Si connexion acceptee, on est connectee.
-		if ((courrielValide == true) && (mot2pValide == true) && (contratAcceptee == true)) {
+		if (isCourrielValid && isMot2pCorrect && isContractAccepted) {
+			// Si connexion acceptee, on est connectee.
+			BoiteLogin.creerCookie(paramCourriel, response, session);
 			
-			Cookie cookie09 = new Cookie("courriel09", paramCourriel);		// On installe un cookie
-			cookie09.setMaxAge(60 * dureeVieCookieSecondes);		// La duree de vie du cookie en secondes
-			response.addCookie(cookie09);
-			session.setAttribute("courrielCookie", paramCourriel);
+		} else {
+			// Si connexion refusee
 			
-		} else {		// Si connexion refusee
-			
-			session.setAttribute("erreurCourriel", erreurCourriel);
-			session.setAttribute("erreurMot2p", erreurMot2p);
-			session.setAttribute("erreurContrat", erreurContrat);
+			request.setAttribute("erreurCourriel", erreurCourriel);
+			request.setAttribute("erreurMot2p", erreurMot2p);
+			request.setAttribute("erreurContrat", erreurContrat);
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion-g11n.jsp");

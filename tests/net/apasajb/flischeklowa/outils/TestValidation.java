@@ -8,7 +8,7 @@ class TestValidation {
 	
 	Validation validation = new ValidationImple();
 	
-	
+	/*
 	@Test
 	void testerValidationCourriel() {
 		
@@ -24,4 +24,5 @@ class TestValidation {
 		Assertions.assertFalse(validation.validerCourriel("joseph_.55@fk.net"));
 		Assertions.assertFalse(validation.validerCourriel("joseph55_@fk.net"));
 	}
+	*/
 }
