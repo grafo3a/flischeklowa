@@ -108,8 +108,9 @@
 						</c:otherwise>
 					</c:choose>
 					
-					<hr></hr>
-					<div class="text-end"><a href="controle-pool"><i>[Refresh]</i></a></div>
+					<div class="border-top text-end mt-2">
+						<a href="controle-pool"><i>[Refresh]</i></a>
+					</div>
 				</div>
 				
 				<!--=== FABRIQUE EMFACTORY ===-->
@@ -148,8 +149,9 @@
 						</c:otherwise>
 					</c:choose>
 					
-					<hr></hr>
-					<div class="text-end"><a href="controle-emfactory"><i>[Refresh]</i></a></div>
+					<div class="border-top text-end mt-2">
+						<a href="controle-emfactory"><i>[Refresh]</i></a>
+					</div>
 				</div>
 				
 				<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->

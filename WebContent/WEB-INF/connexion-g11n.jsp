@@ -71,7 +71,7 @@
 							<c:out value="${sessionScope.courrielCookie}" />
 						</div>
 						
-						<div class="border-top text-end">
+						<div class="border-top text-end mt-2">
 							<i><a href="<c:url value="deconnexion-g11n"/> ">[<fmt:message key="J03_DECONNEXION" />]</a></i>
 						</div>
 					</c:if>
@@ -130,6 +130,10 @@
 									<fmt:message key="J08_VALIDER" />
 					    	</button>
 						</form>
+						
+						<div class="border-top text-end mt-2">
+							<a href="inscription-g11n"><i>[create account]</i></a>
+						</div>
 					</c:if>
 				</div>
 				
