@@ -118,7 +118,7 @@ public class ServletConnexionG11n extends HttpServlet {
 				isMot2pCorrect = true;
 			
 			} else {
-				erreurMot2p = "ERROR: " + validation.getErreurLogin();
+				erreurMot2p = validation.getErreurLogin();
 			}
 			
 		} else {
@@ -128,22 +128,22 @@ public class ServletConnexionG11n extends HttpServlet {
 		
 		
 		if (request.getParameter("contrat") != null) {
-			// Si case contrat cochee, on la coche en retour
+			// Si case contrat cochée, on la coche en retour
 			
 			isContractAccepted = true;
 			session.setAttribute("checkboxContrat", "checked");
 			
 		} else {
-			// si contrat non acceptE
+			// si contrat non accepté
 			erreurContrat = S05_ERREUR_CONTRAT;
 		}
 		
 		if (isCourrielValid && isMot2pCorrect && isContractAccepted) {
-			// Si connexion acceptee, on est connectee.
+			// Si connexion acceptée, on est ensuite connecté.
 			BoiteLogin.creerCookie(paramCourriel, response, session);
 			
 		} else {
-			// Si connexion refusee
+			// Si connexion refusée
 			
 			request.setAttribute("erreurCourriel", erreurCourriel);
 			request.setAttribute("erreurMot2p", erreurMot2p);

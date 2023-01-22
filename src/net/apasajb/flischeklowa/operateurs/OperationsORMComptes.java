@@ -2,6 +2,7 @@ package net.apasajb.flischeklowa.operateurs;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import org.tinylog.Logger;
 import net.apasajb.flischeklowa.dao.Compte;
 
 
@@ -28,7 +29,12 @@ public class OperationsORMComptes {
 			requete.setParameter("email", adresseCourriel);
 			compte = (Compte)requete.getSingleResult();
 			
-		} catch (Exception ignore) {}
+		} catch (Exception ex) {
+			Logger.error(ex.getMessage() + "\n* " + ex.toString());
+			
+		} finally {
+			try { em.close(); } catch (Exception ignore) {}
+		}
 		
 		return compte;
 	}
@@ -47,7 +53,8 @@ public class OperationsORMComptes {
 		
 		} catch (Exception ex) {
 			em.getTransaction().rollback();
-		
+			Logger.error(ex.getMessage() + "\n* " + ex.toString());
+			
 		} finally {
 			try { em.close(); } catch (Exception ignore) {}
 		}

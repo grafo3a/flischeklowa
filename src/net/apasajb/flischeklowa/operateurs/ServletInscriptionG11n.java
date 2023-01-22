@@ -142,46 +142,55 @@ public class ServletInscriptionG11n extends HttpServlet {
 		}
 		
 		if (isCourrielValid && isMot2pValid01 && isMot2pValid02 && isContractAccepted) {
-			// Si identifiants acceptés, on est inscrit & connecté
+			// Si identifiants acceptés, on est ensuite inscrit & connecté
 			
+			// Inscription & persistance du nouveau compte
 			boolean isInscriptionOK = false;
+			EntityManager em = EcouteurAppli.getEM();		// safe, returns em or null
 			
-			try {
-				// Inscription & persistance du nouveau compte [...]
+			if (em != null) {
+				// Si em present
 				
-				EntityManager em = EcouteurAppli.getEM();
-				OperationsORMComptes operationsORMComptes = new OperationsORMComptes();
-				operationsORMComptes.persisterCompte(paramCourriel, paramMot2p02, em);		// La methode fermera em01
-				isInscriptionOK = true;
-				Logger.info("-- Persistance du nouveau compte OK.");
-				Logger.info("-- Compte créé correctement: " + paramCourriel);
+				try {
+					OperationsORMComptes operationsORMComptes = new OperationsORMComptes();
+					operationsORMComptes.persisterCompte(paramCourriel, paramMot2p02, em);		// La methode fermera em
+					isInscriptionOK = true;
+					Logger.info("New account persistence OK.");
+					Logger.info("Account created successfully: " + paramCourriel);
+					
+				} catch (Exception ex) {
+					
+					erreurInscription = ex.getMessage();
+					Logger.error(erreurInscription);
+					request.setAttribute("erreurInscription", erreurInscription);
+				}
 				
-			} catch (Exception ex) {
+			} else {
+				// Si em absent
 				
-				erreurInscription = "ERROR: " + ex.getMessage();
+				erreurInscription = "EntityManager not found!";
 				Logger.error(erreurInscription);
 				request.setAttribute("erreurInscription", erreurInscription);
-				
-				// Reponse pour l'utilisateur
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/inscription-g11n.jsp");
-				rd.forward(request, response);
 			}
 			
 			if (isInscriptionOK) {
-				// Creation d'un cookie pour le nouveau compte
+				// Connexion du nouveau compte (creation d'un cookie)
 				BoiteLogin.creerCookie(paramCourriel, response, session);
+				
+				// Reponse pour l'utilisateur
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion-g11n.jsp");
+				rd.forward(request, response);
+				
+			} else {
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/inscription-g11n.jsp");
+				rd.forward(request, response);
 			}
-			
-			// Reponse pour l'utilisateur
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion-g11n.jsp");
-			rd.forward(request, response);
 			
 		} else {
 			// Si identifiants refusés
 			
 			request.setAttribute("erreurCourriel", erreurCourriel);
 			request.setAttribute("erreurContrat", erreurContrat);
-			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/inscription-g11n.jsp");
 			rd.forward(request, response);
 		}
