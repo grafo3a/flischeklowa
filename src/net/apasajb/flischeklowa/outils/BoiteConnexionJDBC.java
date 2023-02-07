@@ -34,22 +34,21 @@ public class BoiteConnexionJDBC {
 		try {
 			ServletContext contexte = EcouteurAppli.getServletContext();
 			DataSource poolConnexion = (DataSource)  contexte.getAttribute("poolConnex");
-			Logger.info("--- Connection pool found. Hcode: " + poolConnexion.hashCode());
 			connexion = poolConnexion.getConnection();
-			Logger.info("--- Connection found via the connection pool. Hcode: " + connexion.hashCode());
+			Logger.info("* Connection found via the connection pool. Hcode: " + connexion.hashCode());
 			
 		} catch (Exception ex) {
 			
-			Logger.info("--- Connection not found via the connection pool. Trying with DriverManager ...");
+			Logger.info("* Connection not found via the connection pool. Trying with DriverManager ...");
 			
 			try {
 				// Chargement du pilote & obtention d'une connexion via DriverManager
 				Class.forName(DRIVER_CLASS);
 				connexion = DriverManager.getConnection(URL, USER, PASSWORD);
-				Logger.info("--- Connection found via DriverManager. Hcode: " + connexion.hashCode());
+				Logger.info("* Connection found via DriverManager. Hcode: " + connexion.hashCode());
 				
 			} catch (Exception exce) {
-				Logger.info("--- ERROR: Connection not found. Message: " + exce.getMessage());
+				Logger.info("* Connection not found. Message: " + exce.getMessage());
 			}
 		}
 		
@@ -66,21 +65,21 @@ public class BoiteConnexionJDBC {
 			
 			try {
 				DatabaseMetaData metadata = connexion.getMetaData();
-				messageEtatBDD = "<font color=\"green\">The database is responding. DB details: "
+				messageEtatBDD = "<font color=\"green\">* The database is responding. DB details: "
 						+ metadata.getDatabaseProductName() + " "
 						+ metadata.getDatabaseProductVersion() + "</font>";
 			} catch (Exception ex) {
 				
-				messageEtatBDD = "<font color=\"red\">--- ERROR: " + ex.getMessage() + "</font>";
-				Logger.info("--- ERROR: " + ex.getMessage());
-			
+				messageEtatBDD = "<font color=\"red\">* " + ex.getMessage() + "</font>";
+				Logger.info("* " + ex.getMessage());
+				
 			} finally {
 				
 				try { connexion.close(); } catch (Exception ignore) {}
 			}
 			
 		} else {
-			messageEtatBDD = "<font color=\"red\">The database is not accessible</font>";
+			messageEtatBDD = "<font color=\"red\">* The database is not responding</font>";
 		}
 		
 		return messageEtatBDD;

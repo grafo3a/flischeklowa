@@ -36,11 +36,13 @@
 			
 			<!--=== COLUMN A1 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<div class="mt-4 mb-2">
 					
-				<div class="card border-warning mt-4 mb-2">
-					<div class="card-header text-center bg-orange-faible">CONTACT</div>
+					<div class="fs-3 text-center border rounded page-title">Contact</div>
 					
-					<div class="card-body p-2"></div>
+					<div class="p-2 mt-3">
+					</div>
+					
 				</div>
 			</div>
 			
@@ -88,7 +90,7 @@
 	
 	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
-		document.getElementById("menuContact").className = "pageActuelle";		/* Adapter l'ID ici */
+		document.getElementById("menuContact").className = "pageActive";		/* Adapter l'ID ici */
 	</script>
 	
 </body>

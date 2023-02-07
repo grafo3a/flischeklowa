@@ -32,12 +32,16 @@
 			
 			<!--=== COLUMN A1 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				
-				<div class="card border-warning mt-4 mb-2">
-					<div class="card-header text-center bg-orange-faible">CONNECTIONS CONTROL</div>
+				<div class="mt-4 mb-2">
 					
-					<div class="card-body p-2">
-					  <p class="card-text"></p>
+					<div class="fs-3 text-center border rounded page-title">DB Connections Control</div>
+					
+					<div class="p-2 mt-3">
+					
+					<p>
+					The state of the database, the connection pool and the EntityManagerFactory can be checked below.
+					</p>
+					
 					</div>
 				</div>
 			</div>

@@ -1,13 +1,18 @@
 /* L'EN-TETE
 ----------------------*/
 
+.pageActive {
+	border-bottom: 3px solid orange;
+	color: black;
+	padding-Bottom: 5px;
+}
+
+
 .pageActuelle {
-	border: 1px solid orange;
-	border-radius: 20%;
 	border-bottom: 3px solid orange;
 	color: black;
 	text-decoration: initial;
-	padding: 8px;
+	padding-top: 7px;
 }
 
 
@@ -73,8 +78,8 @@ body {
 /* STYLES GENERIQUES
 -------------------------*/
 
-.bg-orange-faible {
-	background-color: #ffdea3; /*orange faible*/
+.page-title {
+	background-color: #ECECEC; /* gris faible++ */
 }
 
 
@@ -91,8 +96,8 @@ body {
 
 
 a:hover {
-  text-decoration: underline;
   color: black;
+  text-decoration: underline;
 }
 
 

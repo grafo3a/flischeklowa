@@ -33,11 +33,13 @@
 			
 			<!--=== COLUMN A1 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<div class="mt-4 mb-2">
 					
-				<div class="card border-warning mt-4 mb-2">
-					<div class="card-header text-center bg-orange-faible">HELP</div>
+					<div class="fs-3 text-center border rounded page-title">Help</div>
 					
-					<div class="card-body p-2"></div>
+					<div class="p-2 mt-3">
+					</div>
+					
 				</div>
 			</div>
 			
@@ -55,26 +57,17 @@
 			
 			<!--=== COLUMN B1 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-			
+				
 				<div class="container border rounded bg-light p-1 mt-4">
 					
 					<p>
 					<b>Question</b><br/>
-					The most frequently asked question is:<br/>
 					How can I log in to FlischeKlowa?
 					</p>
-
+					
 					<p>
 					<b>Answer</b><br/>
-					To log in, simply type:<br/>
-					- any valid email address<br/>
-					- as password, any word with 5 or more characters.<br/>
-					Only.
-					<br/>
-					<br/>
-					Nota bene: This is a demo app, don't worry about security.
-					In real production, you could be required to create an acount.<br/>
-					Log in and enjoy the app!
+					To log in, create an account and then use it.
 					</p>
 					
 				</div>
@@ -101,12 +94,10 @@
 	
 	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
+		/* Pour les pages a-propos, projet, aide */
 		
-		var option = document.getElementById("menuAbout");
-		option.style.border = "1px solid orange";		/* orange faible */
-		option.style.borderRadius = "20%";
-		option.style.borderBottom = "3px solid orange";
-		option.style.color = "black";
+		document.getElementById("menuAbout").className = "nav-link dropdown-toggle p-2 text-dark";		/* Cf. entete.xhtml */
+		document.getElementById("texteAbout").className = "pageActive";
 	</script>
 	
 </body>

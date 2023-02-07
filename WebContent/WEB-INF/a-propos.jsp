@@ -33,14 +33,12 @@
 			
 			<!--=== COLUMN A1 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				
-				<div class="card border-warning mt-4 mb-2">
-					<div class="card-header text-center bg-orange-faible">ABOUT FLISCHEKLOWA</div>
+				<div class="mt-4 mb-2">
 					
-					<div class="card-body p-2">
-						<p class="card-text"></p>
+					<div class="fs-3 text-center border rounded page-title">About FlischeKlowa</div>
+					
+					<div class="p-2 mt-3">
 					</div>
-					
 				</div>
 			</div>
 			
@@ -98,12 +96,10 @@
 	
 	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
+		/* Pour les pages a-propos, projet, aide */
 		
-		var option = document.getElementById("menuAbout");
-		option.style.border = "1px solid orange";		/* orange faible */
-		option.style.borderRadius = "20%";
-		option.style.borderBottom = "3px solid orange";
-		option.style.color = "black";
+		document.getElementById("menuAbout").className = "nav-link dropdown-toggle p-2 text-dark";		/* Cf. entete.xhtml */
+		document.getElementById("texteAbout").className = "pageActive";
 	</script>
 	
 </body>
