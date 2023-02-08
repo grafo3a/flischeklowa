@@ -97,8 +97,6 @@
 	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
 		/* Pour les pages a-propos, projet, aide */
-		
-		document.getElementById("menuAbout").className = "nav-link dropdown-toggle p-2 text-dark";		/* Cf. entete.xhtml */
 		document.getElementById("texteAbout").className = "pageActive";
 	</script>
 	
