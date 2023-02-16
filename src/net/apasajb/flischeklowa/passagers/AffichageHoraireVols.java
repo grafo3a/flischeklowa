@@ -53,23 +53,27 @@ public class AffichageHoraireVols {
 				paramSens = tabSens[0];
 				
 				if (paramSens.equals("All") && request.getParameter("pays").isEmpty()){
+					// Sens = All, pays = vide
 					
 					requeteSQL = "select * FROM vols55 WHERE TO_CHAR(date_heure, 'YYYY-MM-DD') =? ORDER BY date_heure";
 					remarqueSQL = "Info: No criteria chosen! You can filter by direction or country.";
 					casRequete = 1;
 					
 				} else if (paramSens.equals("All") && request.getParameter("pays").isEmpty() == false) {
+					// Sens = All, pays = defini
 					
 					requeteSQL = "select * FROM vols55 WHERE TO_CHAR(date_heure, 'YYYY-MM-DD') =? AND code_pays =? ORDER BY date_heure";
 					paramPays = request.getParameter("pays").toUpperCase();
 					casRequete = 2;
 					
 				} else if (!paramSens.equals("All") && request.getParameter("pays").isEmpty()) {
+					// Sens = depart||arrivee, pays = vide
 					
 					requeteSQL = "select * FROM vols55 WHERE TO_CHAR(date_heure, 'YYYY-MM-DD') =? AND sens =? ORDER BY date_heure";
 					casRequete = 3;
 					
 				} else {
+					// Sens = depart||arrivee, pays = defini
 					
 					paramPays = request.getParameter("pays").toUpperCase();
 					requeteSQL = "SELECT * FROM vols55 WHERE TO_CHAR(date_heure, 'YYYY-MM-DD') =? AND sens =? AND code_pays =? ORDER BY date_heure";
@@ -206,16 +210,16 @@ public class AffichageHoraireVols {
 				}
 				
 				if (numeroLigne == 0) {		// Si numeroLigne tjrs 0 donc resultSet est vide.
-					tableHoraireVols = "<font color=\"red\">[Info] Ohhh, no flight found!</font>";
+					tableHoraireVols = "<font color=\"red\">[INFO] Ohhh, no flight found!</font>";
 				}
 				
 				tableHoraireVols = tableHoraireVols + "</tbody></table>";
 				
 			} catch (SQLException sqlex) {
-				messageErreur = "ERROR. Type: SQL. Message: " + sqlex.getMessage();
+				messageErreur = "[ERROR] Type: SQL. Message: " + sqlex.getMessage();
 				
 			} catch (Exception ex) {
-				messageErreur = "ERROR. Type: Any. Message: " + ex.getMessage();
+				messageErreur = "[ERROR] Type: Any. Message: " + ex.getMessage();
 				
 			} finally {
 				
@@ -227,7 +231,7 @@ public class AffichageHoraireVols {
 			}
 			
 		} else {
-			messageErreur = "--- ERROR: The connection failed. Check manually if the database is accessible.";
+			messageErreur = "[ERROR] The connection failed. Check manually if the database is accessible.";
 		}
 		
 		remarqueSQL = "<font color='blue'><i>" + remarqueSQL + "</i></font>";

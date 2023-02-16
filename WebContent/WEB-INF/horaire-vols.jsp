@@ -33,36 +33,57 @@
 			
 			<!--=== COLUMN A1 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				
 				<div class="mt-4 mb-2">
-					
 					<div class="fs-3 text-center border rounded page-title">Today's flights</div>
+					
+					<div class="pt-2 pb-2 mt-4">
 						
-						<div class="p-2 mt-3">
-							<table>
-								<tr>
-									<td>Direction</td>
-									<td>:&emsp;
-										<span id="labelSensChoisi"><i>
-											<c:out value="${param.sens}" />
-											<c:if test="${empty param.sens}">Departure</c:if></i>
-										</span>
-									</td>
-								</tr>
-								<tr>
-									<td>Country</td>
-									<td>:&emsp;
-										<span id="labelPaysChoisi"><i>
-											<c:out value="${param.pays}" />
-											<c:if test="${empty param.pays}">All</c:if></i>
-										</span>
-									</td>
-								</tr>
-							</table>
-						</div>
+						<!--=== Flights display filter ===-->
+						<form class="row" method="post" action="horaire-vols">
+							
+							<div class="col-5">
+								<div class="input-group input-group-sm">
+									<div class="input-group-text">Direction</div>
+									
+									<select id="sensChoisi" class="form-select form-select-sm" name="sens">
+										
+										<option value="Departure"
+											<c:if test="${param.sens == 'Departure'}">selected="selected"</c:if>>
+											Departure
+										</option>
+										
+										<option value="Arrival"
+											<c:if test="${param.sens == 'Arrival'}">selected="selected"</c:if>>
+											Arrival
+										</option>
+										
+										<option value="All"
+											<c:if test="${param.sens == 'All'}">selected="selected"</c:if>>
+											All
+										</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="col-5">
+								<div class="input-group input-group-sm">
+									<div class="input-group-text">Country Code</div>
+									
+									<input id="paysChoisi" type="text" class="form-control"
+											name="pays" placeholder="ZZ" value="<c:out value='${param.pays}'/>" />
+											
+								</div>
+							</div>
+							
+							<div class="col-2">
+								<button type="submit"
+										class="btn btn-warning btn-sm bouton-orangeatre w-100">Filter</button>
+							</div>
+						</form>
 					</div>
 				</div>
-				
+			</div>
+			
 			<!--=== COLUMN A2 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 				
@@ -70,7 +91,6 @@
 				<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
 			</div>
 		</div>
-		
 		
 		<!--=== ROW B ===-->
 		<div class="row">
@@ -81,34 +101,6 @@
 				<!--=== Affichage du tableau-horaire de vols ===-->
 				<div id="affichageHoraireVols" class="mt-4">
 					${requestScope.tableHoraireVols}
-				</div>
-				
-				
-				<!--=== Flights display filter ===-->
-				<div class="container border rounded bg-light p-2">
-				
-					<form class="row" method="post" action="horaire-vols">
-					  <div class="col-6">
-					    <div class="input-group input-group-sm">
-					      <div class="input-group-text">Country Code</div>
-					      <input type="text" class="form-control" name="pays" placeholder="ZZ" />
-					    </div>
-					  </div>
-					  
-					  <div class="col-4">
-					    <select class="form-select form-select-sm" name="sens">
-					      
-					      <option value="Departure">Departure</option>
-					      <option value="Arrival">Arrival</option>
-					      <option value="All">All</option>
-					    </select>
-					  </div>
-					  
-					  <div class="col-2">
-					    <button type="submit" class="btn btn-warning btn-sm bouton-orangeatre w-100">Filter</button>
-					  </div>
-					  
-					</form>
 				</div>
 				
 				<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->

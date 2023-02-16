@@ -30,24 +30,25 @@ function sendInfo() {
 }
 
 
-function getInfo(){		//--- Phase Retour
+function getInfo(){
+	// Phase Retour
 	
-	if(this.readyState == 4 && this.status == 200){
+	if (this.readyState == 4 && this.status == 200){
 		
 		var responseVal=xmlHttpRequest.responseText;
 		document.getElementById('affichageHoraireVols').innerHTML = responseVal;
 		
 	} else {
-		//alert("--- Reponse Ajax non ressue!");
+		// alert("[ERROR] Ajax response not received!");
 	}
 }
 
 
 function actualiserInfosChaqueSeconde() {
 	
-	//--- On actualise l'heure affichee
-	//--- setInterval = execute cette fonction apres chaque x millisecondes.
-	//--- La fonction doit etre sans parametre.
+	/* On actualise l'heure affichee.
+	setInterval = execute cette fonction apres chaque x millisecondes.
+	La fonction doit etre sans parametre! */
 	
 	var moment = new Date();
 	var nombreSecondes = moment.getSeconds();
@@ -84,15 +85,14 @@ function actualiserInfosChaqueSeconde() {
 	
 	var heureAffichee = heures  + ":" + minutes + ":" + secondes;
 	
-	//--- On actualise l'heure
+	// On actualise l'heure
 	document.getElementById('temps').innerHTML=heureAffichee;
 	
-	// Chaque 1ere fois ou 1ere seconde, on met à jour la longue date
-	// Et si on est sur la JSP d'accueil, on envoie une requete Ajax qui met à jour l'horaire.
-	
 	if (tour == 0 || nombreSecondes == 1) {
+		/* Chaque 1ere fois ou 1ere seconde, on met à jour la longue date.
+		Et si on est sur la JSP d'accueil, on envoie une requete Ajax qui met à jour l'horaire */
 		
-		//On met A jour la longue date
+		// On met A jour la longue date
 		let jour = moment.getDay();
 		let dayName = getDayName(jour);
 		let dateNow = numeroDate.toString();
@@ -108,19 +108,24 @@ function actualiserInfosChaqueSeconde() {
 		let jourDate = dayName + " " + dateNow + " " + monthName + " " + annee; 
 		
 		document.getElementById('jour-date').innerHTML = jourDate;
-			
+		
 		try {
-			var sensAjax = document.getElementById('labelSensChoisi').innerText.trim();
-			var paysAjax = document.getElementById('labelPaysChoisi').innerText.trim();
+			// On effectue la requete AJAX
+			var sensChoisi = document.getElementById("sensChoisi");
+			var sensAjax = sensChoisi.options[sensChoisi.selectedIndex].text;
 			
-			if (paysAjax == "All") {
+			var paysChoisi = document.getElementById("paysChoisi");
+			var paysAjax = paysChoisi.value;
+			
+			if (paysAjax == "**") {
 				paysAjax = "";
 			}
 			
 			urlAjax="horaire-vols-ajax?sens=" + sensAjax + "&pays=" + paysAjax;
 			sendInfo();
-		}
-		catch(ex) { //ignore
+			
+		} catch(ex) {
+			//ignore
 		}
 	}
 	
@@ -201,15 +206,15 @@ function getMonthName(mois) {
 
 function activerAjax(){
 	
-	//--- D'abord on execute la fonction 1 fois,
+	// D'abord on execute la fonction 1 fois,
 	actualiserInfosChaqueSeconde();
 	
-	//--- ensuite on active la repetition des executions chaque seconde
-	//--- Cette repetition met a jour l'heure chaque seconde et l'horaire chaque minute.
+	// ensuite on active la repetition des executions chaque seconde
+	// Cette repetition met A jour l'heure chaque seconde et l'horaire chaque minute.
 	setInterval(actualiserInfosChaqueSeconde, 1000);
 }
 
-//--- Quand la page est completement chargee
+// Quand la page est completement chargee
 window.onload = activerAjax;
 
 //----------------------------------
