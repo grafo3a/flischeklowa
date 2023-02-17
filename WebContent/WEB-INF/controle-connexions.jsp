@@ -36,7 +36,7 @@
 					
 					<div class="fs-3 text-center border rounded page-title">DB Connections Control</div>
 					
-					<div class="p-2 mt-3">
+					<div class="pt-2 mt-3">
 					
 					<p>
 					The state of the database, the connection pool and the EntityManagerFactory can be checked below.
@@ -180,7 +180,7 @@
 	
 	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
-		document.getElementById("menuControle").className = "pageActuelle";
+		document.getElementById("menuControle").className = "pageActive";
 		/* Adapter l'ID ici, Cf. menu-central.xhtml */
 	</script>
 	

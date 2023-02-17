@@ -34,18 +34,22 @@
 			<!--=== COLUMN A1 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 				<div class="mt-4 mb-2">
+				
 					<div class="fs-3 text-center border rounded page-title">Today's flights</div>
 					
-					<div class="pt-2 pb-2 mt-4">
+					<div class="pt-2 mt-3">
 						
 						<!--=== Flights display filter ===-->
-						<form class="row" method="post" action="horaire-vols">
+						<form method="post" action="horaire-vols">
 							
-							<div class="col-5">
-								<div class="input-group input-group-sm">
-									<div class="input-group-text">Direction</div>
-									
-									<select id="sensChoisi" class="form-select form-select-sm" name="sens">
+							<nav class="nav justify-content-start">
+							
+								<div class="nav-item m-1">
+									Direction:
+								</div>
+								
+								<div class="nav-item m-1">
+									<select id="sensChoisi" class="form-select form-select-sm large120px" name="sens">
 										
 										<option value="Departure"
 											<c:if test="${param.sens == 'Departure'}">selected="selected"</c:if>>
@@ -63,22 +67,24 @@
 										</option>
 									</select>
 								</div>
-							</div>
-							
-							<div class="col-5">
-								<div class="input-group input-group-sm">
-									<div class="input-group-text">Country Code</div>
-									
-									<input id="paysChoisi" type="text" class="form-control"
-											name="pays" placeholder="ZZ" value="<c:out value='${param.pays}'/>" />
-											
+								
+								<div class="nav-item m-1">
+									&nbsp;&nbsp;
+									Country Code:
 								</div>
-							</div>
-							
-							<div class="col-2">
-								<button type="submit"
-										class="btn btn-warning btn-sm bouton-orangeatre w-100">Filter</button>
-							</div>
+								
+								<div class="nav-item m-1">
+									
+									<input id="paysChoisi" type="text" class="form-control form-control-sm large120px"
+											name="pays" placeholder="XY" value="<c:out value='${param.pays}'/>" />
+								</div>
+								
+								<div class="nav-item m-1">
+									<button type="submit"
+											class="btn btn-warning btn-sm bouton-orangeatre large120px">Filter</button>
+								</div>
+								
+							</nav>
 						</form>
 					</div>
 				</div>
@@ -106,7 +112,6 @@
 				<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->
 			</div>
 			
-			
 			<!--=== COLUMN B2 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 				
@@ -125,7 +130,7 @@
 	
 	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
-		document.getElementById("menuHoraire").className = "pageActuelle";
+		document.getElementById("menuHoraire").className = "pageActive";
 		/* Adapter l'ID ici, Cf. menu-central.xhtml */
 	</script>
 

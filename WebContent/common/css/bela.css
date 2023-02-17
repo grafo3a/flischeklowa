@@ -12,6 +12,13 @@
 	text-decoration: initial;
 	color: green;
 	padding-top: 7px;
+	padding-right: 14px;
+}
+
+
+.menu-central, .menu-entete {
+	padding-left: 0px;
+	padding-right: 14px;
 }
 
 
@@ -70,7 +77,7 @@ body {
   width: 100%;
   /* Set the fixed height of the footer */
   height: 80px;
-  line-height: 80px; /* Vertically center the text */
+  line-height: 80px; /* Vertically centers the text */
 }
 
 
@@ -104,11 +111,6 @@ a:hover {
 }
 
 
-.radius40pc {
-	border-radius: 40%;
-}
-
-
 /* DIMENSIONS
 --------------------------------*/
 
@@ -125,3 +127,10 @@ a:hover {
 .large220px {
 	width: 220px;
 }
+
+
+.radius40pc {
+	border-radius: 40%;
+}
+
+/*-------------------------------------*/

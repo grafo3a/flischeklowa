@@ -42,7 +42,7 @@
 						<fmt:message key="J09_TITRE_INSCRIPTION" />
 					</div>
 					
-					<div class="p-2 mt-3">
+					<div class="pt-2 mt-3">
 					</div>
 					
 				</div>
@@ -155,7 +155,7 @@
 	
 	<script src="common/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
-		document.getElementById("menuLogin").className = "pageActuelle";		/* Adapter l'ID ici */
+		document.getElementById("menuLogin").className = "pageActive";		/* Adapter l'ID ici */
 	</script>
 	
 </body>

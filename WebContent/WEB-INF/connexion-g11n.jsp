@@ -42,7 +42,7 @@
 						<fmt:message key="J01_TITRE_CONNEXION" />
 					</div>
 					
-					<div class="p-2 mt-3">
+					<div class="pt-2 mt-3">
 					</div>
 					
 				</div>

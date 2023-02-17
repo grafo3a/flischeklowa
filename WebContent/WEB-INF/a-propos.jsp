@@ -37,7 +37,7 @@
 					
 					<div class="fs-3 text-center border rounded page-title">About FlischeKlowa</div>
 					
-					<div class="p-2 mt-3">
+					<div class="pt-2 mt-3">
 					</div>
 				</div>
 			</div>
