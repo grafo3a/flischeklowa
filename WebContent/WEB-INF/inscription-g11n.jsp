@@ -128,7 +128,7 @@
 						
 						<button type="submit"
 								class="btn btn-warning btn-sm bouton-orangeatre large220px mt-3">
-								<fmt:message key="J08_VALIDER" />
+								<fmt:message key="J12_VALIDER_INSCRIPTION" />
 				    	</button>
 					</form>
 				</div>
