@@ -50,6 +50,7 @@
 								<div class="nav-item m-1">
 									<h:inputText id="dateChoisie"
 										value="#{jSFBeanListeVols1Date.dateChoisie}" label="Date Choisie"
+										class="large120px"
 										validatorMessage="[error!] Type a valid date: aaaa-MM-dd from 2000 to 2999 (10 characters)" >
 										
 										<f:passThroughAttribute name="placeholder" value="2020-01-01" />
@@ -61,7 +62,7 @@
 								<div class="nav-item">
 									<h:commandButton
 										value="Search" action="#{jSFBeanListeVols1Date.afficherListeVolsDateChoisie}"
-										class="btn btn-warning btn-sm bouton-orangeatre large100px mt-1 mb-1">
+										class="btn btn-warning btn-sm bouton-orangeatre large120px mt-1 mb-1">
 									</h:commandButton>
 								</div>
 								<!-- we get m-2 margin on intersections -->
@@ -103,7 +104,7 @@
 							<i class="bi-caret-left"></i>
 							
 							<h:commandButton value="Previous"
-								class="btn btn-outline-warning btn-sm text-dark large100px"
+								class="btn btn-outline-warning btn-sm text-dark large120px"
 								action="#{jSFBeanListeVols1Date.afficherListeVolsDatePrecedente}">
 								
 							</h:commandButton>
@@ -117,7 +118,7 @@
 							<i class="bi-caret-right"></i>
 							
 							<h:commandButton value="Next"
-								class="btn btn-outline-warning btn-sm text-dark large100px"
+								class="btn btn-outline-warning btn-sm text-dark large120px"
 								action="#{jSFBeanListeVols1Date.afficherListeVolsDateSuivante}">
 								
 							</h:commandButton>
@@ -130,7 +131,7 @@
 						<h:form>
 							<i class="bi-skip-end"></i>
 							<h:commandButton value="Last"
-								class="btn btn-outline-warning btn-sm text-dark large100px"
+								class="btn btn-outline-warning btn-sm text-dark large120px"
 								action="#{jSFBeanListeVols1Date.afficherListeVolsDateFinale}">
 								
 							</h:commandButton>
@@ -144,7 +145,7 @@
 							<i class="bi-arrow-clockwise"></i>
 							
 							<h:commandButton value="Reset"
-							class="btn btn-outline-warning btn-sm text-dark large100px"
+							class="btn btn-outline-warning btn-sm text-dark large120px"
 								action="#{jSFBeanListeVols1Date.recommencer}">
 								
 							</h:commandButton>

@@ -58,7 +58,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets" >
 								
 								<!--=== HEURE DU VOL ===-->
 								
-								<h:outputLabel value="&#160;&#160;Time: " class="nav-item m-1"/>
+								<h:outputLabel value="&#160;&#160;Time: " class="nav-item m-1" />
 								
 								<h:inputText id="heureChoisie" value="#{jSFBeanDetails1Vol.heureChoisie}" label="Heure Choisie"
 									validatorMessage="[error!] Type a valid hour: hh:mm (5 characters)"
@@ -71,7 +71,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets" >
 								
 								<h:commandButton
 									value="Search" action="#{jSFBeanDetails1Vol.lireDetailsVol}"
-									class="nav-item btn btn-warning btn-sm bouton-orangeatre large100px mt-1 mb-1">
+									class="nav-item btn btn-warning btn-sm bouton-orangeatre large120px mt-1 mb-1">
 								</h:commandButton>
 								
 								<h:message for="dateChoisie" errorStyle="color:red"  />
@@ -159,42 +159,44 @@ xmlns:ui="http://java.sun.com/jsf/facelets" >
 					<!--=== MODIFICATION HEURE DU VOL ===-->
 					
 					<h:form class="row pt-1" rendered="#{jSFBeanDetails1Vol.idVol gt 0}">
-						<h:outputLabel  class="col-4 text-end" value="New Flight time"/>
+						<h:outputLabel  class="col-4 text-end" value="New Flight time" />
 						<h:inputText class="col-5" id="heureChoisie" value="#{jSFBeanDetails1Vol.heureChoisie}"
-										label="Heure Choisie" >
+										label="Heure Choisie">
 						</h:inputText>
 						
 						<h:commandButton
 							value="Update" action="#{jSFBeanDetails1Vol.modifierInfoHeure}"
-							class="col-2 btn btn-outline-warning btn-sm text-dark large100px radius40pc">
+							class="col-2 btn btn-outline-warning btn-sm text-dark large120px radius40pc">
 						</h:commandButton>
 					</h:form>
 					
 					
 					<!--=== MODIFICATION TYPE D'AVION ===-->
 					
-					<h:form class="row pt-1" rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
-					<h:outputLabel class="col-4 text-end" value="New Plane Type"/>
-						<h:inputText class="col-5" id="typeAvionChoisi" value="#{jSFBeanDetails1Vol.typeAvion}" label="Type d'avion Choisi" >
+					<h:form class="row pt-1" rendered="#{jSFBeanDetails1Vol.idVol gt 0}">
+					<h:outputLabel class="col-4 text-end" value="New Plane Type" />
+						<h:inputText class="col-5" id="typeAvionChoisi" value="#{jSFBeanDetails1Vol.typeAvion}"
+										label="Type d'avion Choisi">
 						</h:inputText>
 						
 					<h:commandButton
 						value="Update" action="#{jSFBeanDetails1Vol.modifierInfoTypeAvion}"
-						class="col-2 btn btn-outline-warning btn-sm text-dark large100px radius40pc">
+						class="col-2 btn btn-outline-warning btn-sm text-dark large120px radius40pc">
 					</h:commandButton>
 					</h:form>
 					
 					
 					<!--=== MODIFICATION TERMINAL ===-->
 					
-					<h:form class="row pt-1" rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
-					<h:outputLabel class="col-4 text-end" value="New Gate"/>
-						<h:inputText class="col-5" id="terminalChoisi" value="#{jSFBeanDetails1Vol.terminal}" label="Terminal Choisi" >
+					<h:form class="row pt-1" rendered="#{jSFBeanDetails1Vol.idVol gt 0}">
+					<h:outputLabel class="col-4 text-end" value="New Gate" />
+						<h:inputText class="col-5" id="terminalChoisi" value="#{jSFBeanDetails1Vol.terminal}"
+										label="Terminal Choisi">
 						</h:inputText>
 						
 					<h:commandButton
 						value="Update" action="#{jSFBeanDetails1Vol.modifierInfoTerminal}"
-						class="col-2 btn btn-outline-warning btn-sm text-dark large100px radius40pc">
+						class="col-2 btn btn-outline-warning btn-sm text-dark large120px radius40pc">
 					</h:commandButton>
 					</h:form>
 					
@@ -203,14 +205,14 @@ xmlns:ui="http://java.sun.com/jsf/facelets" >
 					
 					<h:form class="row pt-1" rendered="#{jSFBeanDetails1Vol.idVol gt 0}" >
 						<h:outputLabel class="col-4 text-end" value="New Status"/>
-						<h:selectOneMenu class="col-5" id="statutChoisi" value="#{jSFBeanDetails1Vol.statut}" >
+						<h:selectOneMenu class="col-5" id="statutChoisi" value="#{jSFBeanDetails1Vol.statut}">
 							<f:selectItem itemValue="Cancelled" itemLabel="Cancelled" />
 							<f:selectItem itemValue="Confirmed" itemLabel="Confirmed" />
 					</h:selectOneMenu>
 					
 					<h:commandButton
 						value="Update" action="#{jSFBeanDetails1Vol.modifierInfoStatut}"
-						class="col-2 btn btn-outline-warning btn-sm text-dark large100px radius40pc">
+						class="col-2 btn btn-outline-warning btn-sm text-dark large120px radius40pc">
 					</h:commandButton>
 					</h:form>
 				</div>

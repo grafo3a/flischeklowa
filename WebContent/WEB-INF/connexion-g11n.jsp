@@ -42,8 +42,7 @@
 						<fmt:message key="J01_TITRE_CONNEXION" />
 					</div>
 					
-					<div class="pt-2 mt-3">
-					</div>
+					<div class="pt-2 mt-3"></div>
 					
 				</div>
 			</div>
@@ -74,7 +73,8 @@
 						</div>
 						
 						<div class="border-top text-end mt-2">
-							<i><a href="<c:url value="deconnexion-g11n"/> ">[<fmt:message key="J03_DECONNEXION" />]</a></i>
+							<i><a href="<c:url value='deconnexion-g11n'/>">
+									[<fmt:message key="J03_DECONNEXION" />]</a></i>
 						</div>
 					</c:if>
 					
@@ -89,12 +89,15 @@
 							<div class="row mt-4">
 								<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 								    <div class="input-group input-group-sm">
-								      <div class="input-group-text large100px"><fmt:message key="J05_LABEL_COURRIEL" /></div>
-								      <input type="text" class="form-control" name="courriel"
+										
+										<div class="input-group-text large120px">
+											<fmt:message key="J05_LABEL_COURRIEL" />
+										</div>
+										<input type="text" class="form-control" name="courriel"
 								      			placeholder="email@company.zz"
 								      			value="${param.courriel}" />
-								    </div>
-								    
+									</div>
+									
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 									<font color="red"><i>${requestScope.erreurCourriel}</i></font>
@@ -102,22 +105,28 @@
 								
 								<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 									<div class="input-group input-group-sm">
-									  <div class="input-group-text large100px"><fmt:message key="J06_LABEL_MOT2P" /></div>
-									  <input type="password"
-									  			class="form-control"
-									  			name="mot2p" value="${param.mot2p}" />
+										
+										<div class="input-group-text large120px">
+											<fmt:message key="J06_LABEL_MOT2P" />
+										</div>
+										
+										<input type="password" class="form-control"
+												name="mot2p" value="${param.mot2p}" />
 									</div>
 								</div>
+								
 								<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 									<font color="red"><i>${requestScope.erreurMot2p}</i></font>
 								</div>
 							</div>
 							
 							<div class="row mt-3">
+								
 								<div class="col-1">
 									<input type="checkbox" id="idCheckbox09" name="contrat"
 										<c:if test="${not empty param.contrat}">checked</c:if>>
 								</div>
+								
 								<div class="col-11">
 									<label for="idCheckbox09">
 										<i><fmt:message key="J07_LABEL_CONTRAT" /></i>
@@ -139,7 +148,7 @@
 					</c:if>
 				</div>
 				
-				<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->
+				<p><br/></p> <!--=== Useful code line for correct display of components above ===-->
 			</div>
 			
 			
@@ -151,7 +160,7 @@
 				
 			</div>
 			
-			<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->
+			<p><br/></p> <!--=== Useful code line for correct display of components above ===-->
 		</div>
 	</div>
 	
