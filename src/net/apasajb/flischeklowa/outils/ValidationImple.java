@@ -14,7 +14,6 @@ import net.apasajb.flischeklowa.operateurs.OperationsORMComptes;
 public class ValidationImple implements Validation {
 	
 	final String regexCourriel = "^[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,10}$";
-	
 	private String erreurLogin;
 	
 	
@@ -61,15 +60,18 @@ public class ValidationImple implements Validation {
 			
 			if (mot2passe.equals(mot2passeEnBDD)) {
 				isPasswordCorrect = true;
+				
+			} else {
+				erreurLogin = "Wrong credentials";
 			}
 			
 		} catch (Exception ex) {
 			
 			if (em == null) {
-				erreurLogin = "EntityManager not found.";
+				erreurLogin = "EntityManager not found";
 				
 			} else {
-				erreurLogin = "Wrong credentials.";
+				erreurLogin = "Wrong credentials";
 			}
 			
 			Logger.error(erreurLogin + " (" + ex.getMessage() + ")");

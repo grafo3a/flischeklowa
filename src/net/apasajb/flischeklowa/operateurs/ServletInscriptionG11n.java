@@ -54,6 +54,7 @@ public class ServletInscriptionG11n extends HttpServlet {
 		String S05_ERREUR_CONTRAT = paquetServlets.getString("S05_ERREUR_CONTRAT");
 		String S06_ERREUR_MOT2P_X2 = paquetServlets.getString("S06_ERREUR_MOT2P_X2");
 		
+		// On initialise les variables
 		String paramCourriel = null;
 		String paramMot2p01 = null;
 		String paramMot2p02 = null;
