@@ -28,7 +28,7 @@
 	<div class="container-fluid">
 		
 		<!--=== ROW A ===-->
-		<div class="row border bg-light">
+		<div class="row border-top border-bottom bg-light">
 			
 			<!--=== COLUMN A1 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">

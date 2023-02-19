@@ -29,12 +29,12 @@
 	<div class="container-fluid">
 		
 		<!--=== ROW A ===-->
-		<div class="row border bg-light">
+		<div class="row border-top border-bottom bg-light">
 			
 			<!--=== COLUMN A1 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 				<div class="mt-4 mb-2">
-				
+					
 					<div class="fs-3 text-center border rounded page-title">Today's flights</div>
 					
 					<div class="pt-2 mt-3">
