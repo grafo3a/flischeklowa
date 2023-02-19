@@ -42,7 +42,7 @@
 						<!--=== CHOIX DATE D'UN VOL ===-->
 						
 						<h:form>
-							<nav class="nav justify-content-start">
+							<nav class="nav justify-content-end">
 								<div class="nav-item m-1">
 									<h:outputLabel value="Type a date:"/>
 								</div>
@@ -58,13 +58,13 @@
 									</h:inputText>
 								</div>
 								
-								<div class="nav-item m-1">
+								<div class="nav-item">
 									<h:commandButton
-										class="btn btn-warning btn-sm bouton-orangeatre large100px"
-										value="Search" action="#{jSFBeanListeVols1Date.afficherListeVolsDateChoisie}">
+										value="Search" action="#{jSFBeanListeVols1Date.afficherListeVolsDateChoisie}"
+										class="btn btn-warning btn-sm bouton-orangeatre large100px mt-1 mb-1">
 									</h:commandButton>
 								</div>
-								<!-- we get m-2 margin on every side -->
+								<!-- we get m-2 margin on intersections -->
 							</nav>
 							
 							<h:message for="dateChoisie" errorStyle="color:red"  />

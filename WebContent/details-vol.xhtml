@@ -41,7 +41,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets" >
 						
 						<!--=== FORMULAIRE DETAILS D'UN VOL ===-->
 						<h:form>
-							<nav class="nav justify-content-start">
+							<nav class="nav justify-content-end">
 								
 								<!--=== DATE DU VOL ===-->
 								<h:outputLabel value="Date: " class="nav-item m-1"/>
@@ -58,7 +58,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets" >
 								
 								<!--=== HEURE DU VOL ===-->
 								
-								<h:outputLabel value="Time: " class="nav-item m-1"/>
+								<h:outputLabel value="&#160;&#160;Time: " class="nav-item m-1"/>
 								
 								<h:inputText id="heureChoisie" value="#{jSFBeanDetails1Vol.heureChoisie}" label="Heure Choisie"
 									validatorMessage="[error!] Type a valid hour: hh:mm (5 characters)"
@@ -71,7 +71,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets" >
 								
 								<h:commandButton
 									value="Search" action="#{jSFBeanDetails1Vol.lireDetailsVol}"
-									class="nav-item btn btn-warning btn-sm bouton-orangeatre large100px m-1">
+									class="nav-item btn btn-warning btn-sm bouton-orangeatre large100px mt-1 mb-1">
 								</h:commandButton>
 								
 								<h:message for="dateChoisie" errorStyle="color:red"  />

@@ -42,8 +42,8 @@
 						<!--=== Flights display filter ===-->
 						<form method="post" action="horaire-vols">
 							
-							<nav class="nav justify-content-start">
-							
+							<nav class="nav justify-content-end">
+								
 								<div class="nav-item m-1">
 									Direction:
 								</div>
@@ -79,7 +79,7 @@
 											name="pays" placeholder="XY" value="<c:out value='${param.pays}'/>" />
 								</div>
 								
-								<div class="nav-item m-1">
+								<div class="nav-item mt-1 mb-1">
 									<button type="submit"
 											class="btn btn-warning btn-sm bouton-orangeatre large120px">Filter</button>
 								</div>
