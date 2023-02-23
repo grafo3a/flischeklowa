@@ -34,5 +34,10 @@ The entry point to the application is the root URL mapping "/" in the Servlet "S
 
 By default, the app uses the in-memory H2 database.
 To use a different database, you'll need to update the 2 following files correctly:
-* paquetBDD.properties (in src/net.apasajb.flischeklowa.ressourcesG11n)
-* persistence.xml (in src/META-INF).
+* paquetBDD.properties (located in src/net.apasajb.flischeklowa.ressourcesG11n, used by the connection pool)
+* persistence.xml (located in src/META-INF, used by the entity manager factory).
+
+Screenshots
+-----------
+
+![flischeklowa_screenshot_01.png](/WebContent/common/images/flischeklowa_screenshot_01.png?raw=true)
