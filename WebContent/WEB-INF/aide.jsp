@@ -68,6 +68,7 @@
 					<p>
 					<b>Answer</b><br/>
 					To log in, create an account and then use it.
+					<a href="inscription-g11n"><i>[create an account]</i></a>
 					</p>
 					
 				</div>

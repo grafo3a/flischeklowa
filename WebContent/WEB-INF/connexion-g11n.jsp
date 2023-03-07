@@ -142,8 +142,15 @@
 					    	</button>
 						</form>
 						
-						<div class="border-top text-end mt-2">
-							<a href="inscription-g11n"><i>[create account]</i></a>
+						<div class="border-top mt-2">
+							
+							<!--=== Create-account-button ===-->
+							<form action="inscription-g11n?#" class="mt-2">
+								<button type="submit"
+										class="btn btn-warning border btn-sm bg-orangeatre large220px">
+									Create an account
+								</button>
+							</form>
 						</div>
 					</c:if>
 				</div>
