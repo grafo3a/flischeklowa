@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- * Affichage la page JSP d'infos techniques du projet.
+ * Affichage de la page JSP d'infos techniques du projet.
  * @author ApasaJB
  */
 

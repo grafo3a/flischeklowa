@@ -97,6 +97,9 @@ public class OperationsORM {
 	}
 	
 	
+	/**
+	 * Persiste un vol en BDD.
+	 */
 	public void persisterVol(SensVol sens, LocalDateTime dateHeure, String ville, String codePays,
 								String compagnie, String numeroVol, String typeAvion, String terminal, EntityManager em) {
 				

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- * Affichage la page JSP de contact.
+ * Affichage de la page JSP de contact.
  * @author ApasaJB
  */
 

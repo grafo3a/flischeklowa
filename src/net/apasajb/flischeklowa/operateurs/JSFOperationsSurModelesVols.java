@@ -91,8 +91,9 @@ public class JSFOperationsSurModelesVols implements Serializable {
 		String chaineDateHeureVol = dateVol + "T" + heureVol;
 		dateHeure = LocalDateTime.parse(chaineDateHeureVol);
 		
-		try {		// Ici les variables suivantes ont deja leurs valeurs:
-					// sens, ville, codePays, compagnie, codeCompagnie.
+		try {
+			/* Ici les variables suivantes ont deja leurs valeurs:
+			 * sens, ville, codePays, compagnie, codeCompagnie. */
 			
 			operationsORM.persisterVol(sens, dateHeure, ville, codePays, compagnie, codeCompagnie, typeAvion, terminal, em);
 			messageSucces = messageSucces + "--- Flight added successfully: " +

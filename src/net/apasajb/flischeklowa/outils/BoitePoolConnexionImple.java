@@ -31,7 +31,9 @@ public class BoitePoolConnexionImple implements BoitePoolConnexion {
 		PoolProperties pp = new PoolProperties();
 		Connection connexion = null;
 		
-		try {		// Configuration du pool
+		try {
+			
+			// Configuration du pool
 			pp.setUrl(URL);
 			pp.setDriverClassName(DRIVER_CLASS);
 			pp.setUsername(USER);

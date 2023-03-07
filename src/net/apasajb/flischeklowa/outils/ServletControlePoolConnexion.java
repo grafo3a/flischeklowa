@@ -43,7 +43,8 @@ public class ServletControlePoolConnexion extends HttpServlet {
 			objetPool.demarrerPool(sletContext);
 			resultatPool = objetPool.getResultatPool();
 			
-		} else {		// Si demande == "arreterPool"
+		} else {
+			// Si demande == "arreterPool"
 			
 			BoitePoolConnexion objetPool = (BoitePoolConnexion) new BoitePoolConnexionImple();
 			objetPool.arreterPool(sletContext);

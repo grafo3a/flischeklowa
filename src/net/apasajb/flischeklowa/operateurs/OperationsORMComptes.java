@@ -40,6 +40,9 @@ public class OperationsORMComptes {
 	}
 	
 	
+	/**
+	 * Persiste un compte en BDD.
+	 */
 	public void persisterCompte(String adresseCourriel, String mot2passe, EntityManager em) {
 		
 		Compte compte = new Compte();

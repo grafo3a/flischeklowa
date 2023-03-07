@@ -8,7 +8,7 @@ import net.apasajb.flischeklowa.operateurs.JSFOperationsSurModelesVols;
 
 
 /**
- * S'occupe de charger automatique un jour de vols en BDD: au demarrage de l'application.<br/>
+ * S'occupe de charger automatiquement un jour de vols en BDD: au demarrage de l'application.<br/>
  * Si les vols sont deja presents, l'action est ignoree.<br/>
  * @author ApasaJB
  */
@@ -39,8 +39,8 @@ public class JobChargementJourVols implements Serializable {
 			}
 			
 		} catch (Exception ex) {
-			messageErreur = "--- Error: auto-loading flights failed. Message: " + ex.getMessage();
-			// System.out.println(messageErreur); //> journal_flischeklowa_20220101.log
+			messageErreur = "[Error] auto-loading flights failed. Message: " + ex.getMessage();
+			// Logger.error(messageErreur);
 		}
 		
 		// A FAIRE: evaluer l'heure pour effectuer le chargement chaque jour A minuit.

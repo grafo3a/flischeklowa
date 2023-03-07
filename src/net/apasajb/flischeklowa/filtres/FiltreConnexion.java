@@ -41,12 +41,13 @@ public class FiltreConnexion implements Filter {
 		HttpServletResponse response = (HttpServletResponse) servletRes;
 		HttpSession session = request.getSession();
 		
-		// Si on est deconnectE
 		if (session.getAttribute("courrielCookie") == null) {
+			// Si on est deconnectE
 			
 			Cookie[] listeCookies = request.getCookies();
 			
-			if (listeCookies != null) {		// Si qlq cookies sont presents
+			if (listeCookies != null) {
+				// Si qlq cookies sont presents
 				
 				String nomCookie = null;
 				String valeurCookie = null;

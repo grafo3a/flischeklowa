@@ -70,7 +70,8 @@ public class JSFBeanDetails1Vol implements Serializable {
 			
 		} finally {
 			
-			this.mettreAjourAffichageVol(vol);		// Preparation pour affichage de la page
+			// Preparation pour affichage de la page
+			this.mettreAjourAffichageVol(vol);
 			HttpSession session = this.getSession();
 			session.setAttribute("idEnSession", idVol);
 		}
@@ -84,11 +85,11 @@ public class JSFBeanDetails1Vol implements Serializable {
 	//======================================= UTILISATION DE modifierInfoVol(*) //
 	
 	public void modifierInfoDate() {
-		// La date d'un vol ne peut pas changer.
-		// En cas d'annulation, les billets sont assignEs au vol d'une autre date.
+		/* La date d'un vol ne peut pas changer.
+		 * En cas d'annulation, les billets sont assignEs au vol d'une autre date. */
 	}
 	
-		
+	
 	public void modifierInfoHeure() {
 		this.modifierInfoVol("Hour", heureChoisie, regexHeure);
 	}
@@ -127,7 +128,8 @@ public class JSFBeanDetails1Vol implements Serializable {
 				setmessageErreur("--- Error. The update failed. Message: " + ex.getMessage());
 			}
 			
-		} else {		// Si test regex KO
+		} else {
+			// Si test regex KO
 			
 			setmessageErreur("--- Error: " + nomInfo + " not valid (" + infoVol + ")");
 			
@@ -140,7 +142,7 @@ public class JSFBeanDetails1Vol implements Serializable {
 		try { this.mettreAjourAffichageVol(vol); } catch (Exception ignore) {}
 		
 		try { em.close(); } catch (Exception ignore) {}
-			
+		
 		return "details-vol.xhtml";
 	}
 	
