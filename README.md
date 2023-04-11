@@ -37,6 +37,8 @@ To use a different database, you'll need to update the 2 following files correct
 * paquetBDD.properties (located in src/net.apasajb.flischeklowa.ressourcesG11n, used by the connection pool)
 * persistence.xml (located in src/META-INF, used by the entity manager factory).
 
+To run the app, export the project as a WAR file then deploy the file on Tomcat [9] or any other application server supporting Java EE 8. You can also run the app through an IDE.
+
 Screenshots
 -----------
 
