@@ -28,7 +28,7 @@ The following technologies are used in the project:
 - JavaScript (plain aka Vanilla);
 - HTML, CSS, Bootstrap;
 - Maven, JUnit 5, tinylog;
-- Databases: H2 (in-memory) and PosgreSQL (in cloud).
+- Databases: H2 (in-memory).
 
 The entry point to the application is the root URL mapping "/" in the Servlet "ServletHoraireVols".
 
