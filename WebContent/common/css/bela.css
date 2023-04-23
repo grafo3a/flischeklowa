@@ -12,14 +12,15 @@
 	text-decoration: initial;
 	color: green;
 	padding-top: 7px;
-	padding-right: 14px;
+	padding-right: 20px;
 }
 
 
 .menu-central, .menu-entete {
 	padding-left: 0px;
-	padding-right: 14px;
+	padding-right: 20px;
 }
+
 
 .police24px {
 	font-size: 18px;
