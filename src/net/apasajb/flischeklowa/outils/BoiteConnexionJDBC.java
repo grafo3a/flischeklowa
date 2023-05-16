@@ -35,7 +35,7 @@ public class BoiteConnexionJDBC {
 			ServletContext contexte = EcouteurAppli.getServletContext();
 			DataSource poolConnexion = (DataSource)  contexte.getAttribute("poolConnex");
 			connexion = poolConnexion.getConnection();
-			Logger.info("* Connection found via the connection pool. Hcode: " + connexion.hashCode());
+			// Logger.info("* Connection found via the connection pool. Hcode: " + connexion.hashCode());
 			
 		} catch (Exception ex) {
 			
