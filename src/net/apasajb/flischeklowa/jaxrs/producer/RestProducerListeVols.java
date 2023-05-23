@@ -53,7 +53,7 @@ public class RestProducerListeVols {
 	@Produces(MediaType.APPLICATION_XML)
 		public ArrayList<VolRest> getVolsXmlDate(@PathParam("dateRest") String dateRest) {
 		
-		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), "%", "%");
+		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), "%", "%", "%");
 		
 		return listeVolsRest;
 	}
@@ -67,9 +67,8 @@ public class RestProducerListeVols {
 			@PathParam("dateRest") String dateRest,
 			@PathParam("codePaysRest") String codePaysRest) {
 		
-		
 		codePaysRest = codePaysRest.toUpperCase();
-		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), codePaysRest, "%");
+		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), "%", codePaysRest, "%");
 		
 		return listeVolsRest;
 	}
@@ -80,11 +79,25 @@ public class RestProducerListeVols {
 	@Path("/xml/{dateRest: (2[0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])}/{numeroVolRest: [a-zA-Z]{3}[0-9]{2}}")
 	@Produces(MediaType.APPLICATION_XML)
 	public ArrayList<VolRest> getVolsXMLDateNumeroVol(
-		@PathParam("dateRest") String dateRest,
-		@PathParam("numeroVolRest") String numeroVolRest) {
+			@PathParam("dateRest") String dateRest,
+			@PathParam("numeroVolRest") String numeroVolRest) {
 		
 		numeroVolRest = numeroVolRest.toUpperCase();
-		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), "%", numeroVolRest);
+		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), "%", "%", numeroVolRest);
+		
+		return listeVolsRest;
+	}
+	
+	
+	// Prise en charge des requetes Get XML pour une Date et un sens/une direction
+	@GET
+	@Path("/xml/{dateRest: (2[0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])}/{sensVolRest: (departure)|(arrival)}")
+	@Produces(MediaType.APPLICATION_XML)
+	public ArrayList<VolRest> getVolsXMLDateSens(
+			@PathParam("dateRest") String dateRest,
+			@PathParam("sensVolRest") String sensVolRest) {
+		
+		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), sensVolRest, "%", "%");
 		
 		return listeVolsRest;
 	}
@@ -110,7 +123,7 @@ public class RestProducerListeVols {
 	@Produces(MediaType.APPLICATION_JSON)
 		public ArrayList<VolRest> getVolsJsonDate(@PathParam("dateRest") String dateRest) {
 		
-		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), "%", "%");
+		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), "%", "%", "%");
 		
 		return listeVolsRest;
 	}
@@ -125,7 +138,7 @@ public class RestProducerListeVols {
 			@PathParam("codePaysRest") String codePaysRest) {
 		
 		codePaysRest = codePaysRest.toUpperCase();
-		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), codePaysRest, "%");
+		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), "%", codePaysRest, "%");
 		
 		return listeVolsRest;
 	}
@@ -136,17 +149,26 @@ public class RestProducerListeVols {
 	@Path("/json/{dateRest: (2[0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])}/{numeroVolRest: [a-zA-Z]{3}[0-9]{2}}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<VolRest> getVolsJsonDateNumeroVol(
-		@PathParam("dateRest") String dateRest,
-		@PathParam("numeroVolRest") String numeroVolRest) {
+			@PathParam("dateRest") String dateRest,
+			@PathParam("numeroVolRest") String numeroVolRest) {
 		
 		numeroVolRest = numeroVolRest.toUpperCase();
-		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), "%", numeroVolRest);
+		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), "%", "%", numeroVolRest);
 		
 		return listeVolsRest;
 	}
 	
 	
-	//============================================
-	// A faire: Prise en charge des requetes Post
-	//============================================
+	// Prise en charge des requetes Get JSON pour une Date et un sens/une direction
+	@GET
+	@Path("/json/{dateRest: (2[0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])}/{sensVolRest: (departure)|(arrival)}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<VolRest> getVolsJsonDateSens(
+			@PathParam("dateRest") String dateRest,
+			@PathParam("sensVolRest") String sensVolRest) {
+		
+		ArrayList<VolRest> listeVolsRest = collectionVolsRest.compilerCollectionVols(LocalDate.parse(dateRest), sensVolRest, "%", "%");
+		
+		return listeVolsRest;
+	}
 }

@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import net.apasajb.flischeklowa.dao.Vol;
 import net.apasajb.flischeklowa.ecouteurs.EcouteurAppli;
+import net.apasajb.flischeklowa.outils.SensVol;
 
 
 /**
@@ -24,25 +25,47 @@ public class CollectionVolsRest implements Serializable {
 	private static final long serialVersionUID = 3034233759562527526L;
 	
 	
-	public ArrayList<VolRest> compilerCollectionVols(LocalDate dateVolRest, String codePaysRest, String numeroVolRest){
+	public ArrayList<VolRest> compilerCollectionVols(
+			LocalDate dateVolRest, String sensVolRest, String codePaysRest, String numeroVolRest){
 		
 		ArrayList<VolRest> collectionVolsDateSens = new ArrayList<VolRest>();
 		EntityManager em = EcouteurAppli.getEM();
-		String chaineReq;
-		TypedQuery<Vol> reqVol;
+		String requeteJPQL;
+		TypedQuery<Vol> typedQueryVols;
 		
-		// Cette requete prend en charge les differentes possibilites de recherche des entitEs.
-		chaineReq = "SELECT v FROM Vol v WHERE TO_CHAR(v.dateHeure, 'YYYY-MM-DD') = :dv"
+		final String departureUrl = "departure";
+		final String arrivalUrl = "arrival";
+		String critereSens = " ";		// 1 espace vide ici!
+		SensVol sensVol = null;
+		
+		if (sensVolRest.equals(departureUrl)) {
+			sensVol = SensVol.Departure;
+			
+		} else if (sensVolRest.equals(arrivalUrl)) {
+			sensVol = SensVol.Arrival;
+		}
+		
+		if (sensVol == SensVol.Departure || sensVol == SensVol.Arrival) {
+			critereSens = " AND v.sens = :sv";
+		}
+		
+		// Cette requete JPQL prend en charge les différentes possibilités de recherche des entités.
+		requeteJPQL = "SELECT v FROM Vol v WHERE TO_CHAR(v.dateHeure, 'YYYY-MM-DD') = :dv"
+				+ critereSens
 				+ " AND v.codePays LIKE :cp"
 				+ " AND v.numeroVol LIKE :nv";
 		
-		reqVol = em.createQuery(chaineReq, Vol.class);
+		typedQueryVols = em.createQuery(requeteJPQL, Vol.class);
 		
-		reqVol.setParameter("dv", dateVolRest.toString());
-		reqVol.setParameter("cp", codePaysRest);
-		reqVol.setParameter("nv", numeroVolRest);
+		if (sensVol == SensVol.Departure || sensVol == SensVol.Arrival) {
+			typedQueryVols.setParameter("sv", sensVol);
+		}
 		
-		List<Vol> listeVolsDate = reqVol.getResultList();
+		typedQueryVols.setParameter("dv", dateVolRest.toString());
+		typedQueryVols.setParameter("cp", codePaysRest);
+		typedQueryVols.setParameter("nv", numeroVolRest);
+		
+		List<Vol> listeVolsDate = typedQueryVols.getResultList();
 		
 		if (!listeVolsDate.isEmpty()) {
 			
