@@ -66,8 +66,7 @@ html {
 
 
 body {
-  /* Hauteur du pied-de-page */
-  margin-bottom: 60px;
+  margin-bottom: 80px;    /* La hauteur du pied-de-page */
 }
 
 
@@ -75,9 +74,8 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer */
-  height: 80px;
-  line-height: 80px; /* Vertically centers the text */
+  height: 80px;    /* La hauteur du pied-de-page */
+  /* line-height: 80px; Vertically centers the text */
 }
 
 
