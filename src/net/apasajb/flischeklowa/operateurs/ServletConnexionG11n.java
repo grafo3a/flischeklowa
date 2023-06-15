@@ -56,7 +56,6 @@ public class ServletConnexionG11n extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		// SI ON RESSOIT UN FORMULAIRE ON EST FORCEMENT DECONNECTE
 		
 		HttpSession session = request.getSession();
@@ -110,7 +109,7 @@ public class ServletConnexionG11n extends HttpServlet {
 			boolean isPasswordCorrectInDB = false;
 			
 			try {
-				isPasswordCorrectInDB = validation.isPasswordCorrectInDB(paramCourriel, paramMot2p, em);
+				isPasswordCorrectInDB = validation.isPasswordCorrectInDB(paramCourriel, paramMot2p, em, locale);
 				
 			} catch (Exception ignore) {}
 			
@@ -125,7 +124,6 @@ public class ServletConnexionG11n extends HttpServlet {
 			// Si Mot de passe absent
 			erreurMot2p = S03_ERREUR_MOT2P;
 		}
-		
 		
 		if (request.getParameter("contrat") != null) {
 			// Si case contrat cochée, on la coche en retour

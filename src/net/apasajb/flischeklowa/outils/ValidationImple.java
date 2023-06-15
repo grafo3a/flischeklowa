@@ -1,5 +1,7 @@
 package net.apasajb.flischeklowa.outils;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.persistence.EntityManager;
 import org.tinylog.Logger;
 import net.apasajb.flischeklowa.dao.Compte;
@@ -48,7 +50,14 @@ public class ValidationImple implements Validation {
 	
 	// Verif si mot de passe correct en BDD
 	@Override
-	public boolean isPasswordCorrectInDB(String adresseCourriel, String mot2passe, EntityManager em) {
+	public boolean isPasswordCorrectInDB(String adresseCourriel, String mot2passe, EntityManager em, Locale locale) {
+		
+		// On cree un paquet de ressources (un objet ResourceBundle) et on extrait des messages
+		String nomBase = "net.apasajb.flischeklowa.ressourcesG11n.paquetServlets";
+		ResourceBundle paquetServlets = ResourceBundle.getBundle(nomBase, locale);
+		
+		// On extrait des messages du paquet de ressources
+		String S07_ERREUR_IDENTIFIANTS_KO = paquetServlets.getString("S07_ERREUR_IDENTIFIANTS_KO");
 		
 		boolean isPasswordCorrect = false;
 		String mot2passeEnBDD;
@@ -62,7 +71,7 @@ public class ValidationImple implements Validation {
 				isPasswordCorrect = true;
 				
 			} else {
-				erreurLogin = "Wrong credentials";
+				erreurLogin = S07_ERREUR_IDENTIFIANTS_KO;
 			}
 			
 		} catch (Exception ex) {
@@ -71,7 +80,7 @@ public class ValidationImple implements Validation {
 				erreurLogin = "EntityManager not found";
 				
 			} else {
-				erreurLogin = "Wrong credentials";
+				erreurLogin = S07_ERREUR_IDENTIFIANTS_KO;
 			}
 			
 			Logger.error(erreurLogin + " (" + ex.getMessage() + ")");

@@ -1,5 +1,6 @@
 package net.apasajb.flischeklowa.outils;
 
+import java.util.Locale;
 import javax.persistence.EntityManager;
 
 
@@ -19,7 +20,7 @@ public interface Validation {
 	
 	
 	// Verif si mot de passe correct en BDD
-	public boolean isPasswordCorrectInDB(String adresseCourriel, String mot2passe, EntityManager em);
+	public boolean isPasswordCorrectInDB(String adresseCourriel, String mot2passe, EntityManager em, Locale locale);
 	
 	
 	// Accesseur pour ErreurLogin (c'est un getter)
