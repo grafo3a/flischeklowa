@@ -58,6 +58,7 @@ public class ValidationImple implements Validation {
 		
 		// On extrait des messages du paquet de ressources
 		String S07_ERREUR_IDENTIFIANTS_KO = paquetServlets.getString("S07_ERREUR_IDENTIFIANTS_KO");
+		String S08_ERREUR_EM_ABSENT = paquetServlets.getString("S08_ERREUR_EM_ABSENT");
 		
 		boolean isPasswordCorrect = false;
 		String mot2passeEnBDD;
@@ -77,7 +78,7 @@ public class ValidationImple implements Validation {
 		} catch (Exception ex) {
 			
 			if (em == null) {
-				erreurLogin = "EntityManager not found";
+				erreurLogin = S08_ERREUR_EM_ABSENT;
 				
 			} else {
 				erreurLogin = S07_ERREUR_IDENTIFIANTS_KO;
