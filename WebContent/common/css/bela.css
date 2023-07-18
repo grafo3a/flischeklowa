@@ -16,10 +16,17 @@
 }
 
 
-.menu-central, .menu-entete {
+.menu-entete {
 	padding-left: 0px;
 	padding-right: 20px;
 }
+
+
+/*
+.menu-central {
+	text-decoration: initial;
+}
+*/
 
 
 /* LE CENTRE
@@ -79,9 +86,10 @@ body {
 }
 
 
-.menu-pied2page {
+.footer-menu {
 	border-top: 1px solid green;
 	border-bottom: 1px solid green;
+	font-style: italic;
 }
 
 
@@ -106,6 +114,11 @@ body {
 	background-color:  #ffb833; /*orange faible++*/
 	border: 1px solid orange;
 	color: black;
+}
+
+
+a {
+	text-decoration: none;
 }
 
 
