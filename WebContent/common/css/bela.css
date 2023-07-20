@@ -87,9 +87,10 @@ body {
 
 
 .footer-menu {
-	border-top: 1px solid green;
-	border-bottom: 1px solid green;
+	/* border-top: 1px solid green;
+	border-bottom: 1px solid green; */
 	font-style: italic;
+	background-color: #ffe0b3;
 }
 
 
