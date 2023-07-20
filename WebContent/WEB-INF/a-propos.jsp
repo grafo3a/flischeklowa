@@ -35,7 +35,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 				<div class="mt-4 mb-2">
 					
-					<div class="fs-3 text-center border rounded page-title">About FlischeKlowa</div>
+					<div class="fs-3 text-start page-title">About FlischeKlowa</div>
 					
 					<div class="pt-2 mt-3">
 					</div>

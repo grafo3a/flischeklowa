@@ -38,7 +38,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 				<div class="mt-4 mb-2">
 					
-					<div class="fs-3 text-center border rounded page-title">
+					<div class="fs-3 text-start page-title">
 						<fmt:message key="J01_TITRE_CONNEXION" />
 					</div>
 					
