@@ -27,30 +27,34 @@
 	<!--=== MAIN ===-->
 	<div class="container-fluid">
 		
+		<!--=== Affichage date et heure ===-->
+		<div class="row bg-gris-faible">
+			<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
+		</div>
+		
 		<!--=== ROW A ===-->
-		<div class="row border-top border-bottom bg-light">
+		<div class="row">
 			
 			<!--=== COLUMN A1 ===-->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				<div class="mt-4 mb-2">
+			<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
 					
-					<div class="fs-3 text-start page-title">DB Connections Control</div>
-					
-					<div class="pt-2 mt-3">
-					
-					<p>
-					The state of the database, the connection pool and the EntityManagerFactory can be checked below.
-					</p>
-					
+				<div class="fs-3 text-start page-title">DB Connections Control</div>
+				
+				<div class="sous-titre">
+				
+					<div class="container p-2 border rounded bg-gris-faible">
+						The state of the database, the connection pool and the EntityManagerFactory can be checked below.
 					</div>
+					
 				</div>
 			</div>
 			
 			<!--=== COLUMN A2 ===-->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 				
-				<!--=== Affichage date et heure ===-->
-				<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
+				<!--=== Le carrousel ===-->
+				<jsp:include page="./fragments/carrousel-centre.xhtml"></jsp:include>
+				
 			</div>
 		</div>
 		
@@ -59,7 +63,7 @@
 		<div class="row">
 			
 			<!--=== COLUMN B1 ===-->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-4">
+			<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 mt-4">
 				
 				<div class="container border rounded bg-light p-1">
 					<h5>State of the database</h5>
@@ -163,11 +167,7 @@
 			
 			
 			<!--=== COLUMN B2 ===-->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				
-				<!--=== Le carrousel ===-->
-				<jsp:include page="./fragments/carrousel-centre.xhtml"></jsp:include>
-				
+			<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 			</div>
 			
 			<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->

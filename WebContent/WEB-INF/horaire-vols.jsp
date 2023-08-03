@@ -28,73 +28,76 @@
 	<!--=== MAIN ===-->
 	<div class="container-fluid">
 		
+		<!--=== Affichage date et heure ===-->
+		<div class="row bg-gris-faible">
+			<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
+		</div>
+		
 		<!--=== ROW A ===-->
-		<div class="row border-top border-bottom bg-light">
+		<div class="row">
 			
 			<!--=== COLUMN A1 ===-->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				<div class="mt-4 mb-2">
+			<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+				
+				<div class="fs-3 text-start page-title">Today's flights</div>
+				
+				<div class="sous-titre">
 					
-					<div class="fs-3 text-start page-title">Today's flights</div>
-					
-					<div class="pt-2 mt-3">
+					<!--=== Flights display filter form ===-->
+					<form method="post" action="horaire-vols" class="container p-2 border rounded bg-gris-faible">
 						
-						<!--=== Flights display filter ===-->
-						<form method="post" action="horaire-vols">
+						<nav class="nav justify-content-end">
 							
-							<nav class="nav justify-content-end">
-								
-								<div class="nav-item m-1">
-									Direction:
-								</div>
-								
-								<div class="nav-item m-1">
-									<select id="sensChoisi" class="form-select form-select-sm large120px" name="sens">
-										
-										<option value="Departure"
-											<c:if test="${param.sens == 'Departure'}">selected="selected"</c:if>>
-											Departure
-										</option>
-										
-										<option value="Arrival"
-											<c:if test="${param.sens == 'Arrival'}">selected="selected"</c:if>>
-											Arrival
-										</option>
-										
-										<option value="All"
-											<c:if test="${param.sens == 'All'}">selected="selected"</c:if>>
-											All
-										</option>
-									</select>
-								</div>
-								
-								<div class="nav-item m-1">
-									&nbsp;&nbsp;
-									Country Code:
-								</div>
-								
-								<div class="nav-item m-1">
+							<div class="nav-item m-1">
+								Direction:
+							</div>
+							
+							<div class="nav-item m-1">
+								<select id="sensChoisi" class="form-select form-select-sm large120px" name="sens">
 									
-									<input id="paysChoisi" type="text" class="form-control form-control-sm large120px"
-											name="pays" placeholder="XY" value="<c:out value='${param.pays}'/>" />
-								</div>
+									<option value="Departure"
+										<c:if test="${param.sens == 'Departure'}">selected="selected"</c:if>>
+										Departure
+									</option>
+									
+									<option value="Arrival"
+										<c:if test="${param.sens == 'Arrival'}">selected="selected"</c:if>>
+										Arrival
+									</option>
+									
+									<option value="All"
+										<c:if test="${param.sens == 'All'}">selected="selected"</c:if>>
+										All
+									</option>
+								</select>
+							</div>
+							
+							<div class="nav-item m-1">
+								&nbsp;&nbsp;
+								Country Code:
+							</div>
+							
+							<div class="nav-item m-1">
 								
-								<div class="nav-item mt-1 mb-1">
-									<button type="submit"
-											class="btn btn-warning btn-sm bouton-orangeatre large120px">Filter</button>
-								</div>
-								
-							</nav>
-						</form>
-					</div>
+								<input id="paysChoisi" type="text" class="form-control form-control-sm large120px"
+										name="pays" placeholder="XY" value="<c:out value='${param.pays}'/>" />
+							</div>
+							
+							<div class="nav-item mt-1 mb-1">
+								<button type="submit"
+										class="btn btn-warning btn-sm bouton-orangeatre large120px">Filter</button>
+							</div>
+						</nav>
+					</form>
 				</div>
 			</div>
 			
 			<!--=== COLUMN A2 ===-->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 				
-				<!--*** Affichage date et heure ***-->
-				<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
+				<!--=== Le carrousel ===-->
+				<jsp:include page="./fragments/carrousel-centre.xhtml"></jsp:include>
+				
 			</div>
 		</div>
 		
@@ -102,8 +105,8 @@
 		<div class="row">
 			
 			<!--=== COLUMN B1 ===-->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-			
+			<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+				
 				<!--=== Affichage du tableau-horaire de vols ===-->
 				<div id="affichageHoraireVols" class="mt-4">
 					${requestScope.tableHoraireVols}
@@ -113,11 +116,7 @@
 			</div>
 			
 			<!--=== COLUMN B2 ===-->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				
-				<!--=== Le carrousel ===-->
-				<jsp:include page="./fragments/carrousel-centre.xhtml"></jsp:include>
-				
+			<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 			</div>
 			
 			<p><br/></p> <!--=== Useful code line for correct display of components above ===-->

@@ -28,26 +28,29 @@
 	<!--=== MAIN ===-->
 	<div class="container-fluid">
 		
+		<!--=== Affichage date et heure ===-->
+		<div class="row bg-gris-faible">
+			<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
+		</div>
+		
 		<!--=== ROW A ===-->
-		<div class="row border-top border-bottom bg-light">
+		<div class="row">
 			
 			<!--=== COLUMN A1 ===-->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				<div class="mt-4 mb-2">
-					
-					<div class="fs-3 text-start page-title">Help</div>
-					
-					<div class="pt-2 mt-3">
-					</div>
-					
-				</div>
+			<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+				
+				<div class="fs-3 text-start page-title">Help</div>
+				
+				<div class="sous-titre"></div>
+				
 			</div>
 			
 			<!--=== COLUMN A2 ===-->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 				
-				<!--=== Affichage date et heure ===-->
-				<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
+				<!--=== Le carrousel ===-->
+				<jsp:include page="./fragments/carrousel-centre.xhtml"></jsp:include>
+				
 			</div>
 		</div>
 		
@@ -56,7 +59,7 @@
 		<div class="row">
 			
 			<!--=== COLUMN B1 ===-->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
 				
 				<div class="container border rounded bg-light p-1 mt-4">
 					
@@ -78,11 +81,7 @@
 			
 			
 			<!--=== COLUMN B2 ===-->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				
-				<!--=== Le carrousel ===-->
-				<jsp:include page="./fragments/carrousel-centre.xhtml"></jsp:include>
-				
+			<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 			</div>
 			
 			<p><br/></p> <!--=== Useful code line for the correct display of components above ===-->

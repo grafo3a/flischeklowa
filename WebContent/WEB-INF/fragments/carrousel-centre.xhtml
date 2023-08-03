@@ -1,15 +1,14 @@
 
-<ui:composition 
+<ui:composition
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 
-<div class="container border rounded carrousel shadow-sm m-4 p-2">
+<div class="container carrousel">
 	
 	<!--=== Le carrousel du centre ===-->
-	
 	<div id="carrousel-centre" class="carousel slide" data-bs-ride="carousel">
 		
 		<!-- Carousel indicators -->
@@ -19,8 +18,8 @@
 		    <li data-bs-target="#carrousel-centre" data-bs-slide-to="2" class="border border-dark"></li>
 		</ol>
 		
-		<!-- Wrapper for carousel items -->
-		<div class="carousel-inner">
+		<!-- Wrapper for carousel items / Le conteneur des images -->
+		<div class="carousel-inner border-orange">
 		    <div class="carousel-item active">
 		        <img src="common/images/image_aeroport_01.jpg" alt="Slide 01" class="d-block image-carrousel" />
 		    </div>
@@ -32,7 +31,7 @@
 		    </div>
 		</div>
 		
-		<!-- Carousel controls -->
+		<!-- Carousel controls / Les boutons Previous et Next -->
 		<a class="carousel-control-prev" href="#carrousel-centre" data-bs-slide="prev">
 		    <span class="carousel-control-prev-icon"
 					style="background-image: url('common/images/icons8-chevron-left-40.png');
@@ -48,6 +47,10 @@
 			</span>
 		</a>
 	</div>
+	
+	
+	<div id="parallelogramme_gauche"></div>
+	<div id="parallelogramme_droite"></div>
 </div>
 
 </ui:composition>
