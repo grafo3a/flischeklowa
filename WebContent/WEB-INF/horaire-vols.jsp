@@ -42,53 +42,55 @@
 				<div class="fs-3 text-start page-title">Today's flights</div>
 				
 				<div class="sous-titre">
-					
-					<!--=== Flights display filter form ===-->
-					<form method="post" action="horaire-vols" class="container p-2 border rounded bg-gris-faible">
+					<div class="container p-2 border rounded bg-gris-faible">
 						
-						<nav class="nav justify-content-end">
+						<!--=== Flights display filter form ===-->
+						<form method="post" action="horaire-vols">
 							
-							<div class="nav-item m-1">
-								Direction:
-							</div>
-							
-							<div class="nav-item m-1">
-								<select id="sensChoisi" class="form-select form-select-sm large120px" name="sens">
-									
-									<option value="Departure"
-										<c:if test="${param.sens == 'Departure'}">selected="selected"</c:if>>
-										Departure
-									</option>
-									
-									<option value="Arrival"
-										<c:if test="${param.sens == 'Arrival'}">selected="selected"</c:if>>
-										Arrival
-									</option>
-									
-									<option value="All"
-										<c:if test="${param.sens == 'All'}">selected="selected"</c:if>>
-										All
-									</option>
-								</select>
-							</div>
-							
-							<div class="nav-item m-1">
-								&nbsp;&nbsp;
-								Country Code:
-							</div>
-							
-							<div class="nav-item m-1">
+							<nav class="nav justify-content-end">
 								
-								<input id="paysChoisi" type="text" class="form-control form-control-sm large120px"
-										name="pays" placeholder="XY" value="<c:out value='${param.pays}'/>" />
-							</div>
-							
-							<div class="nav-item mt-1 mb-1">
-								<button type="submit"
-										class="btn btn-warning btn-sm bouton-orangeatre large120px">Filter</button>
-							</div>
-						</nav>
-					</form>
+								<div class="nav-item m-1">
+									Direction:
+								</div>
+								
+								<div class="nav-item m-1">
+									<select id="sensChoisi" class="form-select form-select-sm large120px" name="sens">
+										
+										<option value="Departure"
+											<c:if test="${param.sens == 'Departure'}">selected="selected"</c:if>>
+											Departure
+										</option>
+										
+										<option value="Arrival"
+											<c:if test="${param.sens == 'Arrival'}">selected="selected"</c:if>>
+											Arrival
+										</option>
+										
+										<option value="All"
+											<c:if test="${param.sens == 'All'}">selected="selected"</c:if>>
+											All
+										</option>
+									</select>
+								</div>
+								
+								<div class="nav-item m-1">
+									&nbsp;&nbsp;
+									Country Code:
+								</div>
+								
+								<div class="nav-item m-1">
+									
+									<input id="paysChoisi" type="text" class="form-control form-control-sm large120px"
+											name="pays" placeholder="XY" value="<c:out value='${param.pays}'/>" />
+								</div>
+								
+								<div class="nav-item mt-1 mb-1">
+									<button type="submit"
+											class="btn btn-warning btn-sm bouton-orangeatre large120px">Filter</button>
+								</div>
+							</nav>
+						</form>
+					</div>
 				</div>
 			</div>
 			
