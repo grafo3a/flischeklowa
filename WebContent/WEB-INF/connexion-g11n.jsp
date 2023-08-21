@@ -32,7 +32,7 @@
 	<div class="container-fluid">
 		
 		<!--=== Affichage date et heure ===-->
-		<div class="row bg-gris-faible">
+		<div class="row bg-gris-faible border-bottom-gris">
 			<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
 		</div>
 		
@@ -59,7 +59,7 @@
 		
 		
 		<!--=== ROW B ===-->
-		<div class="row">
+		<div class="row border-bottom-gris">
 			
 			<!--=== COLUMN B1 ===-->
 			<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">

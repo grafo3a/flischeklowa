@@ -19,7 +19,7 @@
 .menu-entete {
 	padding-left: 10px;
 	padding-right: 15px;
-	border: 1px solid #ffddb3; 	/* orange faible++ */
+	border: 1px solid #ffe6cc;    /* orange faible++ */
 	border-radius: 5px;
 }
 
@@ -149,7 +149,7 @@ body {
 
 
 .footer-menu {
-	background-color: #ffddb3; /* orange faible++ */
+	background-color: #ffe6cc;    /* orange faible++ */
 	box-shadow: 0px 2px 5px grey;
 	font-style: italic;
 }
@@ -168,9 +168,19 @@ body {
 	border-radius: 4px;
 }
 
+/*
+.ligne-horizontale {
+	border: 1px solid rgb(160, 160, 160);    // gris //
+}
+*/
+
+.border-bottom-gris {
+	border-bottom: 1px solid rgb(200, 200, 200);    /* gris */
+}
+
 
 .bg-orangeatre {
-	background-color: #ffddb3; /* orange faible++ */
+	background-color: #ffe6cc;    /* orange faible */
 }
 
 
@@ -179,13 +189,6 @@ body {
 	border: 1px solid orange;
 	color: black;
 }
-
-
-/*
-.bg-verdatre {
-	background-color: #ffddb3; // orange faible++ //
-}
-*/
 
 
 .bg-gris-faible {
@@ -197,7 +200,7 @@ body {
 	color: DarkGreen;
 	text-decoration: none;
 	padding-top: 10px;
-	border: 1px solid #ffddb3; /* orange faible++ */
+	border: 1px solid #ffe6cc;    /* orange faible */
 	border-radius: 5px;
 }
 
