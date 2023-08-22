@@ -168,11 +168,6 @@ body {
 	border-radius: 4px;
 }
 
-/*
-.ligne-horizontale {
-	border: 1px solid rgb(160, 160, 160);    // gris //
-}
-*/
 
 .border-bottom-gris {
 	border-bottom: 1px solid rgb(200, 200, 200);    /* gris */
