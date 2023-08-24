@@ -1,6 +1,10 @@
 /* L'EN-TETE
 ----------------------*/
 
+.entete {
+	border-bottom: 1px solid orange;
+}
+
 .pageActive {
 	border-bottom: 3px solid orange;
 	padding-Bottom: 5px;

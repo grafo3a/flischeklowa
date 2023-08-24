@@ -28,7 +28,7 @@
 	<div class="container-fluid">
 		
 		<!--=== Affichage date et heure ===-->
-		<div class="row bg-gris-faible border-bottom-gris">
+		<div class="row bg-light border-bottom-gris">
 			<jsp:include page="./fragments/jour-date-heure.jsp"></jsp:include>
 		</div>
 		
