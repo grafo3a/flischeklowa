@@ -5,14 +5,15 @@
 	border-bottom: 1px solid orange;
 }
 
+
 .pageActive {
-	border-bottom: 3px solid orange;
+	border-bottom: 3px solid rgb(255, 140, 0);    /* orange++ */
 	padding-Bottom: 5px;
 }
 
 
 .pageActuelle {
-	border-bottom: 3px solid orange;
+	border-bottom: 3px solid rgb(255, 140, 0);    /* orange++ */
 	text-decoration: initial;
 	color: green;
 	padding-top: 7px;
