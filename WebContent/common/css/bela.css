@@ -162,6 +162,7 @@ body {
 
 .footer-menu a {
 	font-style: italic;
+	text-decoration: none;
 	border: 1px solid #ffe6cc;    /* orangeatre */
 	border-radius: 4px;
 }
