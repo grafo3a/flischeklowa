@@ -15,6 +15,15 @@ xmlns:ui="http://java.sun.com/jsf/facelets" >
 	<link rel="stylesheet" href="common/css/bela.css" />
 	<link rel="icon" type="image/png" href="favicon.png" />
 	<script type="text/javascript" src="common/js/main.js"></script>
+	
+	<!--=== POUR LE DATEPICKER JQUERY UI ===-->
+	<script type="text/javascript" src="resources/my_datepicker/jquery-3.6.0.js" />
+	<script type="text/javascript" src="resources/my_datepicker/jquery-ui_1.13.2.js" />
+	<link rel="stylesheet" href="resources/my_datepicker/jquery-ui.css" />
+	
+	<!--=== Ces 2 fichiers doivent se trouver sous WebContent/resources/ ===-->
+	<h:outputScript library="my_datepicker" name="my_datepicker_config.js" />
+	<h:outputStylesheet library="my_datepicker" name="bootstrap.min.css" />
 </head>
 
 
@@ -51,10 +60,11 @@ xmlns:ui="http://java.sun.com/jsf/facelets" >
 							<!--=== DATE DU VOL ===-->
 							<h:outputLabel value="Date: " class="nav-item m-1"/>
 							
-							<h:inputText id="dateChoisie" value="#{jSFBeanDetails1Vol.dateChoisie}"
+							<h:inputText id="dateChoisie"
+								value="#{jSFBeanDetails1Vol.dateChoisie}"
 								label="Date Choisie"
 								validatorMessage="[error!] Type a valid date: aaaa-MM-dd from 2000 to 2999 (10 characters)"
-								class="nav-item large120px m-1">
+								class="nav-item large120px m-1 datepicker">
 								
 								<f:passThroughAttribute name="placeholder" value="2020-01-01" />
 								<f:validateRequired />
@@ -65,7 +75,9 @@ xmlns:ui="http://java.sun.com/jsf/facelets" >
 							
 							<h:outputLabel value="&#160;&#160;Time: " class="nav-item m-1" />
 							
-							<h:inputText id="heureChoisie" value="#{jSFBeanDetails1Vol.heureChoisie}" label="Heure Choisie"
+							<h:inputText id="heureChoisie"
+								value="#{jSFBeanDetails1Vol.heureChoisie}"
+								label="Heure Choisie"
 								validatorMessage="[error!] Type a valid hour: hh:mm (5 characters)"
 								class="nav-item large120px m-1">
 								

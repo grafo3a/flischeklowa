@@ -1,0 +1,8 @@
+
+#icone-datepicker {
+	width: 22px;
+	height: 22px;
+	background-image: url('icone_calendrier.svg');
+	background-repeat: no-repeat;
+	margin-bottom: 4px;
+}
