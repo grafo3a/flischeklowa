@@ -14,12 +14,19 @@ xmlns:ui="http://java.sun.com/jsf/facelets" >
 	<link rel="stylesheet" href="common/css/bootstrap-icons.css" />
 	<link rel="stylesheet" href="common/css/bela.css" />
 	<link rel="icon" type="image/png" href="favicon.png" />
-	<script type="text/javascript" src="common/js/main.js"></script>
+	<script type="text/javascript" src="common/js/main.js" />
 	
 	<!--=== POUR LE DATEPICKER JQUERY UI ===-->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+	<script src="https://code.jquery.com/jquery-3.6.0.js" />
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" />
+	
+	<!--==================================================
+	# Pour utiliser des fichiers locaux, il faut les placer sous WebContent/resources/ #
 	<script type="text/javascript" src="resources/my_datepicker/jquery-3.6.0.js" />
 	<script type="text/javascript" src="resources/my_datepicker/jquery-ui_1.13.2.js" />
 	<link rel="stylesheet" href="resources/my_datepicker/jquery-ui.css" />
+	====================================================-->
 	
 	<!--=== Ces 2 fichiers doivent se trouver sous WebContent/resources/ ===-->
 	<h:outputScript library="my_datepicker" name="my_datepicker_config.js" />
