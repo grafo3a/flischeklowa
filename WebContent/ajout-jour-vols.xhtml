@@ -50,6 +50,12 @@
 								value="Add a day of flights" action="#{jSFOperationsSurModelesVols.ajouterJourVols}">
 							</h:commandButton>
 						</h:form>
+						
+						<h:outputLabel rendered="#{not empty jSFOperationsSurModelesVols.tabMessageErreur or
+													not empty jSFOperationsSurModelesVols.tabMessageSucces}">
+													
+							<i>To add more flights, click on the menu above again.</i>
+						</h:outputLabel>
 					</div>
 					
 				</div>

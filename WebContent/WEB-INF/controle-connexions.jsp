@@ -41,11 +41,11 @@
 				<div class="fs-3 text-start page-title">DB Connections Control</div>
 				
 				<div class="sous-titre">
-					<div class="container p-2 border rounded bg-gris-faible">
+					<div class="container p-2 border rounded bg-gris-faible text-end">
 						
-						<p>
-						State of the database, the connection pool and the EntityManagerFactory can be checked below.
-						</p>
+						<i>State of the database, of the connection pool and of the EntityManagerFactory
+							can be checked and/or controlled below.</i>
+						
 					</div>
 				</div>
 			</div>
