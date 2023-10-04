@@ -1,3 +1,4 @@
+
 /* L'EN-TETE
 ----------------------*/
 
@@ -177,6 +178,19 @@ body {
 
 /* STYLES GENERIQUES
 -------------------------*/
+
+@font-face {
+	/* On importe la police Ubuntu */
+	font-family: 'Ubuntu';
+	src: local('Ubuntu'), url(./fonts/Ubuntu/Ubuntu-Regular.ttf) format('woff');
+}
+
+
+body {
+	/* On utilise la police Ubuntu */
+	font-family: Ubuntu;
+}
+
 
 .text-darkgreen {
 	color: DarkGreen;
