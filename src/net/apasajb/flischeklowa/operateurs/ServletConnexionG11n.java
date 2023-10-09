@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.codec.digest.DigestUtils;
 import net.apasajb.flischeklowa.ecouteurs.EcouteurAppli;
 import net.apasajb.flischeklowa.outils.BoiteLogin;
 import net.apasajb.flischeklowa.outils.Validation;
@@ -105,11 +106,13 @@ public class ServletConnexionG11n extends HttpServlet {
 			// Si mot de passe present
 			
 			EntityManager em = EcouteurAppli.getEM();
-			paramMot2p = request.getParameter("mot2p");
 			boolean isPasswordCorrectInDB = false;
 			
+			paramMot2p = request.getParameter("mot2p");
+			String mot2passeSha256 = DigestUtils.sha256Hex(paramMot2p);
+			
 			try {
-				isPasswordCorrectInDB = validation.isPasswordCorrectInDB(paramCourriel, paramMot2p, em, locale);
+				isPasswordCorrectInDB = validation.isPasswordCorrectInDB(paramCourriel, mot2passeSha256, em, locale);
 				
 			} catch (Exception ignore) {}
 			

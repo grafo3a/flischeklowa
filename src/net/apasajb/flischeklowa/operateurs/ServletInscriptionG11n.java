@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.tinylog.Logger;
 import net.apasajb.flischeklowa.ecouteurs.EcouteurAppli;
 import net.apasajb.flischeklowa.outils.BoiteLogin;
@@ -154,7 +155,11 @@ public class ServletInscriptionG11n extends HttpServlet {
 				
 				try {
 					OperationsORMComptes operationsORMComptes = new OperationsORMComptes();
-					operationsORMComptes.persisterCompte(paramCourriel, paramMot2p02, em);		// La methode fermera em
+					
+					// Hashing du mot de passe
+					String mot2passeSha256 = DigestUtils.sha256Hex(paramMot2p02);
+					
+					operationsORMComptes.persisterCompte(paramCourriel, mot2passeSha256, em);		// La methode fermera em
 					isInscriptionOK = true;
 					Logger.info("New account persistence OK.");
 					Logger.info("Account created successfully: " + paramCourriel);

@@ -30,7 +30,7 @@ public class Compte implements Serializable {
 	@Column(name="courriel", length=80, nullable=false, unique=true)
 	private String courrielCompte;
 	
-	@Column(name="mot_de_passe", length=20, nullable=false)
+	@Column(name="mot_de_passe", length=80, nullable=false)		// will store 64 chars of sha256 hex hash
 	private String mot2Passe;
 	
 	
