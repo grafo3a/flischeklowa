@@ -10,7 +10,7 @@
 	<span id="decalageHoraire"><c:out value="${requestScope.heuresDecalageKlow}"></c:out></span>
 	
 	<!-- Infos visibles -->
-	<span id="jour-date">Today dd Month yyyy</span>
-	<b><span id="temps">hh:mm:ss</span></b>
+	<i><span id="jour-date">Today dd Month yyyy</span>
 	<span>(<c:out value="${requestScope.texteDecalageKlow}">UTC+02:00</c:out>)</span>
+	<b><span id="temps">hh:mm:ss</span></b></i>
 </div>
