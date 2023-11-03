@@ -32,6 +32,8 @@ The following technologies are used in the project:
 
 The entry point to the application is the root URL mapping "/" in the Servlet "ServletHoraireVols".
 
+When the app starts, an event (ServletContextEvent) is triggered in the listerner class "EcouteurAppli" (located in net.apasajb.flischeklowa.ecouteurs). The method "contextInitialized" is then executed.
+
 By default, the app uses the in-memory H2 database.
 To use a different database, you'll need to update the 2 following files correctly:
 * paquetBDD.properties (located in src/net.apasajb.flischeklowa.ressourcesG11n, used by the connection pool)
