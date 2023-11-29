@@ -65,7 +65,7 @@
 					<h:form>
 						<nav class="nav justify-content-end">
 							<div class="nav-item m-1">
-								<h:outputLabel value="Type a date:"/>
+								<h:outputLabel value="Date:"/>
 							</div>
 						
 							<div class="nav-item m-1">
@@ -74,7 +74,7 @@
 									class="large120px datepicker"
 									validatorMessage="[error!] Type a valid date: aaaa-MM-dd from 2000 to 2999 (10 characters)" >
 									
-									<f:passThroughAttribute name="placeholder" value="2020-01-01" />
+									<f:passThroughAttribute name="placeholder" value="pick a date" />
 									<f:validateRequired />
 									<f:validateRegex pattern="#{jSFBeanDetails1Vol.regexDate}" />
 								</h:inputText>

@@ -9,6 +9,6 @@ $(document).ready( function() {
 );
 
 
-function trigger(){
-	document.getElementById('datepicker').focus();
+function afficherDatepicker(){
+	document.getElementById('formulaireDetails:dateChoisie').focus();
 }
