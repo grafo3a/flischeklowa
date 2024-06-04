@@ -1,7 +1,6 @@
-# About FlischeKlowa
+# FlischeKlowa
 
-Presentation
--------------
+## Presentation
 FlischeKlowa stands for Flight Scheduler of Klow Airport.
 
 Klow Airport is the main airport of Klow.
@@ -11,11 +10,11 @@ Although it exists only in the fiction world, the airport is probably located so
 Using FlischeKlowa gives you an opportunity to have the power and responsibilities of a flight scheduling administrator in an airport.
 Come on, have fun and schedule flights by exploring FlischeKlowa.
 
-Technical aspects
------------------
+## Technical aspects
 As a programming project, FlischeKlowa is an application based on Java EE 8.
 The author of the project is the programmer Joseph B. Apasa.
 
+### Tech stack
 The following technologies are used in the project:
 - Servlet 4 with Filter;
 - JSP with JSTL;
@@ -30,6 +29,12 @@ The following technologies are used in the project:
 - Maven, JUnit 5, tinylog;
 - Databases: H2 (in-memory).
 
+### Build & run procedure
+To build the app, you need Maven.
+
+To run the app, export the project as a WAR file then deploy the file on Tomcat [9] or any other application server supporting Java EE 8. You can also run the app through an IDE.
+
+### More tech info
 The entry point to the application is the root URL mapping "/" in the Servlet "ServletHoraireVols".
 
 When the app starts, an event (ServletContextEvent) is triggered in the listerner class "EcouteurAppli" (located in net.apasajb.flischeklowa.ecouteurs). The method "contextInitialized" is then executed.
@@ -39,9 +44,6 @@ To use a different database, you'll need to update the 2 following files correct
 * paquetBDD.properties (located in src/net.apasajb.flischeklowa.ressourcesG11n, used by the connection pool)
 * persistence.xml (located in src/META-INF, used by the entity manager factory).
 
-To run the app, export the project as a WAR file then deploy the file on Tomcat [9] or any other application server supporting Java EE 8. You can also run the app through an IDE.
-
-Screenshots
------------
+## Screenshots
 
 ![flischeklowa_screenshot_01.png](/WebContent/common/images/flischeklowa_screenshot_01.png?raw=true)
