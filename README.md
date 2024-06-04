@@ -32,7 +32,20 @@ The following technologies are used in the project:
 ### Build & run procedure
 To build the app, you need Maven.
 
-To run the app, export the project as a WAR file then deploy the file on Tomcat [9] or any other application server supporting Java EE 8. You can also run the app through an IDE.
+#### On Windows
+Open a command line interface (cmd);  
+Go to the root directory of the app: "cd flischeklowa";  
+Type the following command: "mvn clean install".
+
+#### On Linux/Unix
+Open a terminal;  
+Go to the root directory of the app: "cd flischeklowa";  
+Type the following command: "./mvn clean install".
+
+In both cases, a newly generated War file "flischeklowa*.war" will be available in your local Maven repository.
+
+To run the app, deploy the War file on Tomcat [9] or any other application server supporting Java EE 8.  
+You can also run the app through an IDE.
 
 ### More tech info
 The entry point to the application is the root URL mapping "/" in the Servlet "ServletHoraireVols".
