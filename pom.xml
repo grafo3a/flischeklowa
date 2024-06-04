@@ -119,5 +119,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 		    <scope>provided</scope>
 		</dependency>
 		
+		<dependency>
+		    <groupId>org.apache.tomcat</groupId>
+		    <artifactId>tomcat-jdbc</artifactId>
+		    <version>9.0.37</version>
+		</dependency>
+		
 	</dependencies>
 </project>
