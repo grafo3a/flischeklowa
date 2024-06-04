@@ -110,5 +110,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 			<version>1.11</version>
 		</dependency>
 		
+		<!--// les dependances suivantes sont necessaire pour pouvoir effectuer un build via Maven,
+			donc en dehors d'un serveur //-->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>4.0.1</version>
+		    <scope>provided</scope>
+		</dependency>
+		
 	</dependencies>
 </project>
