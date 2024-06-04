@@ -1,41 +1,51 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>flischeklowa</groupId>
-  <artifactId>flischeklowa</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>flischeklowa</name>
-  
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.3</version>
-        <configuration>
-          <warSourceDirectory>WebContent</warSourceDirectory>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+<project
+xmlns="http://maven.apache.org/POM/4.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>flischeklowa</groupId>
+	<artifactId>flischeklowa</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>flischeklowa</name>
+	
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+		
+		<!-- Definition de l'emplacement des paquets de ressources -->
+		<resources>
+			<resource>
+				<directory>src/net/apasajb/flischeklowa/ressourcesG11n</directory>
+			</resource>
+		</resources>
+	</build>
 	
 	<dependencies>
 		
 		<!--=== POUR HIBERNATE (JPA) ===-->
-			<dependency>
+		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>5.3.20.Final</version>
 		</dependency>
-		
 		
 		<!--=== POUR JERSEY (JAX-RS) ===-->
 		<dependency>
@@ -43,7 +53,6 @@
 			<artifactId>jersey-container-servlet</artifactId>
 			<version>2.14</version>
 		</dependency>
-		
 		
 		<!--=== POUR JACKSON, UN PROVIDER JSON
 		(Jackson effectue la serialisation Java/JSON (binding)) ===-->
@@ -53,7 +62,6 @@
 			<version>2.33</version>
 		</dependency>
 		
-		
 		<!--=== POUR MOJARRA (JSF 2.3) ===-->
 		<dependency>
 			<groupId>org.glassfish</groupId>
@@ -61,14 +69,12 @@
 			<version>2.3.2</version>
 		</dependency>
 		
-		
 		<!--=== POUR WELD (CDI) ===-->
 		<dependency>
-		    <groupId>org.jboss.weld.servlet</groupId>
-		    <artifactId>weld-servlet-core</artifactId>
-		    <version>2.4.0.Final</version>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet-core</artifactId>
+			<version>2.4.0.Final</version>
 		</dependency>
-		
 		
 		<!--=== POUR H2 DATABASE ===-->
 		<dependency>
@@ -77,14 +83,12 @@
 			<version>1.4.200</version>
 		</dependency>
 		
-		
 		<!--=== POUR POSTGRES ===-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.3.3</version>
 		</dependency>
-		
 		
 		<!--=== POUR TINYLOG (journalisation) ===-->
 		<dependency>
@@ -93,13 +97,11 @@
 			<version>2.4.1</version>
 		</dependency>
 		
-		
 		<dependency>
 			<groupId>org.tinylog</groupId>
 			<artifactId>tinylog-impl</artifactId>
 			<version>2.4.1</version>
 		</dependency>
-		
 		
 		<!--=== POUR LE HACHAGE Sha256 ===-->
 		<dependency>

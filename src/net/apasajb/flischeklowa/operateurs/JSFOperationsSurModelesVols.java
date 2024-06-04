@@ -51,10 +51,10 @@ public class JSFOperationsSurModelesVols implements Serializable {
 			"09", "10", "11", "12", "13", "14", "15", "16", "17", "18",
 			"19", "20", "21", "22", "23"};
 	
-	// On cree un paquet de ressources (un objet de type ResourceBundle)
-	final String nomBase = "net.apasajb.flischeklowa.ressourcesG11n.modelesVol";
+	/* On cree un paquet de ressources (= un objet de type ResourceBundle).
+	 * L'emplacement du paquet de ressources est defini dans pom.xml */
+	final String nomBase = "modelesVol";
 	ResourceBundle paquet = ResourceBundle.getBundle(nomBase);
-	
 	
 	public void afficherListeModelesVol() {
 		this.utiliserModelesVol(ModeAcces.LIRE);
